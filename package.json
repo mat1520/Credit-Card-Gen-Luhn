@@ -1,7 +1,7 @@
 {
     "name": "cardgen",
     "version": "1.0.0",
-    "description": "Generador de tarjetas de crédito y débito de prueba con validación Luhn",
+    "description": "Credit Card Generator with Luhn Algorithm",
     "main": "src/js/app.js",
     "scripts": {
         "dev": "vite",
@@ -18,7 +18,7 @@
         "testing",
         "pwa"
     ],
-    "author": "Tu Nombre",
+    "author": "Ariel",
     "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.22.0",
@@ -37,5 +37,8 @@
         "> 1%",
         "last 2 versions",
         "not dead"
-    ]
+    ],
+    "engines": {
+        "node": ">=14.0.0"
+    }
 } 

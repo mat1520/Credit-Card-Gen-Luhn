@@ -1,94 +1,108 @@
-# CardGen - Generador de Tarjetas de Prueba
+# Credit Card Generator with Luhn Algorithm
 
-Una aplicación web moderna para generar tarjetas de crédito y débito de prueba con validación Luhn.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-## Características
+A modern web application that generates valid credit card numbers using the Luhn algorithm. Perfect for testing payment systems and form validation.
 
-- Generación de tarjetas con BIN personalizado (6-8 dígitos)
-- Validación mediante algoritmo de Luhn
-- Generación de CVV aleatorio
-- Fechas de expiración dinámicas
-- Soporte para múltiples BINs
-- Exportación a CSV y TXT
-- Copiado al portapapeles
-- Guardado de configuraciones en LocalStorage
-- Modo claro/oscuro
-- Totalmente accesible (A11y)
-- Instalable como PWA
-- Modo técnico con metadatos
+![Card Generator Preview](./screenshots/preview.png)
 
-## Requisitos
+## 🚀 Features
 
-- Navegador web moderno (Chrome, Firefox, Safari, Edge)
-- Node.js (para desarrollo local)
+- ✨ Generate valid credit card numbers with Luhn algorithm validation
+- 🎯 Customizable base number input
+- 📅 Dynamic expiry date generation
+- 🔒 CVV generation
+- 💾 Export results in TXT and CSV formats
+- 📋 One-click copy to clipboard
+- 🌓 Dark/Light theme support
+- 🎨 Modern UI with smooth animations
+- 📱 Fully responsive design
 
-## Instalación Local
+## 🖥️ Demo
 
-1. Clona el repositorio:
+Check out the live demo: [Credit Card Generator](https://credit-card-gen-luhn.vercel.app)
+
+![Demo Animation](./screenshots/demo.gif)
+
+## 🛠️ Installation
+
+1. Clone the repository:
 ```bash
-git clone https://github.com/tu-usuario/cardgen.git
-cd cardgen
+git clone https://github.com/Ariel/Credit-Cart-Gen-Luhn.git
+cd Credit-Cart-Gen-Luhn
 ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Inicia el servidor de desarrollo:
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Abre tu navegador en `http://localhost:3000`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Uso
+## 💻 Usage
 
-1. Ingresa un BIN (6-8 dígitos) en el campo correspondiente
-2. Selecciona la cantidad de tarjetas a generar (máximo 150)
-3. Configura las opciones de CVV y fecha de expiración
-4. Haz clic en "Generar Tarjetas"
-5. Utiliza los botones de exportación para guardar los resultados
+1. Enter a base number (optional)
+2. Specify the quantity of cards to generate
+3. (Optional) Set custom expiry date and CVV
+4. Click "Generate" to create valid card numbers
+5. Use the export options to save or copy the results
 
-## Desarrollo
+![Usage Example](./screenshots/usage.png)
 
-### Estructura del Proyecto
+## 🔧 Technical Details
 
-```
-cardgen/
-├── public/          # Archivos estáticos
-├── src/
-│   ├── css/        # Estilos
-│   ├── js/         # Código JavaScript
-│   └── tests/      # Pruebas
-└── README.md
-```
+### Card Number Generation
 
-### Pruebas
+The application uses the Luhn algorithm to generate and validate credit card numbers:
 
-Para ejecutar las pruebas:
-```bash
-npm test
-```
+1. Takes the base number input (if provided)
+2. Completes the number to 16 digits
+3. Validates using the Luhn algorithm
+4. Generates corresponding CVV and expiry date
 
-## Despliegue
+### Export Formats
 
-El proyecto está configurado para despliegue automático en Vercel. Cada push a la rama main desencadenará un nuevo despliegue.
+- **TXT Format**: `number|month|year|cvv`
+- **CSV Format**: `number,month,year,cvv`
 
-## Contribución
+## 📱 Responsive Design
 
-1. Haz fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+The application is fully responsive and works seamlessly across all devices:
 
-## Licencia
+- 💻 Desktop
+- 📱 Mobile
+- 📟 Tablet
 
-Distribuido bajo la Licencia MIT. Ver `LICENSE` para más información.
+![Responsive Design](./screenshots/responsive.png)
 
-## Contacto
+## 🛡️ Security
 
-Tu Nombre - [@tutwitter](https://twitter.com/tutwitter)
+This tool is designed for testing purposes only. Generated card numbers are valid in format but are not connected to any real accounts or financial systems.
 
-Link del Proyecto: [https://github.com/tu-usuario/cardgen](https://github.com/tu-usuario/cardgen) 
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👤 Author
+
+**Ariel**
+
+* GitHub: [@Ariel](https://github.com/Ariel)
+
+## ⭐️ Show your support
+
+Give a ⭐️ if this project helped you! 
