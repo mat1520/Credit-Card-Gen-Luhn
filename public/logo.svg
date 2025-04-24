@@ -1,0 +1,11 @@
+<svg width="500" height="100" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <!-- Shield with card icon -->
+    <path d="M50 10 L90 10 L90 90 L50 90 C30 90 10 70 10 50 C10 30 30 10 50 10" fill="#6B46C1"/>
+    <path d="M30 40 L70 40 L70 60 L30 60 Z" fill="white"/>
+    <circle cx="65" cy="50" r="2" fill="white"/>
+    <circle cx="60" cy="50" r="2" fill="white"/>
+  </g>
+  <!-- Text -->
+  <text x="110" y="65" font-family="Arial" font-weight="bold" font-size="48" fill="white">CardGen Pro</text>
+</svg> 
