@@ -121,27 +121,12 @@ const cards = await generateBulk(10);
 // Output: Array of 10 valid card numbers
 ```
 
-## 📱 Responsive Design
-
-| Device | Screenshot |
-|--------|------------|
-| Desktop | ![Desktop View](./public/desktop.png) |
-| Mobile | ![Mobile View](./public/mobile.png) |
-| Tablet | ![Tablet View](./public/tablet.png) |
-
 ## 🔐 Security Features
 
 - ✅ Client-side processing only
 - ✅ No data storage
 - ✅ Test numbers only
 - ✅ Secure export options
-
-## 🎨 Themes
-
-| Theme | Preview |
-|-------|---------|
-| Light | ![Light Theme](./public/light.png) |
-| Dark | ![Dark Theme](./public/dark.png) |
 
 ## 📈 Performance
 

@@ -1,12 +1,14 @@
 <svg width="500" height="100" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g>
-    <!-- Shield background -->
-    <path d="M45 10 C25 10 10 25 10 45 V55 C10 75 25 90 45 90 H55 C75 90 90 75 90 55 V45 C90 25 75 10 55 10 H45Z" fill="#6B46C1"/>
-    <!-- Card simplified lines -->
-    <path d="M30 40 H70 V60 H30 V40Z" fill="white"/>
-    <!-- Dots -->
-    <circle cx="62" cy="50" r="2" fill="white"/>
-    <circle cx="67" cy="50" r="2" fill="white"/>
+    <!-- Shield with hexagonal shape -->
+    <path d="M50 10 L80 10 L90 25 L90 75 L80 90 L50 90 L20 90 L10 75 L10 25 L20 10 L50 10Z" fill="#6B46C1"/>
+    <!-- Simplified card design -->
+    <path d="M25 35 H75 V45 H25 V35Z" fill="white"/>
+    <path d="M25 55 H55 V65 H25 V55Z" fill="white"/>
+    <!-- Three dots -->
+    <circle cx="65" cy="60" r="2" fill="white"/>
+    <circle cx="70" cy="60" r="2" fill="white"/>
+    <circle cx="75" cy="60" r="2" fill="white"/>
   </g>
   <!-- Text -->
   <text x="110" y="50" font-family="Arial" font-weight="bold" font-size="36" fill="white">CardGen</text>
