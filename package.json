@@ -18,8 +18,16 @@
         "testing",
         "pwa"
     ],
-    "author": "Ariel",
+    "author": "mat1520",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mat1520/Credit-Cart-Gen-Luhn.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mat1520/Credit-Cart-Gen-Luhn/issues"
+    },
+    "homepage": "https://github.com/mat1520/Credit-Cart-Gen-Luhn#readme",
     "devDependencies": {
         "@babel/core": "^7.22.0",
         "@babel/preset-env": "^7.22.0",

@@ -1,14 +1,14 @@
 # Dependencies
 node_modules/
-.pnp/
+/.pnp
 .pnp.js
 
 # Testing
-coverage/
+/coverage
 
 # Production
-dist/
-build/
+/dist
+/build
 
 # Misc
 .DS_Store
@@ -16,6 +16,7 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 # Logs
 npm-debug.log*
@@ -33,4 +34,7 @@ yarn-error.log*
 
 # Cache
 .cache/
-.temp/ 
+.temp/
+
+# Vite
+.vite/ 

@@ -29,7 +29,7 @@ Check out the live demo: [Credit Card Generator](https://credit-card-gen-luhn.ve
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Ariel/Credit-Cart-Gen-Luhn.git
+git clone https://github.com/mat1520/Credit-Cart-Gen-Luhn.git
 cd Credit-Cart-Gen-Luhn
 ```
 
@@ -99,9 +99,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Ariel**
+**mat1520**
 
-* GitHub: [@Ariel](https://github.com/Ariel)
+* GitHub: [@mat1520](https://github.com/mat1520)
 
 ## ⭐️ Show your support
 
