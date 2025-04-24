@@ -1,0 +1,41 @@
+{
+    "name": "cardgen",
+    "version": "1.0.0",
+    "description": "Generador de tarjetas de crédito y débito de prueba con validación Luhn",
+    "main": "src/js/app.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "jest",
+        "lint": "eslint src/**/*.js",
+        "format": "prettier --write src/**/*.{js,css,html}"
+    },
+    "keywords": [
+        "credit-card",
+        "luhn",
+        "generator",
+        "testing",
+        "pwa"
+    ],
+    "author": "Tu Nombre",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.22.0",
+        "@babel/preset-env": "^7.22.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "eslint": "^8.42.0",
+        "eslint-config-prettier": "^8.8.0",
+        "jest": "^29.5.0",
+        "prettier": "^2.8.8",
+        "vite": "^4.3.9"
+    },
+    "dependencies": {
+        "jest-environment-jsdom": "^29.5.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+} 

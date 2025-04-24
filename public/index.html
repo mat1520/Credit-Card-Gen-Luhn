@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generador de tarjetas de crédito y débito de prueba con validación Luhn">
+    <title>CardGen - Generador de Tarjetas de Prueba</title>
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header class="header" role="banner">
+        <h1>CardGen</h1>
+        <p class="subtitle">Generador de Tarjetas de Prueba</p>
+    </header>
+
+    <main class="main-content" role="main">
+        <section class="controls-section" aria-labelledby="controls-title">
+            <h2 id="controls-title">Configuración</h2>
+            
+            <div class="form-group">
+                <label for="bin-input">BIN (6-8 dígitos)</label>
+                <input type="text" id="bin-input" pattern="[0-9]{6,8}" maxlength="8" required>
+                <button id="add-bin" class="button">Agregar BIN</button>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Cantidad de tarjetas</label>
+                <input type="number" id="quantity" min="1" max="150" value="10">
+            </div>
+
+            <div class="form-group">
+                <label for="cvv-type">Tipo de CVV</label>
+                <select id="cvv-type">
+                    <option value="random">Aleatorio</option>
+                    <option value="custom">Personalizado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="expiry-type">Fecha de expiración</label>
+                <select id="expiry-type">
+                    <option value="dynamic">Dinámica</option>
+                    <option value="fixed">Fija</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="technical-mode">Modo técnico</label>
+                <input type="checkbox" id="technical-mode">
+            </div>
+
+            <div class="form-group">
+                <label for="theme">Tema</label>
+                <select id="theme">
+                    <option value="light">Claro</option>
+                    <option value="dark">Oscuro</option>
+                </select>
+            </div>
+
+            <button id="generate" class="button primary">Generar Tarjetas</button>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+            <h2 id="results-title">Resultados</h2>
+            <div class="results-controls">
+                <button id="export-csv" class="button">Exportar CSV</button>
+                <button id="export-txt" class="button">Exportar TXT</button>
+                <button id="copy-results" class="button">Copiar al Portapapeles</button>
+            </div>
+            <div id="results" class="results-container" role="region" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <p>CardGen - Herramienta para desarrolladores y testers</p>
+    </footer>
+
+    <script src="../src/js/app.js" type="module"></script>
+</body>
+</html> 
