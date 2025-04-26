@@ -52,6 +52,11 @@ body {
     min-height: 100vh;
     padding: var(--space-4);
     letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.dark-theme {
+    color-scheme: dark;
 }
 
 /* Mejoras en la tipografía */

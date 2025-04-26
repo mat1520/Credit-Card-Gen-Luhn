@@ -3,6 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
     root: '.',
+    base: './',
     publicDir: 'public',
     build: {
         outDir: 'dist',
@@ -12,6 +13,17 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 binLookup: resolve(__dirname, 'bin-lookup.html')
+            },
+            output: {
+                assetFileNames: (assetInfo) => {
+                    let extType = assetInfo.name.split('.')[1];
+                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+                        extType = 'img';
+                    }
+                    return `assets/${extType}/[name]-[hash][extname]`;
+                },
+                chunkFileNames: 'assets/js/[name]-[hash].js',
+                entryFileNames: 'assets/js/[name]-[hash].js',
             }
         }
     },
