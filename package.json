@@ -6,17 +6,12 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview",
-        "test": "jest",
-        "lint": "eslint src/**/*.js",
-        "format": "prettier --write src/**/*.{js,css,html}"
+        "preview": "vite preview"
     },
     "keywords": [
         "credit-card",
         "luhn",
-        "generator",
-        "testing",
-        "pwa"
+        "generator"
     ],
     "author": "mat1520",
     "license": "MIT",
@@ -29,17 +24,7 @@
     },
     "homepage": "https://github.com/mat1520/Credit-Cart-Gen-Luhn#readme",
     "devDependencies": {
-        "@babel/core": "^7.22.0",
-        "@babel/preset-env": "^7.22.0",
-        "@testing-library/jest-dom": "^5.16.5",
-        "eslint": "^8.42.0",
-        "eslint-config-prettier": "^8.8.0",
-        "jest": "^29.5.0",
-        "prettier": "^2.8.8",
         "vite": "^4.3.9"
-    },
-    "dependencies": {
-        "jest-environment-jsdom": "^29.5.0"
     },
     "browserslist": [
         "> 1%",

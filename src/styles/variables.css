@@ -1,0 +1,101 @@
+:root {
+    /* Colores primarios */
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-pressed: #4338ca;
+    
+    /* Colores de superficie */
+    --surface-1: #ffffff;
+    --surface-2: #f8fafc;
+    --surface-3: #f1f5f9;
+    
+    /* Colores de texto */
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-tertiary: #94a3b8;
+    
+    /* Colores de borde */
+    --border-color: #e2e8f0;
+    --border-color-hover: #cbd5e1;
+    
+    /* Colores de estado */
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* Espaciado */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    
+    /* Bordes redondeados */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    
+    /* Transiciones */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 350ms ease;
+    
+    /* Tipografía */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Tamaños de fuente */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    
+    /* Grosor de fuente */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    
+    /* Z-index */
+    --z-0: 0;
+    --z-10: 10;
+    --z-20: 20;
+    --z-30: 30;
+    --z-40: 40;
+    --z-50: 50;
+    
+    /* Tamaños de contenedor */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+}
+
+/* Tema oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface-1: #0f172a;
+        --surface-2: #1e293b;
+        --surface-3: #334155;
+        
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-tertiary: #64748b;
+        
+        --border-color: #334155;
+        --border-color-hover: #475569;
+    }
+} 
