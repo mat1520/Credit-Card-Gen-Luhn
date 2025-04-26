@@ -179,31 +179,66 @@ p {
     color: var(--text-primary);
 }
 
-.bin-lookup-button {
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-left: auto;
+}
+
+.nav-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-3);
-    height: 32px;
-    margin-top: -4px;
+    gap: var(--space-2);
+    height: 40px;
     padding: 0 var(--space-3);
-    background: var(--surface-3);
     border-radius: var(--radius-lg);
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
     transition: all var(--transition-normal);
+    background: var(--primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.bin-lookup-button span {
-    line-height: 1;
+.bin-lookup-button {
+    background: var(--primary);
+    color: white;
+}
+
+.bin-lookup-button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bin-lookup-button:active {
+    transform: translateY(0);
 }
 
 .bin-lookup-button i {
-    color: var(--primary);
     font-size: 0.9rem;
-    line-height: 1;
+}
+
+@media (max-width: 640px) {
+    .header-content {
+        padding: 0 var(--space-2);
+    }
+
+    .nav-button span {
+        display: none;
+    }
+
+    .nav-button {
+        width: 40px;
+        padding: 0;
+    }
+
+    .nav-button i {
+        margin: 0;
+    }
 }
 
 /* Estilos mejorados para el enlace de GitHub */
@@ -213,18 +248,11 @@ p {
     justify-content: center;
     width: 40px;
     height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-    padding: 0;
-    background: var(--surface-2);
-    border-radius: 50%;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 600;
     transition: all var(--transition-normal);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--surface-3);
 }
 
 .github-link i {
