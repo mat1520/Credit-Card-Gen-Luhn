@@ -112,11 +112,31 @@ class CardGenerator {
         // Generate cards
         for (let i = 0; i < quantity; i++) {
             const cardNumber = this.generateValidCardNumber(bin);
+            
+            // Generate random month if "random" is selected
+            let cardMonth = month;
+            if (month === 'random') {
+                cardMonth = (Math.floor(Math.random() * 12) + 1).toString().padStart(2, '0');
+            }
+
+            // Generate random year if "random" is selected
+            let cardYear = year;
+            if (year === 'random') {
+                const currentYear = new Date().getFullYear();
+                cardYear = (currentYear + Math.floor(Math.random() * 10)).toString();
+            }
+
+            // Generate random CVV if empty or "random"
+            let cardCVV = cvv;
+            if (!cvv || cvv.toLowerCase() === 'random') {
+                cardCVV = Math.floor(100 + Math.random() * 900).toString();
+            }
+
             const card = {
                 number: cardNumber,
-                month: month,
-                year: year,
-                cvv: cvv
+                month: cardMonth,
+                year: cardYear,
+                cvv: cardCVV
             };
             this.cards.push(card);
         }
