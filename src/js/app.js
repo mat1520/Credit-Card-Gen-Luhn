@@ -33,31 +33,47 @@ class CardGenerator {
     }
 
     setupEventListeners() {
-        // Generate Cards
-        const generateBtn = document.getElementById('generate');
-        if (generateBtn) {
-            generateBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.generateCards();
-            });
-        }
+        const form = document.querySelector('.card-generator-form');
+        const copyButton = document.querySelector('.copy-button');
+        const resetButton = document.querySelector('.reset-button');
+        const exportButton = document.getElementById('export-button');
+        const binInput = document.getElementById('bin');
+        const cvvInput = document.getElementById('cvv');
 
-        // Export Options
-        const copyBtn = document.getElementById('copy-results');
-        const csvBtn = document.getElementById('export-csv');
-        const txtBtn = document.getElementById('export-txt');
+        // BIN input validation
+        binInput?.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 16);
+        });
 
-        if (copyBtn) copyBtn.addEventListener('click', () => this.copyToClipboard());
-        if (csvBtn) csvBtn.addEventListener('click', () => this.exportToCSV());
-        if (txtBtn) txtBtn.addEventListener('click', () => this.exportToTXT());
+        // CVV input validation
+        cvvInput?.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
+        });
 
-        // Input Validation
-        const baseNumberInput = document.getElementById('base-number');
-        if (baseNumberInput) {
-            baseNumberInput.addEventListener('input', (e) => {
-                e.target.value = e.target.value.replace(/[^\d]/g, '');
-            });
-        }
+        // Form submission - usando bind para asegurar el contexto correcto
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            this.generateCards();
+            return false;
+        };
+
+        form?.addEventListener('submit', handleSubmit.bind(this));
+
+        // Copy results
+        copyButton?.addEventListener('click', () => {
+            this.copyToClipboard();
+        });
+
+        // Reset form
+        resetButton?.addEventListener('click', () => {
+            this.resetForm();
+        });
+
+        // Export results
+        exportButton?.addEventListener('click', () => {
+            const format = document.getElementById('export-format').value;
+            this.exportToFormat(format);
+        });
     }
 
     setupKeyboardShortcuts() {
@@ -75,106 +91,156 @@ class CardGenerator {
         });
     }
 
-    // Luhn Algorithm Implementation
-    luhnCheck(num) {
-        let arr = (num + '').split('').reverse().map(x => parseInt(x));
-        let lastDigit = arr.shift();
-        let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
-        sum += lastDigit;
-        return sum % 10 === 0;
+    generateCards() {
+        const bin = document.getElementById('bin').value;
+        const month = document.getElementById('month').value;
+        const year = document.getElementById('year').value;
+        const cvv = document.getElementById('cvv').value;
+        const format = document.getElementById('format').value;
+        const quantity = parseInt(document.getElementById('quantity').value);
+
+        if (bin.length < 1) {
+            this.showNotification('Por favor ingrese un BIN válido', 'error');
+            return;
+        }
+
+        // Clear previous cards
+        this.cards = [];
+        const results = document.getElementById('results');
+        results.value = '';
+
+        // Generate cards
+        for (let i = 0; i < quantity; i++) {
+            const cardNumber = this.generateValidCardNumber(bin);
+            const card = {
+                number: cardNumber,
+                month: month,
+                year: year,
+                cvv: cvv
+            };
+            this.cards.push(card);
+        }
+
+        // Format and display results
+        const formattedCards = this.formatCards(format);
+        results.value = formattedCards;
+        this.showNotification('Tarjetas generadas exitosamente', 'success');
     }
 
-    generateLuhnNumber(bin) {
+    generateValidCardNumber(bin) {
+        const remainingLength = 16 - bin.length;
         let number = bin;
-        while (number.length < 15) {
+        
+        // Generate random digits
+        for (let i = 0; i < remainingLength - 1; i++) {
             number += Math.floor(Math.random() * 10);
         }
         
+        // Add Luhn check digit
+        return number + this.generateLuhnDigit(number);
+    }
+
+    generateLuhnDigit(number) {
+        const digits = number.split('').map(Number);
         let sum = 0;
-        let isSecond = false;
-        
-        for (let i = number.length - 1; i >= 0; i--) {
-            let digit = parseInt(number[i]);
-            
-            if (isSecond) {
+        let isEven = true;
+
+        for (let i = digits.length - 1; i >= 0; i--) {
+            let digit = digits[i];
+            if (isEven) {
                 digit *= 2;
-                if (digit > 9) digit -= 9;
+                if (digit > 9) {
+                    digit -= 9;
+                }
             }
-            
             sum += digit;
-            isSecond = !isSecond;
+            isEven = !isEven;
         }
-        
+
         const checkDigit = (10 - (sum % 10)) % 10;
-        return number + checkDigit;
+        return checkDigit.toString();
     }
 
-    generateCVV() {
-        const customCvv = document.getElementById('cvv').value.trim();
-        if (customCvv && /^\d{3}$/.test(customCvv)) {
-            return customCvv;
-        }
-        return Math.floor(100 + Math.random() * 900).toString().padStart(3, '0');
+    formatCards(format) {
+        return this.cards.map(card => {
+            switch (format) {
+                case 'csv':
+                    return `${card.number},${card.month},${card.year},${card.cvv}`;
+                case 'json':
+                    return JSON.stringify(card);
+                case 'xml':
+                    return `<card number="${card.number}" month="${card.month}" year="${card.year}" cvv="${card.cvv}" />`;
+                case 'sql':
+                    return `INSERT INTO cards (number, month, year, cvv) VALUES ('${card.number}', '${card.month}', '${card.year}', '${card.cvv}');`;
+                default:
+                    return `${card.number}|${card.month}|${card.year}|${card.cvv}`;
+            }
+        }).join('\n');
     }
 
-    generateExpiryDate() {
-        const month = document.getElementById('expiry-month').value.trim();
-        const year = document.getElementById('expiry-year').value.trim();
-        
-        // Si ambos campos están vacíos, generar fecha aleatoria
-        if (!month && !year) {
-            const now = new Date();
-            const randomYear = now.getFullYear() + Math.floor(Math.random() * 5);
-            const randomMonth = Math.floor(Math.random() * 12) + 1;
-            return {
-                month: randomMonth.toString().padStart(2, '0'),
-                year: randomYear.toString()
-            };
+    exportToFormat(format) {
+        if (this.cards.length === 0) {
+            this.showNotification('No hay resultados para exportar', 'error');
+            return;
         }
 
-        // Si solo el mes está presente
-        if (month && !year) {
-            const monthNum = parseInt(month);
-            if (monthNum < 1 || monthNum > 12) {
-                throw new Error('El mes debe estar entre 1 y 12');
-            }
-            const now = new Date();
-            const randomYear = now.getFullYear() + Math.floor(Math.random() * 5);
-            return {
-                month: monthNum.toString().padStart(2, '0'),
-                year: randomYear.toString()
-            };
+        const exportButton = document.getElementById('export-button');
+        exportButton.disabled = true;
+        exportButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exportando...';
+
+        try {
+            const content = this.formatCards(format);
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `cards.${format}`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            this.showNotification('Archivo exportado exitosamente', 'success');
+        } catch (error) {
+            this.showNotification('Error al exportar el archivo', 'error');
+        } finally {
+            exportButton.disabled = false;
+            exportButton.innerHTML = '<i class="fas fa-download"></i> Exportar';
+        }
+    }
+
+    copyToClipboard() {
+        const results = document.getElementById('results');
+        if (!results.value) {
+            this.showNotification('No hay resultados para copiar', 'error');
+            return;
         }
 
-        // Si solo el año está presente
-        if (!month && year) {
-            const yearNum = parseInt(year);
-            if (yearNum < 2025) {
-                throw new Error('El año debe ser 2025 o superior');
-            }
-            const randomMonth = Math.floor(Math.random() * 12) + 1;
-            return {
-                month: randomMonth.toString().padStart(2, '0'),
-                year: yearNum.toString()
-            };
-        }
+        results.select();
+        document.execCommand('copy');
+        this.showNotification('Resultados copiados al portapapeles', 'success');
+    }
 
-        // Si ambos están presentes
-        const monthNum = parseInt(month);
-        const yearNum = parseInt(year);
+    resetForm() {
+        document.getElementById('card-generator-form').reset();
+        document.getElementById('results').value = '';
+        this.cards = [];
+        this.showNotification('Formulario reiniciado', 'success');
+    }
 
-        if (monthNum < 1 || monthNum > 12) {
-            throw new Error('El mes debe estar entre 1 y 12');
-        }
+    showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            ${message}
+        `;
+        document.body.appendChild(notification);
 
-        if (yearNum < 2025) {
-            throw new Error('El año debe ser 2025 o superior');
-        }
-
-        return {
-            month: monthNum.toString().padStart(2, '0'),
-            year: yearNum.toString()
-        };
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
     }
 
     addBin(bin) {
@@ -213,47 +279,6 @@ class CardGenerator {
             `;
             binsList.appendChild(binTag);
         });
-    }
-
-    generateCards() {
-        try {
-            const baseNumber = document.getElementById('base-number')?.value?.trim();
-            const quantity = parseInt(document.getElementById('quantity')?.value || '10');
-
-            if (!baseNumber) {
-                throw new Error('Por favor ingresa un número base');
-            }
-
-            if (!quantity || quantity < 1 || quantity > 100) {
-                throw new Error('La cantidad debe estar entre 1 y 100');
-            }
-
-            this.cards = [];
-            const resultsContainer = document.getElementById('results');
-            if (!resultsContainer) return;
-
-            resultsContainer.innerHTML = '';
-
-            for (let i = 0; i < quantity; i++) {
-                const cardNumber = this.generateLuhnNumber(baseNumber);
-                const month = (Math.floor(Math.random() * 12) + 1).toString().padStart(2, '0');
-                const year = (2024 + Math.floor(Math.random() * 6)).toString();
-                const cvv = Math.floor(100 + Math.random() * 900).toString();
-
-                const card = { number: cardNumber, month, year, cvv };
-                this.cards.push(card);
-
-                const text = document.createTextNode(`${cardNumber}|${month}/${year}|${cvv}\n`);
-                resultsContainer.appendChild(text);
-            }
-
-            // Save to localStorage for recovery
-            localStorage.setItem('lastGeneratedCards', JSON.stringify(this.cards));
-
-        } catch (error) {
-            console.error('Error generating cards:', error);
-            showNotification(error.message, 'error');
-        }
     }
 
     displayCards() {
@@ -314,64 +339,6 @@ class CardGenerator {
         themeIcon.className = this.theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
     }
 
-    showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        
-        const icon = type === 'error' ? 'exclamation-circle' : 
-                    type === 'success' ? 'check-circle' : 'info-circle';
-        
-        notification.innerHTML = `
-            <i class="fas fa-${icon}"></i>
-            ${message}
-        `;
-        
-        document.body.appendChild(notification);
-        requestAnimationFrame(() => notification.classList.add('show'));
-        
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-
-    saveBinsToStorage() {
-        localStorage.setItem('savedBins', JSON.stringify([...this.savedBins]));
-    }
-
-    copyToClipboard() {
-        if (this.cards.length === 0) {
-            showNotification('No hay tarjetas para copiar', 'error');
-            return;
-        }
-
-        const text = this.cards
-            .map(card => `${card.number}|${card.month}/${card.year}|${card.cvv}`)
-            .join('\n');
-
-        navigator.clipboard.writeText(text)
-            .then(() => showNotification('Tarjetas copiadas al portapapeles'))
-            .catch(() => showNotification('Error al copiar', 'error'));
-    }
-
-    exportToTXT() {
-        if (this.cards.length === 0) {
-            showNotification('No hay tarjetas para exportar', 'error');
-            return;
-        }
-        exportToTXT(this.cards);
-        showNotification('Archivo TXT descargado correctamente');
-    }
-
-    exportToCSV() {
-        if (this.cards.length === 0) {
-            showNotification('No hay tarjetas para exportar', 'error');
-            return;
-        }
-        exportToCSV(this.cards);
-        showNotification('Archivo CSV descargado correctamente');
-    }
-
     setupAnimations() {
         this.createParticles();
     }
@@ -414,6 +381,10 @@ class CardGenerator {
 
     createCardElement(card) {
         return `${card.number}|${card.month}/${card.year}|${card.cvv}`;
+    }
+
+    saveBinsToStorage() {
+        localStorage.setItem('savedBins', JSON.stringify([...this.savedBins]));
     }
 }
 

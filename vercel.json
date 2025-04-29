@@ -3,34 +3,11 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
-    {
-      "src": "/assets/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)\\.(?:ico|png|jpg|jpeg|gif|svg)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)\\.(?:css|js)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "github": {
-    "silent": true
-  }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 } 

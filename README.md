@@ -1,223 +1,174 @@
 # 💳 CardGen Pro - Advanced Credit Card Generator
 
+[![MIT License](https://img.shields.io/badge/License-MIT-a252ff.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
+[![Version](https://img.shields.io/badge/version-2.0.0-a252ff.svg?style=for-the-badge)](https://github.com/yourusername/cardgen-pro)
+[![Deployment](https://img.shields.io/badge/deployment-vercel-black.svg?style=for-the-badge)](https://vercel.com)
+
 <div align="center">
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-2.0.0-green.svg)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black.svg)](https://credit-cart-gen-luhn.vercel.app)
-![GitHub stars](https://img.shields.io/github/stars/mat1520/Credit-Cart-Gen-Luhn?style=social)
-![GitHub issues](https://img.shields.io/github/issues/mat1520/Credit-Cart-Gen-Luhn)
-
-[Live Demo](https://credit-cart-gen-luhn.vercel.app) | [Documentation](#-documentation) | [Features](#-features)
-
+  <h3>🌟 Professional Credit Card Generator with Luhn Algorithm 🌟</h3>
+  <p>Generate valid test credit card numbers for development and testing purposes.</p>
 </div>
 
-## 📊 System Architecture
+## 🎯 Features
 
-```mermaid
-graph TD
-    A[User Interface] --> B[Card Generator Engine]
-    B --> C[Luhn Algorithm Validator]
-    B --> D[BIN Database]
-    C --> E[Export Module]
-    D --> F[Card Info Validator]
-    E --> G[CSV Export]
-    E --> H[TXT Export]
-    F --> I[Bank Information]
-    F --> J[Country Data]
-```
-
-## 🎯 Key Features & Performance
-
-| Feature | Performance | Status |
-|---------|------------|---------|
-| Card Generation | ~5ms/card | ✅ |
-| Bulk Generation | ~100ms/100 cards | ✅ |
-| BIN Validation | ~50ms/query | ✅ |
-| Export Speed | ~200ms/1000 cards | ✅ |
-| Memory Usage | <50MB | ✅ |
-
-## 💻 Technical Implementation
-
-### Luhn Algorithm Implementation
-```javascript
-function validateLuhn(cardNumber) {
-    let sum = 0;
-    let isEven = false;
-    
-    for (let i = cardNumber.length - 1; i >= 0; i--) {
-        let digit = parseInt(cardNumber[i], 10);
-        
-        if (isEven) {
-            digit *= 2;
-            if (digit > 9) digit -= 9;
-        }
-        
-        sum += digit;
-        isEven = !isEven;
-    }
-    
-    return (sum % 10) === 0;
-}
-```
-
-## 📈 Performance Analytics
-
-\`\`\`
-Generation Speed (cards/second)
-│
-│    ┌────┐
-│    │    │
-│    │    │    ┌────┐
-│    │    │    │    │
-│    │    │    │    │    ┌────┐
-│    │    │    │    │    │    │
-└────┴────┴────┴────┴────┴────┘
-   100   200   300   400   500
-\`\`\`
-
-## 🔧 Supported Card Types
-
-| Brand | BIN Range | Validation |
-|-------|-----------|------------|
-| Visa | 4xxxxx | ✓ |
-| Mastercard | 51-55xxxx | ✓ |
-| Amex | 34xxxx, 37xxxx | ✓ |
-| Discover | 6011xx, 644-649 | ✓ |
+| Feature | Description |
+|---------|------------|
+| 🚀 Fast Generation | Generate thousands of valid cards instantly |
+| 🔍 BIN Validation | Real-time BIN verification and information |
+| 📤 Multiple Exports | Support for TXT, CSV, JSON, XML, SQL formats |
+| 🎨 Modern UI | Dark theme with responsive design |
+| ⚡ High Performance | Client-side processing with no dependencies |
 
 ## 🚀 Quick Start
 
-1. **Installation**
 ```bash
-git clone https://github.com/mat1520/Credit-Cart-Gen-Luhn.git
-cd Credit-Cart-Gen-Luhn
-npm install
-```
+# Clone the repository
+git clone https://github.com/yourusername/cardgen-pro.git
 
-2. **Development**
-```bash
+# Navigate to project directory
+cd cardgen-pro
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-3. **Build**
-```bash
-npm run build
+## 📁 Project Structure
+
+```
+cardgen-pro/
+├── src/
+│   ├── js/
+│   │   ├── app.js
+│   │   └── utils/
+│   ├── styles/
+│   │   └── styles.css
+│   └── assets/
+├── public/
+│   └── index.html
+├── package.json
+├── vercel.json
+└── README.md
 ```
 
-## 📱 Cross-Platform Support
+## 💻 Technical Details
 
-| Platform | Support Level |
-|----------|--------------|
-| Desktop Chrome | Full ✅ |
-| Desktop Firefox | Full ✅ |
-| Desktop Safari | Full ✅ |
-| Mobile Chrome | Full ✅ |
-| Mobile Safari | Full ✅ |
-| Mobile Firefox | Partial 🟨 |
-
-## 🔐 Security Features
-
-- ✅ Client-side processing
-- ✅ No data storage
-- ✅ Secure export methods
-- ✅ Test numbers only
-- ✅ Data encryption in transit
-
-## 🛣️ Development Roadmap
-
-Q1 2025
-- [ ] API Integration
-- [ ] Enhanced BIN Database
-
-Q2 2025
-- [ ] Machine Learning Validation
-- [ ] Advanced Export Options
-
-Q3 2025
-- [ ] Real-time Validation
-- [ ] Custom Templates
-
-Q4 2025
-- [ ] Enterprise Features
-- [ ] Advanced Analytics
-
-## 📊 Project Statistics
-
+### Card Generation Process
 ```mermaid
-pie title Card Generation Distribution
-    "Visa" : 45
-    "Mastercard" : 30
-    "Amex" : 15
-    "Discover" : 10
+graph LR
+    A[Input BIN] -->|Validation| B[Luhn Algorithm]
+    B -->|Generation| C[Valid Numbers]
+    C -->|Export| D[Multiple Formats]
 ```
 
-## 🌐 API Reference
+### Supported Card Types
 
-```typescript
-interface CardOptions {
-    bin: string;
-    quantity: number;
-    expiryStart?: Date;
-    expiryEnd?: Date;
-}
+| Brand | BIN Range | Length |
+|-------|-----------|---------|
+| Visa | 4xxxxx | 16 |
+| Mastercard | 51-55xxxx | 16 |
+| Amex | 34xxxx, 37xxxx | 15 |
+| Discover | 6011xx, 644-649 | 16 |
 
-interface GeneratedCard {
-    number: string;
-    expiry: string;
-    cvv: string;
-    brand: string;
-}
-```
-
-## 💡 Usage Examples
+## 🛠️ Development
 
 ```javascript
-// Generate single card
-const card = await generateCard('453278');
+// Example card generation
+const card = CardGen.generate('453810');
 
-// Generate multiple cards
-const cards = await generateBulk({
-    bin: '453278',
-    quantity: 10
+// Bulk generation
+const cards = CardGen.generateBatch({
+    bin: '453810',
+    quantity: 1000,
+    format: 'json'
 });
-
-// Export to CSV
-await exportToCSV(cards, 'cards.csv');
 ```
 
-## 🤝 Contributing
+## 📦 Deployment
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+This project is configured for automatic deployment on Vercel:
+
+1. Push your changes to GitHub:
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
+2. Vercel will automatically:
+   - Detect the project configuration
+   - Install dependencies
+   - Build the project
+   - Deploy to production
+
+## ⚙️ Configuration Files
+
+### vercel.json
+```json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
+```
+
+### package.json Scripts
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
+```
+
+## 🔐 Security
+
+- ✅ Client-side processing only
+- ✅ No data storage
+- ✅ Test numbers only
+- ✅ Secure export methods
+
+## 📈 Performance
+
+```
+Generation Speed ⚡
+├── Single Card: ~5ms
+├── Bulk (100 cards): ~100ms
+└── Export (1000 cards): ~200ms
+```
+
+## 🌐 Browser Support
+
+| Browser | Support |
+|---------|----------|
+| Chrome | ✅ |
+| Firefox | ✅ |
+| Safari | ✅ |
+| Edge | ✅ |
+| Opera | ✅ |
 
 ## 📄 License
 
-MIT License
-
-Copyright (c) 2025 mat1520
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-## 👨‍💻 Author
-
-Created with 💜 by [mat1520](https://github.com/mat1520)
-
-## 📈 Repository Analytics
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mat1520/Credit-Cart-Gen-Luhn)
-![GitHub code size](https://img.shields.io/github/languages/code-size/mat1520/Credit-Cart-Gen-Luhn)
-![GitHub top language](https://img.shields.io/github/languages/top/mat1520/Credit-Cart-Gen-Luhn)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-Made with ☕ and JavaScript 
+
+<div align="center">
+  
+**[Documentation](https://github.com/yourusername/cardgen-pro/wiki)** • **[Report Bug](https://github.com/yourusername/cardgen-pro/issues)** • **[Request Feature](https://github.com/yourusername/cardgen-pro/issues)**
+
+Made with 💜 by the CardGen Pro Team
+
+</div> 

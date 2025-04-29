@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generador avanzado de tarjetas con validación Luhn">
+    <meta name="description" content="CardGen Pro - Generador avanzado de tarjetas con validación Luhn">
+    <meta name="theme-color" content="#7c3aed">
     <title>CardGen Pro</title>
     <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg">
     <link rel="stylesheet" href="./src/styles/styles.css">
@@ -21,111 +22,132 @@
         <div class="header-content">
             <div class="header-left">
                 <a href="index.html" class="logo">
-                    <img src="./src/assets/logo.svg" alt="CardGen Pro Logo" height="40">
+                    <img src="./src/assets/logo.svg" alt="CardGen Pro Logo" width="40" height="40">
                     <span>CardGen Pro</span>
                 </a>
             </div>
-            <div class="header-right">
-                <a href="bin-lookup.html" class="nav-button bin-lookup-button">
-                    <i class="fas fa-search"></i>
+            <nav class="header-right">
+                <a href="bin-lookup.html" class="nav-button bin-lookup-button" title="Consultar BIN">
+                    <i class="fas fa-search" aria-hidden="true"></i>
                     <span>Consultar BIN</span>
                 </a>
-                <a href="https://github.com/mat1520" class="github-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
+                <a href="https://github.com/mat1520" class="github-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub</span>
                 </a>
-            </div>
+            </nav>
         </div>
     </header>
 
     <main class="main-content">
-        <section class="glass-effect generator-panel">
-            <div class="panel-header">
-                <h2><i class="fas fa-wand-magic-sparkles"></i> Generador</h2>
-            </div>
+        <div class="generator-container">
+            <form class="card-generator-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bin">BIN</label>
+                        <input type="text" id="bin" placeholder="Ingresa los dígitos (1-16)" maxlength="16" required>
+                    </div>
 
-            <form id="generator-form" class="generator-form" onsubmit="return false;">
-                <div class="form-group">
-                    <label for="base-number">
-                        <i class="fas fa-credit-card"></i>
-                        Número Base
-                    </label>
-                    <input type="text" id="base-number" placeholder="Ingresa los dígitos iniciales" class="card-input" autocomplete="off">
-                </div>
+                    <div class="form-group">
+                        <label for="format">FORMAT</label>
+                        <select id="format" required>
+                            <option value="PIPE">PIPE (núm|mes|año|cvv)</option>
+                            <option value="CSV">CSV (núm,mes,año,cvv)</option>
+                            <option value="JSON">JSON</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="quantity">
-                        <i class="fas fa-layer-group"></i>
-                        Cantidad
-                    </label>
-                    <div class="input-group">
-                        <input type="number" id="quantity" min="1" max="100" value="10" class="card-input" aria-label="Cantidad de tarjetas">
+                    <div class="form-group">
+                        <label for="month">MONTH</label>
+                        <select id="month" required>
+                            <option value="random">Random</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year">YEAR</label>
+                        <select id="year" required>
+                            <option value="random">Random</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="Random" maxlength="3">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">QTY</label>
+                        <select id="quantity" required>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="generate-button">
+                            <i class="fas fa-cog"></i>
+                            Generate
+                        </button>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label>
-                        <i class="fas fa-calendar-alt"></i>
-                        Fecha de Expiración
-                    </label>
-                    <div class="date-inputs">
-                        <input 
-                            type="number" 
-                            id="expiry-month" 
-                            min="1" 
-                            max="12" 
-                            placeholder="MM" 
-                            class="card-input" 
-                            aria-label="Mes de expiración"
-                        >
-                        <input 
-                            type="number" 
-                            id="expiry-year" 
-                            min="2025" 
-                            max="2035" 
-                            placeholder="YYYY" 
-                            class="card-input" 
-                            aria-label="Año de expiración"
-                        >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="cvv">
-                        <i class="fas fa-lock"></i>
-                        CVV
-                    </label>
-                    <input type="text" id="cvv" maxlength="3" placeholder="Automático" class="card-input" autocomplete="off" aria-label="Código CVV">
-                </div>
-
-                <button type="submit" id="generate" class="generate-button">
-                    <i class="fas fa-bolt"></i>
-                    Generar
-                </button>
             </form>
-        </section>
 
-        <section class="glass-effect results-panel">
-            <div class="panel-header">
-                <h2><i class="fas fa-list"></i> Resultados</h2>
-                <div class="action-buttons">
-                    <button id="copy-results" class="action-button" title="Copiar resultados" aria-label="Copiar resultados">
-                        <i class="fas fa-copy"></i>
-                        <span>Copiar</span>
-                    </button>
-                    <button id="export-txt" class="action-button" title="Exportar como TXT" aria-label="Exportar como TXT">
-                        <i class="fas fa-file-alt"></i>
-                        <span>TXT</span>
-                    </button>
-                    <button id="export-csv" class="action-button" title="Exportar como CSV" aria-label="Exportar como CSV">
-                        <i class="fas fa-file-csv"></i>
-                        <span>CSV</span>
-                    </button>
+            <div class="results-section">
+                <div class="results-header">
+                    <h3><i class="fas fa-list"></i> Resultados</h3>
+                    <div class="results-actions">
+                        <div class="export-dropdown">
+                            <select id="export-format" class="format-select">
+                                <option value="txt">TXT</option>
+                                <option value="csv">CSV</option>
+                                <option value="json">JSON</option>
+                                <option value="xml">XML</option>
+                                <option value="sql">SQL</option>
+                            </select>
+                            <button id="export-button" class="export-button">
+                                <i class="fas fa-download"></i>
+                                Exportar
+                            </button>
+                        </div>
+                        <button class="action-button copy-button" title="Copiar al portapapeles">
+                            <i class="fas fa-copy"></i>
+                            Copiar
+                        </button>
+                        <button class="action-button reset-button" title="Limpiar resultados">
+                            <i class="fas fa-trash"></i>
+                            Limpiar
+                        </button>
+                    </div>
                 </div>
+                <textarea id="results" readonly placeholder="Los resultados se mostrarán aquí..."></textarea>
             </div>
-            <div id="results" class="results-text">
-                <!-- Los resultados se mostrarán aquí -->
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
@@ -140,11 +162,11 @@
             <div class="footer-center">
                 <div class="footer-stats">
                     <div class="stat-item">
-                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
                         <span>v2.0.0</span>
                     </div>
                     <div class="stat-item">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
                         <span>MIT License</span>
                     </div>
                 </div>
@@ -152,15 +174,15 @@
 
             <div class="footer-right">
                 <a href="https://github.com/mat520" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
+                    <i class="fab fa-github" aria-hidden="true"></i>
                     <span>GitHub</span>
                 </a>
                 <a href="https://github.com/mat520/cardgen-pro/issues" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-bug"></i>
+                    <i class="fas fa-bug" aria-hidden="true"></i>
                     <span>Issues</span>
                 </a>
                 <a href="https://github.com/mat520/cardgen-pro#readme" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-book" aria-hidden="true"></i>
                     <span>Docs</span>
                 </a>
             </div>

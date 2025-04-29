@@ -12,27 +12,132 @@
     <style>
         .main-content {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-4);
+            margin: 6rem auto 2rem;
+            padding: 0 var(--space-4);
             display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-4);
-        }
-
-        @media (min-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr 1fr;
-            }
+            grid-template-columns: 400px 1fr;
+            gap: 2rem;
+            min-height: calc(100vh - 12rem);
         }
 
         .search-panel {
             height: fit-content;
+            background: var(--surface-2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            min-height: 400px;
+        }
+
+        .panel-header {
+            margin-bottom: var(--space-4);
+        }
+
+        .panel-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .panel-header h2 i {
+            color: var(--primary);
+        }
+
+        .lookup-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            flex: 1;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-3);
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--surface-3);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .lookup-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
         }
 
         .results-section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-4);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .history-container {
+            background: var(--surface-2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--surface-3);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .history-item:hover {
+            background: var(--surface-1);
+        }
+
+        .history-item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 var(--space-3);
+            }
+
+            .search-panel {
+                min-height: 350px;
+            }
         }
 
         .bin-info-container {
@@ -45,6 +150,7 @@
             opacity: 0;
             transition: opacity 0.3s ease-out;
             height: fit-content;
+            margin-bottom: var(--space-4);
         }
 
         .bin-info-container.visible {
@@ -59,9 +165,10 @@
         }
 
         .bin-brand-section {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-3);
             align-items: center;
-            justify-content: space-between;
             padding: var(--space-3);
             background: var(--surface-3);
             border-radius: var(--radius-lg);
@@ -79,19 +186,16 @@
         }
 
         .bin-number .value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-primary);
+            white-space: nowrap;
         }
 
-        .brand-badge {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
+        .brand-badge, .type-badge {
+            white-space: nowrap;
             padding: var(--space-2) var(--space-3);
-            background: var(--surface-1);
-            border-radius: var(--radius-lg);
-            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .brand-badge i {
@@ -99,29 +203,20 @@
             color: var(--primary);
         }
 
-        .type-badge {
-            padding: var(--space-2) var(--space-3);
-            background: var(--surface-1);
-            border-radius: var(--radius-lg);
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
         .bin-details-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-3);
+            margin-top: var(--space-4);
         }
 
         .bin-detail-item {
+            background: var(--surface-3);
+            padding: var(--space-3);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             gap: var(--space-3);
-            padding: var(--space-3);
-            background: var(--surface-3);
-            border-radius: var(--radius-lg);
-            transition: all var(--transition-normal);
         }
 
         .detail-icon {
@@ -139,6 +234,8 @@
         .detail-content {
             display: flex;
             flex-direction: column;
+            gap: 0.25rem;
+            overflow: hidden;
         }
 
         .detail-label {
@@ -148,43 +245,11 @@
         }
 
         .detail-value {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: var(--text-primary);
-        }
-
-        .history-container {
-            padding: var(--space-4);
-            border-radius: var(--radius-lg);
-            background: var(--surface-2);
-            box-shadow: var(--panel-shadow);
-            height: fit-content;
-        }
-
-        .history-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            padding: var(--space-3);
-            background: var(--surface-3);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-2);
-            cursor: pointer;
-            transition: all var(--transition-normal);
-        }
-
-        .history-item:hover {
-            background: var(--surface-1);
-            transform: translateY(-2px);
-        }
-
-        .history-item i {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .history-item span {
-            font-weight: 500;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .empty-state {
@@ -221,6 +286,16 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .detail-content {
+                font-size: 0.9rem;
+            }
+
+            .bin-brand-section {
+                padding: var(--space-2);
+            }
         }
     </style>
 </head>
@@ -262,20 +337,20 @@
                             maxlength="8"
                             autocomplete="off"
                         >
-                        <i class="fas fa-search input-icon"></i>
+                        <i class=""></i>
                     </div>
-                    <span class="input-help">Ingresa los primeros 6-8 dígitos de una tarjeta</span>
-                        </div>
+                    <span class="input-help"></span>
+                </div>
                 <button type="button" id="lookup-button" class="lookup-button">
                     <div class="button-content">
-                            <i class="fas fa-search"></i>
-                            <span>Consultar</span>
+                        <i class="fas fa-search"></i>
+                        <span>Consultar</span>
                     </div>
                     <div class="button-loading" style="display: none;">
                         <i class="fas fa-spinner fa-spin"></i>
                         <span>Consultando...</span>
                     </div>
-                        </button>
+                </button>
             </form>
         </div>
 
@@ -347,7 +422,7 @@
                     <p>No hay búsquedas recientes</p>
                 </div>
             </div>
-            </div>
+        </div>
     </main>
 
     <footer class="footer">
