@@ -1,0 +1,23 @@
+{
+  "favorites": [],
+  "history": [
+    {
+      "type": "gen",
+      "bin": "123456",
+      "count": "9",
+      "timestamp": "2025-04-30T01:52:27.744Z"
+    },
+    {
+      "type": "gen",
+      "bin": "123456",
+      "count": "5",
+      "timestamp": "2025-04-30T01:49:45.946Z"
+    },
+    {
+      "type": "gen",
+      "bin": "123456xxxxxx",
+      "count": "3",
+      "timestamp": "2025-04-30T01:44:33.634Z"
+    }
+  ]
+}

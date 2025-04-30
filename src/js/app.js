@@ -6,6 +6,8 @@ class CardGenerator {
     constructor() {
         // Initialize state
         this.cards = [];
+        this.savedBins = new Set(JSON.parse(localStorage.getItem('savedBins') || '[]'));
+        this.favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
         this.theme = localStorage.getItem('theme') || 'dark';
         
         // Card brand BINs
@@ -26,6 +28,7 @@ class CardGenerator {
         this.setupEventListeners();
         this.applyTheme();
         this.setupKeyboardShortcuts();
+        this.updateFavoritesList();
     }
 
     initializeElements() {
@@ -50,7 +53,7 @@ class CardGenerator {
             e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
         });
 
-        // Form submission - usando bind para asegurar el contexto correcto
+        // Form submission
         const handleSubmit = (e) => {
             e.preventDefault();
             this.generateCards();
@@ -73,6 +76,36 @@ class CardGenerator {
         exportButton?.addEventListener('click', () => {
             const format = document.getElementById('export-format').value;
             this.exportToFormat(format);
+        });
+
+        // Favorites
+        const addFavoriteButton = document.getElementById('add-favorite');
+        const favoriteModal = document.getElementById('favorite-modal');
+        const closeModalButton = document.getElementById('close-modal');
+        const cancelModalButton = document.querySelector('.modal-cancel');
+        const favoriteForm = document.getElementById('favorite-form');
+
+        addFavoriteButton?.addEventListener('click', () => {
+            const bin = document.getElementById('bin').value;
+            if (bin) {
+                document.getElementById('favorite-bin').value = bin;
+                favoriteModal.classList.add('show');
+            } else {
+                this.showNotification('Por favor ingresa un BIN válido', 'error');
+            }
+        });
+
+        closeModalButton?.addEventListener('click', () => {
+            favoriteModal.classList.remove('show');
+        });
+
+        cancelModalButton?.addEventListener('click', () => {
+            favoriteModal.classList.remove('show');
+        });
+
+        favoriteForm?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.saveFavorite();
         });
     }
 
@@ -240,8 +273,14 @@ class CardGenerator {
     }
 
     resetForm() {
-        document.getElementById('card-generator-form').reset();
-        document.getElementById('results').value = '';
+        const form = document.querySelector('.card-generator-form');
+        if (form) {
+            form.reset();
+        }
+        const results = document.getElementById('results');
+        if (results) {
+            results.value = '';
+        }
         this.cards = [];
         this.showNotification('Formulario reiniciado', 'success');
     }
@@ -249,17 +288,11 @@ class CardGenerator {
     showNotification(message, type) {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            ${message}
-        `;
+        notification.textContent = message;
         document.body.appendChild(notification);
-
+        
         setTimeout(() => {
-            notification.classList.add('fade-out');
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
+            notification.remove();
         }, 3000);
     }
 
@@ -406,10 +439,92 @@ class CardGenerator {
     saveBinsToStorage() {
         localStorage.setItem('savedBins', JSON.stringify([...this.savedBins]));
     }
-}
 
-// Initialize the application
-const cardGenerator = new CardGenerator();
+    saveFavorite() {
+        const bin = document.getElementById('favorite-bin').value;
+        const month = document.getElementById('favorite-month').value;
+        const year = document.getElementById('favorite-year').value;
+        const cvv = document.getElementById('favorite-cvv').value;
+
+        const favorite = {
+            bin,
+            month: month || null,
+            year: year || null,
+            cvv: cvv || null,
+            timestamp: Date.now()
+        };
+
+        this.favorites.push(favorite);
+        localStorage.setItem('favorites', JSON.stringify(this.favorites));
+        this.updateFavoritesList();
+        this.showNotification('BIN agregado a favoritos', 'success');
+        document.getElementById('favorite-modal').classList.remove('show');
+    }
+
+    updateFavoritesList() {
+        const favoritesList = document.getElementById('favorites-list');
+        if (!favoritesList) return;
+
+        favoritesList.innerHTML = '';
+
+        if (this.favorites.length === 0) {
+            favoritesList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-star"></i>
+                    <p>No hay BINs favoritos</p>
+                </div>
+            `;
+            return;
+        }
+
+        this.favorites.forEach((favorite, index) => {
+            const item = document.createElement('div');
+            item.className = 'favorite-item';
+            item.style.setProperty('--item-index', index);
+            item.innerHTML = `
+                <div class="favorite-item-content">
+                    <span class="favorite-item-bin">${favorite.bin}</span>
+                    <span class="favorite-item-details">
+                        ${favorite.month ? `Mes: ${favorite.month}` : ''}
+                        ${favorite.year ? ` | Año: ${favorite.year}` : ''}
+                        ${favorite.cvv ? ` | CVV: ${favorite.cvv}` : ''}
+                    </span>
+                </div>
+                <div class="favorite-item-actions">
+                    <button class="use-favorite" title="Usar este BIN">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="delete-favorite" title="Eliminar de favoritos">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+
+            const useButton = item.querySelector('.use-favorite');
+            const deleteButton = item.querySelector('.delete-favorite');
+
+            useButton.addEventListener('click', () => {
+                document.getElementById('bin').value = favorite.bin;
+                if (favorite.month) document.getElementById('month').value = favorite.month;
+                if (favorite.year) document.getElementById('year').value = favorite.year;
+                if (favorite.cvv) document.getElementById('cvv').value = favorite.cvv;
+                this.showNotification('BIN copiado al formulario', 'success');
+            });
+
+            deleteButton.addEventListener('click', () => {
+                item.style.animation = 'fadeOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    this.favorites.splice(index, 1);
+                    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+                    this.updateFavoritesList();
+                    this.showNotification('BIN eliminado de favoritos', 'success');
+                }, 300);
+            });
+
+            favoritesList.appendChild(item);
+        });
+    }
+}
 
 // Agregar estilos dinámicamente para las nuevas características
 const styleSheet = document.createElement('style');
@@ -498,4 +613,6 @@ styleSheet.textContent = `
     }
 `;
 
-document.head.appendChild(styleSheet); 
+document.head.appendChild(styleSheet);
+
+export { CardGenerator }; 

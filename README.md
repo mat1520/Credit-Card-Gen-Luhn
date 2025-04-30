@@ -1,174 +1,202 @@
-# 💳 CardGen Pro - Advanced Credit Card Generator
-
-[![MIT License](https://img.shields.io/badge/License-MIT-a252ff.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
-[![Version](https://img.shields.io/badge/version-2.0.0-a252ff.svg?style=for-the-badge)](https://github.com/yourusername/cardgen-pro)
-[![Deployment](https://img.shields.io/badge/deployment-vercel-black.svg?style=for-the-badge)](https://vercel.com)
+# 🎉 CardGen Pro
 
 <div align="center">
-  <h3>🌟 Professional Credit Card Generator with Luhn Algorithm 🌟</h3>
-  <p>Generate valid test credit card numbers for development and testing purposes.</p>
+  <img src="https://raw.githubusercontent.com/MAT3810/card-gen-pro/main/public/logo.png" alt="CardGen Pro Logo" width="200"/>
+
+  <p align="center">
+    <a href="https://credit-cart-gen-luhn.vercel.app">View Demo</a>
+    ·
+    <a href="https://github.com/yourusername/cardgen-pro/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/yourusername/cardgen-pro/issues">Request Feature</a>
+  </p>
+
+  ![License](https://img.shields.io/badge/license-MIT-blue)
+  ![Version](https://img.shields.io/badge/version-2.0.0-green)
+  ![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)
 </div>
 
-## 🎯 Features
+## 📋 Table of Contents
 
-| Feature | Description |
-|---------|------------|
-| 🚀 Fast Generation | Generate thousands of valid cards instantly |
-| 🔍 BIN Validation | Real-time BIN verification and information |
-| 📤 Multiple Exports | Support for TXT, CSV, JSON, XML, SQL formats |
-| 🎨 Modern UI | Dark theme with responsive design |
-| ⚡ High Performance | Client-side processing with no dependencies |
+- [About The Project](#about-the-project)
+- [Features](#features)
+- [System Architecture](#system-architecture)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## 🚀 Quick Start
+## 🚀 About The Project
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/cardgen-pro.git
+CardGen Pro is an advanced card number generator and BIN lookup tool built with Node.js and Telegram Bot API. It provides a robust platform for generating valid card numbers using the Luhn algorithm and fetching detailed BIN information.
 
-# Navigate to project directory
-cd cardgen-pro
+### 🌟 Key Features
 
-# Install dependencies
-npm install
+- **Card Generation**
+  - Supports multiple formats (PIPE, CSV, JSON)
+  - Customizable month/year ranges
+  - Luhn algorithm validation
+  - Bulk generation capability
 
-# Start development server
-npm run dev
-```
+- **BIN Lookup**
+  - Detailed bank information
+  - Card scheme identification
+  - Geographic data
+  - Type and level detection
 
-## 📁 Project Structure
+- **User Management**
+  - Favorites system
+  - Search history
+  - Custom preferences
 
-```
-cardgen-pro/
-├── src/
-│   ├── js/
-│   │   ├── app.js
-│   │   └── utils/
-│   ├── styles/
-│   │   └── styles.css
-│   └── assets/
-├── public/
-│   └── index.html
-├── package.json
-├── vercel.json
-└── README.md
-```
+## 🏗 System Architecture
 
-## 💻 Technical Details
-
-### Card Generation Process
 ```mermaid
-graph LR
-    A[Input BIN] -->|Validation| B[Luhn Algorithm]
-    B -->|Generation| C[Valid Numbers]
-    C -->|Export| D[Multiple Formats]
+graph TD
+    A[Telegram User] -->|Commands| B[Bot Interface]
+    B -->|Requests| C[Core Service]
+    C -->|Card Generation| D[Generator Module]
+    C -->|BIN Lookup| E[API Service]
+    D -->|Validation| F[Luhn Algorithm]
+    E -->|External API| G[BIN Database]
+    C -->|Storage| H[User Data]
 ```
 
-### Supported Card Types
+## 🚦 Getting Started
 
-| Brand | BIN Range | Length |
-|-------|-----------|---------|
-| Visa | 4xxxxx | 16 |
-| Mastercard | 51-55xxxx | 16 |
-| Amex | 34xxxx, 37xxxx | 15 |
-| Discover | 6011xx, 644-649 | 16 |
+### Prerequisites
 
-## 🛠️ Development
+- Node.js >= 14.0.0
+- npm >= 6.14.0
+- Telegram Bot Token
 
-```javascript
-// Example card generation
-const card = CardGen.generate('453810');
+### Installation
 
-// Bulk generation
-const cards = CardGen.generateBatch({
-    bin: '453810',
-    quantity: 1000,
-    format: 'json'
-});
-```
-
-## 📦 Deployment
-
-This project is configured for automatic deployment on Vercel:
-
-1. Push your changes to GitHub:
+1. Clone the repository
 ```bash
-git add .
-git commit -m "Your commit message"
-git push origin main
+git clone https://github.com/yourusername/cardgen-pro.git
 ```
 
-2. Vercel will automatically:
-   - Detect the project configuration
-   - Install dependencies
-   - Build the project
-   - Deploy to production
+2. Install dependencies
+```bash
+npm install
+```
 
-## ⚙️ Configuration Files
+3. Configure environment variables
+```bash
+cp .env.example .env
+# Edit .env with your settings
+```
 
-### vercel.json
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+4. Start the bot
+```bash
+npm start
+```
+
+## 💡 Usage
+
+### Bot Commands
+
+\`\`\`
+/start - Welcome message and command list
+/gen [BIN|month|year|] - Generate cards
+/bin [BIN] - Lookup BIN information
+/favorites - View saved BINs
+/addbin [BIN] - Add BIN to favorites
+/removebin [index] - Remove BIN from favorites
+/history - View search history
+/help - Show help message
+\`\`\`
+
+### Example Usage
+
+1. Generate Cards:
+\`\`\`
+/gen 438108|05|25|
+\`\`\`
+
+2. BIN Lookup:
+\`\`\`
+/bin 438108
+\`\`\`
+
+## 📚 API Documentation
+
+### Card Generation API
+
+\`\`\`typescript
+interface CardGenOptions {
+  bin: string;
+  month?: string;
+  year?: string;
+  cvv?: string;
+  quantity?: number;
 }
-```
 
-### package.json Scripts
-```json
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  }
+interface CardResponse {
+  number: string;
+  month: string;
+  year: string;
+  cvv: string;
 }
-```
+\`\`\`
 
-## 🔐 Security
+### BIN Lookup API
 
-- ✅ Client-side processing only
-- ✅ No data storage
-- ✅ Test numbers only
-- ✅ Secure export methods
+\`\`\`typescript
+interface BinResponse {
+  bank: string;
+  brand: string;
+  country: string;
+  type: string;
+  level: string;
+}
+\`\`\`
 
-## 📈 Performance
+## 🤝 Contributing
 
-```
-Generation Speed ⚡
-├── Single Card: ~5ms
-├── Bulk (100 cards): ~100ms
-└── Export (1000 cards): ~200ms
-```
-
-## 🌐 Browser Support
-
-| Browser | Support |
-|---------|----------|
-| Chrome | ✅ |
-| Firefox | ✅ |
-| Safari | ✅ |
-| Edge | ✅ |
-| Opera | ✅ |
+1. Fork the Project
+2. Create your Feature Branch (\`git checkout -b feature/AmazingFeature\`)
+3. Commit your Changes (\`git commit -m 'Add some AmazingFeature'\`)
+4. Push to the Branch (\`git push origin feature/AmazingFeature\`)
+5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+MIT License
+
+Copyright (c) 2025 CardGen Pro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 📞 Contact
+
+Owner - [@MAT3810](https://t.me/MAT3810)
+
+Project Link: [https://credit-cart-gen-luhn.vercel.app](https://credit-cart-gen-luhn.vercel.app)
 
 ---
 
 <div align="center">
-  
-**[Documentation](https://github.com/yourusername/cardgen-pro/wiki)** • **[Report Bug](https://github.com/yourusername/cardgen-pro/issues)** • **[Request Feature](https://github.com/yourusername/cardgen-pro/issues)**
-
-Made with 💜 by the CardGen Pro Team
-
+  <sub>Built with ❤️ by <a href="https://t.me/MAT3810">MAT3810</a></sub>
 </div> 

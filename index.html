@@ -41,11 +41,16 @@
 
     <main class="main-content">
         <div class="generator-container">
-            <form class="card-generator-form">
+            <form id="card-generator-form" class="card-generator-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="bin">BIN</label>
-                        <input type="text" id="bin" placeholder="Ingresa los dígitos (1-16)" maxlength="16" required>
+                        <div class="bin-input-container">
+                            <input type="text" id="bin" placeholder="Ingresa los dígitos (1-16)" maxlength="16" required>
+                            <button type="button" id="add-favorite" class="favorite-button" title="Agregar a favoritos">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -118,6 +123,15 @@
                 </div>
             </form>
 
+            <div class="favorites-section">
+                <div class="favorites-header">
+                    <h3><i class="fas fa-star"></i> BINs Favoritos</h3>
+                </div>
+                <div id="favorites-list" class="favorites-list">
+                    <!-- Los favoritos se agregarán aquí dinámicamente -->
+                </div>
+            </div>
+
             <div class="results-section">
                 <div class="results-header">
                     <h3><i class="fas fa-list"></i> Resultados</h3>
@@ -189,6 +203,67 @@
         </div>
     </footer>
 
+    <div class="modal-overlay" id="favorite-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-star"></i> Agregar a Favoritos</h3>
+                <button class="modal-close" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-form" id="favorite-form">
+                <div class="form-group">
+                    <label for="favorite-bin">BIN</label>
+                    <input type="text" id="favorite-bin" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="favorite-month">Mes (opcional)</label>
+                    <select id="favorite-month">
+                        <option value="">Seleccionar mes</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="favorite-year">Año (opcional)</label>
+                    <select id="favorite-year">
+                        <option value="">Seleccionar año</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="favorite-cvv">CVV (opcional)</label>
+                    <input type="text" id="favorite-cvv" maxlength="3">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="modal-cancel">Cancelar</button>
+                    <button type="submit" class="modal-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script type="module" src="./src/js/app.js"></script>
+    <script type="module">
+        import { CardGenerator } from './src/js/app.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            window.cardGenerator = new CardGenerator();
+        });
+    </script>
 </body>
 </html> 

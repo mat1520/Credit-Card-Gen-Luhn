@@ -1,0 +1,69 @@
+{
+  "favorites": [],
+  "history": [
+    {
+      "type": "lookup",
+      "bin": "401543",
+      "info": {
+        "bank_name": "Washington Federal Bank",
+        "country": "United States Of America",
+        "url": null,
+        "type": "Debit",
+        "scheme": "Visa",
+        "bin": "401543"
+      },
+      "timestamp": "2025-04-30T02:34:19.884Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "401543",
+      "info": {
+        "bank_name": "Washington Federal Bank",
+        "country": "United States Of America",
+        "url": null,
+        "type": "Debit",
+        "scheme": "Visa",
+        "bin": "401543"
+      },
+      "timestamp": "2025-04-30T02:32:28.255Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "434769",
+      "info": {
+        "bank_name": "Chase",
+        "country": "United States Of America",
+        "url": "www.jpmorganchase.com",
+        "type": "Classic",
+        "scheme": "Visa",
+        "bin": "434769"
+      },
+      "timestamp": "2025-04-30T02:30:21.719Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "438108",
+      "info": {
+        "bank_name": "Banco Pichincha C.a.",
+        "country": "Ecuador",
+        "url": "",
+        "type": "Classic",
+        "scheme": "Visa",
+        "bin": "438108"
+      },
+      "timestamp": "2025-04-30T02:30:09.676Z"
+    },
+    {
+      "type": "gen",
+      "bin": "414962935691",
+      "count": 10,
+      "timestamp": "2025-04-30T02:15:39.896Z"
+    },
+    {
+      "type": "gen",
+      "bin": "123456",
+      "count": 10,
+      "timestamp": "2025-04-30T01:56:51.282Z"
+    }
+  ]
+}
