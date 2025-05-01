@@ -1,86 +1,76 @@
-// Función para validar un BIN
-const isValidBin = (bin) => {
-    return /^[0-9x]{6,16}$/.test(bin);
+// Función para validar BIN
+export const isValidBin = (bin) => {
+    if (!bin) return false;
+    if (!/^[\dx]{6,16}$/.test(bin)) return false;
+    return true;
 };
 
-// Función para generar un número aleatorio
-const getRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+// Función para generar número aleatorio
+const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-// Función para generar un dígito aleatorio
-const getRandomDigit = () => {
-    return Math.floor(Math.random() * 10);
-};
-
-// Función para generar un mes válido
+// Función para generar mes aleatorio
 const generateMonth = () => {
-    return String(getRandomNumber(1, 12)).padStart(2, '0');
+    const month = randomNum(1, 12);
+    return month.toString().padStart(2, '0');
 };
 
-// Función para generar un año válido
+// Función para generar año aleatorio
 const generateYear = () => {
     const currentYear = new Date().getFullYear();
-    return String(getRandomNumber(currentYear, currentYear + 10)).slice(-2);
+    const year = randomNum(currentYear + 1, currentYear + 10);
+    return year.toString().slice(-2);
 };
 
-// Función para generar un CVV
+// Función para generar CVV aleatorio
 const generateCVV = () => {
-    return String(getRandomNumber(100, 999));
+    return randomNum(100, 999).toString();
 };
 
-// Función para validar un número de tarjeta usando el algoritmo de Luhn
+// Algoritmo de Luhn
 const luhnCheck = (num) => {
     let arr = (num + '')
         .split('')
         .reverse()
         .map(x => parseInt(x));
-    let lastDigit = arr.shift();
-    let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
-    sum += lastDigit;
+    let sum = arr.reduce((acc, val, i) => {
+        if (i % 2 !== 0) {
+            const doubled = val * 2;
+            return acc + (doubled > 9 ? doubled - 9 : doubled);
+        }
+        return acc + val;
+    }, 0);
     return sum % 10 === 0;
 };
 
-// Función para generar un número de tarjeta válido
-const generateCardNumber = (bin) => {
-    let cardNumber = bin;
+// Función para generar número de tarjeta válido
+const generateValidCardNumber = (bin) => {
     const length = 16;
+    let cardNumber = bin;
     
-    // Rellenar con x's si el BIN es más corto que 16 dígitos
+    // Completar con números aleatorios hasta length-1
     while (cardNumber.length < length - 1) {
-        cardNumber += 'x';
+        if (cardNumber.includes('x')) {
+            cardNumber = cardNumber.replace('x', randomNum(0, 9));
+        }
     }
     
-    // Generar dígitos aleatorios para las x's
-    cardNumber = cardNumber.replace(/x/g, () => getRandomDigit());
-    
-    // Calcular el dígito de verificación
-    let checkDigit = 0;
-    while (!luhnCheck(cardNumber + checkDigit)) {
-        checkDigit++;
+    // Encontrar el último dígito que hace válido el número
+    for (let i = 0; i <= 9; i++) {
+        const fullNumber = cardNumber + i;
+        if (luhnCheck(fullNumber)) {
+            return fullNumber;
+        }
     }
     
-    return cardNumber + checkDigit;
+    return cardNumber + '0'; // Fallback
 };
 
-// Función principal para generar una tarjeta
-const generateCard = (bin, month, year, cvv) => {
-    if (!isValidBin(bin)) {
-        throw new Error('BIN inválido');
-    }
-    
+// Función principal para generar tarjeta
+export const generateCard = (bin) => {
     return {
-        number: generateCardNumber(bin),
-        month: month || generateMonth(),
-        year: year || generateYear(),
-        cvv: cvv || generateCVV()
+        number: generateValidCardNumber(bin),
+        month: generateMonth(),
+        year: generateYear(),
+        cvv: generateCVV()
     };
-};
-
-module.exports = {
-    isValidBin,
-    generateCard,
-    generateMonth,
-    generateYear,
-    generateCVV
 }; 

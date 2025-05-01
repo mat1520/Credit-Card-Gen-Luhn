@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Credit Card Generator with Luhn Algorithm",
     "main": "telegram-bot/index.js",
+    "type": "module",
     "scripts": {
         "start": "node telegram-bot/index.js",
         "dev": "vite",

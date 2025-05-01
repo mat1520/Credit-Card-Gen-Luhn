@@ -1,9 +1,14 @@
-require('dotenv').config();
-const { Telegraf } = require('telegraf');
-const fs = require('fs');
-const path = require('path');
-const fetch = require('node-fetch');
-const { isValidBin, generateCard } = require('./utils');
+import 'dotenv/config';
+import { Telegraf } from 'telegraf';
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { isValidBin, generateCard } from './utils.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Configuración
 const BOT_TOKEN = '7916820433:AAF3MB2Aw_sZWif1N4AxLZwRzEGolcRoVzg';
