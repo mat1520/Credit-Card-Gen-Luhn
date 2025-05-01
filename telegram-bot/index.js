@@ -252,4 +252,34 @@ bot.command('eliminarbin', (ctx) => {
     const removedBin = userData.favorites.splice(index, 1)[0];
     saveUserData(userId, userData);
 
-    ctx.reply(`
+    ctx.reply(`✅ BIN \`${removedBin.bin}\` eliminado de favoritos`, { parse_mode: 'Markdown' });
+});
+
+bot.command('historial', (ctx) => {
+    const userId = ctx.from.id;
+    const userData = loadUserData(userId);
+    
+    if (userData.history.length === 0) {
+        return ctx.reply('📝 No hay historial de consultas');
+    }
+
+    const response = userData.history.slice(0, 10).map((item, index) => {
+        const date = new Date(item.timestamp).toLocaleString();
+        if (item.type === 'gen') {
+            return `${index + 1}. Generación: \`${item.bin}\` (${item.count} tarjetas) - ${date}`;
+        } else {
+            return `${index + 1}. Consulta: \`${item.bin}\` - ${date}`;
+        }
+    }).join('\n');
+
+    ctx.reply(`📝 *Historial reciente:*\n\n${response}`, { parse_mode: 'Markdown' });
+});
+
+// Iniciar el bot
+bot.launch()
+    .then(() => console.log('Bot iniciado'))
+    .catch(err => console.error('Error al iniciar el bot:', err));
+
+// Manejar cierre gracioso
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
