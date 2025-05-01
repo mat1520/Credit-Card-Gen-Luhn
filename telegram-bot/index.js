@@ -85,8 +85,8 @@ bot.command('start', (ctx) => {
 Comandos disponibles:
 
 🔧 *Generación de Tarjetas:*
-/gen [BIN] [cantidad] - Generar tarjetas
-Ejemplo: /gen 431940 10
+/gen [BIN|MM|YYYY|CVV] - Generar 10 tarjetas
+Ejemplo: /gen 477349002646|05|2027|123
 
 🔍 *Consultas:*
 /bin [BIN] - Consultar información de BIN
@@ -111,24 +111,30 @@ bot.command('help', (ctx) => {
 });
 
 bot.command('gen', async (ctx) => {
-    const args = ctx.message.text.split(' ').slice(1);
-    if (args.length < 2) {
-        return ctx.reply('❌ Uso: /gen [BIN] [cantidad]\nEjemplo: /gen 431940 10');
+    const input = ctx.message.text.split(' ')[1];
+    if (!input) {
+        return ctx.reply('❌ Uso: /gen [BIN|MM|YYYY|CVV]\nEjemplo: /gen 477349002646|05|2027|123');
     }
 
-    const [bin, countStr] = args;
-    const count = parseInt(countStr);
+    const parts = input.split('|');
+    const bin = parts[0];
+    const fixedMonth = parts[1];
+    const fixedYear = parts[2];
+    const fixedCVV = parts[3];
 
     if (!isValidBin(bin)) {
-        return ctx.reply('❌ BIN inválido. Debe contener solo números y x\'s, entre 6 y 16 dígitos.');
-    }
-
-    if (isNaN(count) || count < 1 || count > 50) {
-        return ctx.reply('❌ La cantidad debe ser un número entre 1 y 50.');
+        return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
     }
 
     try {
-        const cards = Array(count).fill().map(() => generateCard(bin));
+        const cards = Array(10).fill().map(() => {
+            const card = generateCard(bin);
+            // Si se proporcionaron valores fijos, los usamos
+            if (fixedMonth) card.month = fixedMonth;
+            if (fixedYear) card.year = fixedYear?.slice(-2) || card.year;
+            if (fixedCVV) card.cvv = fixedCVV;
+            return card;
+        });
         
         const response = cards.map(card => 
             `💳 \`${card.number}|${card.month}|${card.year}|${card.cvv}\``
@@ -140,7 +146,7 @@ bot.command('gen', async (ctx) => {
         userData.history.unshift({
             type: 'gen',
             bin,
-            count,
+            count: 10,
             timestamp: new Date().toISOString()
         });
         saveUserData(userId, userData);
@@ -246,34 +252,4 @@ bot.command('eliminarbin', (ctx) => {
     const removedBin = userData.favorites.splice(index, 1)[0];
     saveUserData(userId, userData);
 
-    ctx.reply(`✅ BIN \`${removedBin.bin}\` eliminado de favoritos`, { parse_mode: 'Markdown' });
-});
-
-bot.command('historial', (ctx) => {
-    const userId = ctx.from.id;
-    const userData = loadUserData(userId);
-    
-    if (userData.history.length === 0) {
-        return ctx.reply('📝 No hay historial de consultas');
-    }
-
-    const response = userData.history.slice(0, 10).map((item, index) => {
-        const date = new Date(item.timestamp).toLocaleString();
-        if (item.type === 'gen') {
-            return `${index + 1}. Generación: \`${item.bin}\` (${item.count} tarjetas) - ${date}`;
-        } else {
-            return `${index + 1}. Consulta: \`${item.bin}\` - ${date}`;
-        }
-    }).join('\n');
-
-    ctx.reply(`📝 *Historial reciente:*\n\n${response}`, { parse_mode: 'Markdown' });
-});
-
-// Iniciar el bot
-bot.launch()
-    .then(() => console.log('Bot iniciado'))
-    .catch(err => console.error('Error al iniciar el bot:', err));
-
-// Manejar cierre gracioso
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM')); 
+    ctx.reply(`
