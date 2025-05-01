@@ -1641,3 +1641,980 @@
 2025-04-30T22:40:45: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 2025-04-30T22:40:45: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
 2025-04-30T22:40:45: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:46: (node:9016) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:46: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:46: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:46: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:47: (node:16324) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:47: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:47: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:47: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:48: (node:17524) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:48: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:48: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:48: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:49: (node:20156) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:49: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:49: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:49: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:50: (node:19980) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:50: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:50: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:50: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:51: (node:19140) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:51: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:51: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:51: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:53: (node:17832) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:54: (node:17680) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:54: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:54: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:54: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:55: (node:5340) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:55: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:55: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:55: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:57: (node:17496) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:57: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:57: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:57: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:58: (node:17424) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:58: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:58: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:58: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:40:59: (node:17980) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:40:59: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:40:59: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:40:59: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:01: (node:15452) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:01: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:01: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:01: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:02: (node:19476) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:02: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:02: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:02: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:03: (node:388) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:03: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:03: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:03: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:04: (node:18736) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:04: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:04: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:04: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:05: (node:11584) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:05: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:05: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:05: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:07: (node:17420) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:07: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:07: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:07: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:08: (node:7576) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:10: (node:18548) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:10: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:10: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:10: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:11: (node:11812) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:11: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:11: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:11: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:12: (node:2620) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:12: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:12: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:12: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:14: (node:16236) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:15: (node:6160) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:15: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:15: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:15: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:16: (node:8176) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:16: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:16: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:16: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:18: (node:20196) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:18: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:18: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:18: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:19: (node:17272) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:19: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:19: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:19: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:20: (node:20264) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:20: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:20: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:20: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:22: (node:19284) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:22: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:22: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:22: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:23: (node:7116) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:23: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:23: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:23: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:24: (node:17348) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:24: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:24: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:24: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:26: (node:12700) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:26: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:26: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:26: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:27: (node:17728) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:27: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:27: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:27: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:29: (node:19028) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:29: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:29: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:29: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:29: (node:14796) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:29: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:29: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:29: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:30: (node:14388) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:30: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:30: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:30: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:32: (node:14568) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:32: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:32: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:32: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:33: (node:17112) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:33: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:33: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:33: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:34: (node:11196) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:34: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:34: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:34: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:36: (node:16236) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:36: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:36: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:36: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:37: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:37:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:37:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:37:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:38:13
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17) {
+2025-04-30T22:41:37:   response: {
+2025-04-30T22:41:37:     ok: false,
+2025-04-30T22:41:37:     error_code: 403,
+2025-04-30T22:41:37:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:37:   },
+2025-04-30T22:41:37:   on: {
+2025-04-30T22:41:37:     method: 'sendMessage',
+2025-04-30T22:41:37:     payload: {
+2025-04-30T22:41:37:       chat_id: 6332406416,
+2025-04-30T22:41:37:       message_thread_id: undefined,
+2025-04-30T22:41:37:       text: '⚠️ Por favor, espera unos segundos antes de usar otro comando.'
+2025-04-30T22:41:37:     }
+2025-04-30T22:41:37:   }
+2025-04-30T22:41:37: }
+2025-04-30T22:41:37: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:37:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:37:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+2025-04-30T22:41:37:   response: {
+2025-04-30T22:41:37:     ok: false,
+2025-04-30T22:41:37:     error_code: 403,
+2025-04-30T22:41:37:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:37:   },
+2025-04-30T22:41:37:   on: {
+2025-04-30T22:41:37:     method: 'sendMessage',
+2025-04-30T22:41:37:     payload: {
+2025-04-30T22:41:37:       chat_id: 6332406416,
+2025-04-30T22:41:37:       message_thread_id: undefined,
+2025-04-30T22:41:37:       text: '❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.'
+2025-04-30T22:41:37:     }
+2025-04-30T22:41:37:   }
+2025-04-30T22:41:37: }
+2025-04-30T22:41:37: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:37:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:37:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:37:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:38:13
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:37:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17) {
+2025-04-30T22:41:37:   response: {
+2025-04-30T22:41:37:     ok: false,
+2025-04-30T22:41:37:     error_code: 403,
+2025-04-30T22:41:37:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:37:   },
+2025-04-30T22:41:37:   on: {
+2025-04-30T22:41:37:     method: 'sendMessage',
+2025-04-30T22:41:37:     payload: {
+2025-04-30T22:41:37:       chat_id: 6332406416,
+2025-04-30T22:41:37:       message_thread_id: undefined,
+2025-04-30T22:41:37:       text: '⚠️ Por favor, espera unos segundos antes de usar otro comando.'
+2025-04-30T22:41:37:     }
+2025-04-30T22:41:37:   }
+2025-04-30T22:41:37: }
+2025-04-30T22:41:38: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:38:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:38:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:38:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:38:13
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17) {
+2025-04-30T22:41:38:   response: {
+2025-04-30T22:41:38:     ok: false,
+2025-04-30T22:41:38:     error_code: 403,
+2025-04-30T22:41:38:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:38:   },
+2025-04-30T22:41:38:   on: {
+2025-04-30T22:41:38:     method: 'sendMessage',
+2025-04-30T22:41:38:     payload: {
+2025-04-30T22:41:38:       chat_id: 6332406416,
+2025-04-30T22:41:38:       message_thread_id: undefined,
+2025-04-30T22:41:38:       text: '⚠️ Por favor, espera unos segundos antes de usar otro comando.'
+2025-04-30T22:41:38:     }
+2025-04-30T22:41:38:   }
+2025-04-30T22:41:38: }
+2025-04-30T22:41:38: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:38:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:38:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:38:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:38:13
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:41:38:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17) {
+2025-04-30T22:41:38:   response: {
+2025-04-30T22:41:38:     ok: false,
+2025-04-30T22:41:38:     error_code: 403,
+2025-04-30T22:41:38:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:38:   },
+2025-04-30T22:41:38:   on: {
+2025-04-30T22:41:38:     method: 'sendMessage',
+2025-04-30T22:41:38:     payload: {
+2025-04-30T22:41:38:       chat_id: 6332406416,
+2025-04-30T22:41:38:       message_thread_id: undefined,
+2025-04-30T22:41:38:       text: '⚠️ Por favor, espera unos segundos antes de usar otro comando.'
+2025-04-30T22:41:38:     }
+2025-04-30T22:41:38:   }
+2025-04-30T22:41:38: }
+2025-04-30T22:41:38: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:38:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:38:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+2025-04-30T22:41:38:   response: {
+2025-04-30T22:41:38:     ok: false,
+2025-04-30T22:41:38:     error_code: 403,
+2025-04-30T22:41:38:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:38:   },
+2025-04-30T22:41:38:   on: {
+2025-04-30T22:41:38:     method: 'sendMessage',
+2025-04-30T22:41:38:     payload: {
+2025-04-30T22:41:38:       chat_id: 6332406416,
+2025-04-30T22:41:38:       message_thread_id: undefined,
+2025-04-30T22:41:38:       text: '❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.'
+2025-04-30T22:41:38:     }
+2025-04-30T22:41:38:   }
+2025-04-30T22:41:38: }
+2025-04-30T22:41:38: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:38:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:38:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+2025-04-30T22:41:38:   response: {
+2025-04-30T22:41:38:     ok: false,
+2025-04-30T22:41:38:     error_code: 403,
+2025-04-30T22:41:38:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:38:   },
+2025-04-30T22:41:38:   on: {
+2025-04-30T22:41:38:     method: 'sendMessage',
+2025-04-30T22:41:38:     payload: {
+2025-04-30T22:41:38:       chat_id: 6332406416,
+2025-04-30T22:41:38:       message_thread_id: undefined,
+2025-04-30T22:41:38:       text: '❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.'
+2025-04-30T22:41:38:     }
+2025-04-30T22:41:38:   }
+2025-04-30T22:41:38: }
+2025-04-30T22:41:38: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:41:38:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:38:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+2025-04-30T22:41:38:   response: {
+2025-04-30T22:41:38:     ok: false,
+2025-04-30T22:41:38:     error_code: 403,
+2025-04-30T22:41:38:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:41:38:   },
+2025-04-30T22:41:38:   on: {
+2025-04-30T22:41:38:     method: 'sendMessage',
+2025-04-30T22:41:38:     payload: {
+2025-04-30T22:41:38:       chat_id: 6332406416,
+2025-04-30T22:41:38:       message_thread_id: undefined,
+2025-04-30T22:41:38:       text: '❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.'
+2025-04-30T22:41:38:     }
+2025-04-30T22:41:38:   }
+2025-04-30T22:41:38: }
+2025-04-30T22:41:39: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:41:39:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:39:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:39:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:41:39:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:41:39:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:41:39:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:317:9) {
+2025-04-30T22:41:39:   response: {
+2025-04-30T22:41:39:     ok: false,
+2025-04-30T22:41:39:     error_code: 409,
+2025-04-30T22:41:39:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:41:39:   },
+2025-04-30T22:41:39:   on: {
+2025-04-30T22:41:39:     method: 'getUpdates',
+2025-04-30T22:41:39:     payload: { timeout: 50, offset: 749971325, allowed_updates: [] }
+2025-04-30T22:41:39:   }
+2025-04-30T22:41:39: }
+2025-04-30T22:41:43: (node:18176) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:43: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:43: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:43: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:49: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:41:49:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:41:49:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:41:49:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:41:49:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:41:49:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:41:49:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:317:9) {
+2025-04-30T22:41:49:   response: {
+2025-04-30T22:41:49:     ok: false,
+2025-04-30T22:41:49:     error_code: 409,
+2025-04-30T22:41:49:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:41:49:   },
+2025-04-30T22:41:49:   on: {
+2025-04-30T22:41:49:     method: 'getUpdates',
+2025-04-30T22:41:49:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:41:49:   }
+2025-04-30T22:41:49: }
+2025-04-30T22:41:53: (node:9300) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:56: (node:18676) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:56: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:56: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:56: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:41:58: (node:9620) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:41:58: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:41:58: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:41:58: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:04: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:42:04:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:42:04:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:42:04:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:42:04:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:42:04:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:42:04:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:317:9) {
+2025-04-30T22:42:04:   response: {
+2025-04-30T22:42:04:     ok: false,
+2025-04-30T22:42:04:     error_code: 409,
+2025-04-30T22:42:04:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:42:04:   },
+2025-04-30T22:42:04:   on: {
+2025-04-30T22:42:04:     method: 'getUpdates',
+2025-04-30T22:42:04:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:42:04:   }
+2025-04-30T22:42:04: }
+2025-04-30T22:42:08: (node:17872) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:10: (node:11380) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:10: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:10: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:10: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:12: (node:17412) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:12: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:12: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:12: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:18: (node:8132) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:18: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:18: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:18: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:25: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:42:25:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:42:25:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:42:25:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:42:25:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:42:25:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:42:25:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:317:9) {
+2025-04-30T22:42:25:   response: {
+2025-04-30T22:42:25:     ok: false,
+2025-04-30T22:42:25:     error_code: 409,
+2025-04-30T22:42:25:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:42:25:   },
+2025-04-30T22:42:25:   on: {
+2025-04-30T22:42:25:     method: 'getUpdates',
+2025-04-30T22:42:25:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:42:25:   }
+2025-04-30T22:42:25: }
+2025-04-30T22:42:29: (node:18728) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:29: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:29: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:29: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:35: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:42:35:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:42:35:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:42:35:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:42:35:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:42:35:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:42:35:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:317:9) {
+2025-04-30T22:42:35:   response: {
+2025-04-30T22:42:35:     ok: false,
+2025-04-30T22:42:35:     error_code: 409,
+2025-04-30T22:42:35:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:42:35:   },
+2025-04-30T22:42:35:   on: {
+2025-04-30T22:42:35:     method: 'getUpdates',
+2025-04-30T22:42:35:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:42:35:   }
+2025-04-30T22:42:35: }
+2025-04-30T22:42:39: (node:18564) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:39: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:39: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:39: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:58: (node:14652) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:58: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:58: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:58: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:42:59: (node:17628) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:42:59: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:42:59: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:42:59: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:00: (node:8368) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:00: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:00: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:00: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:02: (node:2844) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:02: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:02: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:02: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:03: (node:17552) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:03: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:03: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:03: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:04: (node:7484) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:04: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:04: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:04: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:06: (node:14320) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:06: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:06: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:06: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:07: (node:4584) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:07: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:07: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:07: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:08: (node:19160) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:10: (node:18108) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:10: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:10: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:10: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:11: (node:14568) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:11: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:11: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:11: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:13: (node:18868) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:13: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:13: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:13: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:14: (node:11944) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:14: (node:16600) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:16: (node:7180) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:16: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:16: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:16: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:17: (node:6952) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:17: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:17: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:17: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:18: (node:19476) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:18: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:18: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:18: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:20: (node:8104) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:20: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:20: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:20: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:21: (node:3772) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:21: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:21: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:21: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:22: (node:18148) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:22: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:22: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:22: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:24: (node:19344) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:24: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:24: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:24: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:25: (node:3920) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:25: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:25: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:25: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:26: (node:17336) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:26: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:26: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:26: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:28: (node:19140) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:28: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:28: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:28: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:29: (node:19616) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:29: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:29: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:29: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:30: (node:16716) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:30: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:30: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:30: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:32: (node:11404) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:32: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:32: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:32: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:33: (node:20440) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:33: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:33: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:33: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:35: (node:18496) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:35: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:35: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:35: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:36: (node:19164) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:36: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:36: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:36: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:37: (node:1392) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:37: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:37: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:37: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:39: (node:15300) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:39: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:39: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:39: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:40: (node:12432) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:40: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:40: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:40: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:41: (node:17124) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:41: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:41: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:41: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:43: (node:18680) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:43: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:43: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:43: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:44: (node:1348) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:44: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:44: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:44: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:45: (node:18408) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:45: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:45: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:45: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:47: (node:16400) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:47: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:47: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:47: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:48: (node:2620) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:48: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:48: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:48: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:49: (node:8896) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:49: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:49: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:49: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:51: (node:7072) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:51: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:51: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:51: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:52: (node:18104) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:52: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:52: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:52: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:53: (node:19816) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:55: (node:19128) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:55: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:55: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:55: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:56: (node:6096) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:56: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:56: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:56: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:58: (node:15252) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:58: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:58: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:58: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:43:59: (node:18268) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:43:59: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:43:59: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:43:59: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:00: (node:18068) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:00: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:00: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:00: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:02: (node:6784) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:02: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:02: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:02: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:03: (node:9196) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:03: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:03: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:03: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:04: (node:16524) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:04: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:04: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:04: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:06: (node:3488) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:06: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:06: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:06: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:07: (node:7764) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:07: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:07: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:07: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:08: (node:11780) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:10: (node:16756) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:10: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:10: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:10: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:11: (node:3884) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:11: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:11: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:11: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:12: (node:17336) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:12: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:12: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:12: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:13: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:44:13:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:44:13:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:44:13:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:38:13
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17) {
+2025-04-30T22:44:13:   response: {
+2025-04-30T22:44:13:     ok: false,
+2025-04-30T22:44:13:     error_code: 403,
+2025-04-30T22:44:13:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:44:13:   },
+2025-04-30T22:44:13:   on: {
+2025-04-30T22:44:13:     method: 'sendMessage',
+2025-04-30T22:44:13:     payload: {
+2025-04-30T22:44:13:       chat_id: 6332406416,
+2025-04-30T22:44:13:       message_thread_id: undefined,
+2025-04-30T22:44:13:       text: '⚠️ Por favor, espera unos segundos antes de usar otro comando.'
+2025-04-30T22:44:13:     }
+2025-04-30T22:44:13:   }
+2025-04-30T22:44:13: }
+2025-04-30T22:44:13: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:44:13:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:44:13:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+2025-04-30T22:44:13:   response: {
+2025-04-30T22:44:13:     ok: false,
+2025-04-30T22:44:13:     error_code: 403,
+2025-04-30T22:44:13:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:44:13:   },
+2025-04-30T22:44:13:   on: {
+2025-04-30T22:44:13:     method: 'sendMessage',
+2025-04-30T22:44:13:     payload: {
+2025-04-30T22:44:13:       chat_id: 6332406416,
+2025-04-30T22:44:13:       message_thread_id: undefined,
+2025-04-30T22:44:13:       text: '❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.'
+2025-04-30T22:44:13:     }
+2025-04-30T22:44:13:   }
+2025-04-30T22:44:13: }
+2025-04-30T22:44:13: Error en el manejo del comando: TelegramError: 403: Forbidden: bot was blocked by the user
+2025-04-30T22:44:13:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:44:13:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:44:13:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:44:13:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21 {
+2025-04-30T22:44:13:   response: {
+2025-04-30T22:44:13:     ok: false,
+2025-04-30T22:44:13:     error_code: 403,
+2025-04-30T22:44:13:     description: 'Forbidden: bot was blocked by the user'
+2025-04-30T22:44:13:   },
+2025-04-30T22:44:13:   on: {
+2025-04-30T22:44:13:     method: 'sendMessage',
+2025-04-30T22:44:13:     payload: {
+2025-04-30T22:44:13:       chat_id: 6332406416,
+2025-04-30T22:44:13:       message_thread_id: undefined,
+2025-04-30T22:44:13:       text: '❌ CVV inválido. Debe contener 3 o 4 dígitos.'
+2025-04-30T22:44:13:     }
+2025-04-30T22:44:13:   }
+2025-04-30T22:44:13: }
+2025-04-30T22:44:14: (node:18220) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:19: (node:14320) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:19: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:19: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:19: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:44:42: (node:4608) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:44:42: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:44:42: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:44:42: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:03: (node:19836) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:03: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:03: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:03: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:12: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:45:12:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:45:12:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:45:12:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:45:12:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:45:12:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13)
+2025-04-30T22:45:12:     at async startBot (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:338:9) {
+2025-04-30T22:45:12:   response: {
+2025-04-30T22:45:12:     ok: false,
+2025-04-30T22:45:12:     error_code: 409,
+2025-04-30T22:45:12:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:45:12:   },
+2025-04-30T22:45:12:   on: {
+2025-04-30T22:45:12:     method: 'getUpdates',
+2025-04-30T22:45:12:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:45:12:   }
+2025-04-30T22:45:12: }
+2025-04-30T22:45:16: (node:20004) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:16: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:16: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:16: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:42: (node:7536) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:42: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:42: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:42: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:44: (node:1216) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:44: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:44: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:44: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:45: (node:11944) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:45: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:45: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:45: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:47: (node:19164) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:47: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:47: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:47: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:48: (node:8376) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:48: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:48: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:48: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:49: (node:15300) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:49: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:49: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:49: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:50: (node:4072) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:50: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:50: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:50: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:51: (node:8472) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:51: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:51: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:51: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:53: (node:16976) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:53: (node:17332) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:54: (node:8180) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:54: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:54: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:54: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:55: (node:13300) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:55: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:55: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:55: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:56: (node:17764) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:56: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:56: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:56: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:58: (node:16604) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:58: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:58: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:58: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:45:59: (node:11504) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:45:59: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:45:59: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:45:59: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:06: (node:20316) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:06: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:06: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:06: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:07: (node:15036) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:07: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:07: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:07: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:09: (node:19708) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:09: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:09: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:09: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:10: (node:20472) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:10: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:10: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:10: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:11: (node:19816) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:11: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:11: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:11: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:13: (node:20240) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:13: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:13: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:13: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:14: (node:18756) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:15: (node:19192) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:15: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:15: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:15: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:17: (node:18940) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:17: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:17: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:17: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:18: (node:8896) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:18: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:18: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:18: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:20: (node:384) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:20: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:20: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:20: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:20: (node:11368) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:20: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:20: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:20: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:22: (node:19700) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:22: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:22: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:22: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:23: (node:19612) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:23: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:23: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:23: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:24: (node:18348) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:24: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:24: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:24: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:25: (node:396) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:25: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:25: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:25: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:27: (node:17024) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:27: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:27: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:27: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:28: (node:19096) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:28: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:28: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:28: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:30: (node:20116) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:30: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:30: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:30: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:31: (node:15096) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:31: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:31: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:31: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:32: (node:18784) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:32: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:32: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:32: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:34: (node:6552) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:34: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:34: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:34: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:35: (node:8968) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:35: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:35: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:35: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:36: (node:9824) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:36: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:36: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:36: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:37: (node:16784) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:37: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:37: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:37: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:38: (node:19824) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:38: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:38: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:38: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:39: (node:15252) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:39: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:39: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:39: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:41: (node:18676) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:41: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:41: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:41: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:42: (node:16124) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:42: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:42: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:42: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:43: (node:18544) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:43: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:43: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:43: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:45: (node:20168) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:45: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:45: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:45: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:46: (node:2224) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:46: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:46: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:46: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:46:47: (node:19032) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:46:47: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:46:47: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:46:47: (Use `node --trace-warnings ...` to show where the warning was created)

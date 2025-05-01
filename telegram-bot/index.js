@@ -17,6 +17,7 @@ const bot = new Telegraf(BOT_TOKEN);
 // Rate limiting and command debouncing
 const userStates = new Map();
 const COOLDOWN_PERIOD = 2000; // 2 seconds cooldown between commands
+const processingCommands = new Set(); // Track commands being processed
 
 const isCommandAllowed = (userId) => {
     const now = Date.now();
@@ -29,17 +30,40 @@ const isCommandAllowed = (userId) => {
     return false;
 };
 
-// Middleware para rate limiting
+// Middleware para rate limiting y prevención de duplicados
 bot.use(async (ctx, next) => {
     if (ctx.message && ctx.message.text && ctx.message.text.startsWith('/')) {
         const userId = ctx.from.id;
+        const messageId = ctx.message.message_id;
+        const commandKey = `${userId}_${messageId}_slash`;
         
+        // Si el comando ya está siendo procesado, ignorarlo
+        if (processingCommands.has(commandKey)) {
+            console.log(`Comando con / duplicado ignorado: ${commandKey}`);
+            return;
+        }
+        
+        // Si el usuario está en cooldown, ignorar el comando
         if (!isCommandAllowed(userId)) {
+            console.log(`Comando con / ignorado por cooldown: ${commandKey}`);
             await ctx.reply('⚠️ Por favor, espera unos segundos antes de usar otro comando.');
             return;
         }
+        
+        // Marcar el comando como en procesamiento
+        processingCommands.add(commandKey);
+        
+        try {
+            await next();
+        } finally {
+            // Limpiar después de un tiempo
+            setTimeout(() => {
+                processingCommands.delete(commandKey);
+            }, 60000);
+        }
+    } else {
+        await next();
     }
-    return next();
 });
 
 // Directorio de datos
@@ -111,59 +135,311 @@ const lookupBin = async (bin) => {
     }
 };
 
+// Función para registrar comandos con ambos prefijos
+const registerCommand = (command, handler) => {
+    // Registrar con prefijo /
+    bot.command(command, handler);
+    // Registrar con prefijo .
+    bot.hears(`^\.${command}`, handler);
+};
+
+// Función para extraer argumentos del mensaje
+const getCommandArgs = (ctx) => {
+    const text = ctx.message.text;
+    // Si el comando empieza con /, usar split normal
+    if (text.startsWith('/')) {
+        return text.split(' ').slice(1).join(' ');
+    }
+    // Si el comando empieza con ., extraer todo después del comando
+    const match = text.match(/^\.(\w+)\s*(.*)/);
+    if (match) {
+        return match[2];
+    }
+    return '';
+};
+
+// Función para generar mensaje de limpieza
+const generateClearMessage = () => {
+    return '⠀\n'.repeat(100) + '🧹 Chat limpiado';
+};
+
+// Función para procesar comandos con punto
+const handleDotCommand = async (ctx) => {
+    const text = ctx.message.text;
+    if (!text.startsWith('.')) return false;
+
+    // Extraer el comando y los argumentos
+    const match = text.match(/^\.(\w+)\s*(.*)/);
+    if (!match) return false;
+
+    const [, command, args] = match;
+    console.log('Comando con punto detectado:', { command, args });
+
+    switch (command.toLowerCase()) {
+        case 'clear':
+        case 'limpiar':
+            await ctx.reply(generateClearMessage());
+            return true;
+
+        case 'gen':
+            if (!args) {
+                await ctx.reply('❌ Uso: .gen BIN|MM|YYYY|CVV\nEjemplo: .gen 477349002646|05|2027|123');
+                return true;
+            }
+            const parts = args.split('|');
+            const bin = parts[0];
+            const fixedMonth = parts[1];
+            const fixedYear = parts[2];
+            const fixedCVV = parts[3];
+
+            if (!isValidBin(bin)) {
+                await ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
+                return true;
+            }
+
+            try {
+                const cards = Array(10).fill().map(() => {
+                    const card = generateCard(bin);
+                    if (fixedMonth) card.month = fixedMonth;
+                    if (fixedYear) card.year = fixedYear?.slice(-2) || card.year;
+                    if (fixedCVV) card.cvv = fixedCVV;
+                    return card;
+                });
+                
+                const response = cards.map(card => 
+                    `${card.number}|${card.month}|${card.year}|${card.cvv}`
+                ).join('\n');
+
+                // Guardar en historial
+                const userId = ctx.from.id;
+                const userData = loadUserData(userId);
+                userData.history.unshift({
+                    type: 'gen',
+                    bin,
+                    count: cards.length,
+                    timestamp: new Date().toISOString()
+                });
+                saveUserData(userId, userData);
+
+                await ctx.reply(`🎲 Tarjetas generadas:\n\n${response}`);
+            } catch (error) {
+                console.error('Error en comando .gen:', error);
+                await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
+            }
+            return true;
+
+        case 'bin':
+            if (!args) {
+                await ctx.reply('❌ Uso: .bin BIN\nEjemplo: .bin 431940');
+                return true;
+            }
+            if (!isValidBin(args)) {
+                await ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
+                return true;
+            }
+            try {
+                const binInfo = await lookupBin(args);
+                if (!binInfo) {
+                    await ctx.reply('❌ No se encontró información para este BIN');
+                    return true;
+                }
+
+                const response = `
+🔍 Información del BIN: ${args}
+
+🏦 Banco: ${binInfo.bank}
+💳 Marca: ${binInfo.brand}
+🌍 País: ${binInfo.country} (${binInfo.countryCode})
+📱 Tipo: ${binInfo.type}
+⭐️ Nivel: ${binInfo.level}
+                `;
+
+                // Guardar en historial
+                const userId = ctx.from.id;
+                const userData = loadUserData(userId);
+                userData.history.unshift({
+                    type: 'lookup',
+                    bin: args,
+                    info: binInfo,
+                    timestamp: new Date().toISOString()
+                });
+                saveUserData(userId, userData);
+
+                await ctx.reply(response);
+            } catch (error) {
+                console.error('Error en comando .bin:', error);
+                await ctx.reply(`❌ Error al consultar BIN: ${error.message}`);
+            }
+            return true;
+
+        case 'start':
+        case 'ayuda':
+        case 'help':
+            const helpText = `
+👋 ¡Bienvenido al Generador de Tarjetas!
+
+Comandos disponibles:
+
+🔧 Generación de Tarjetas:
+/gen o .gen BIN|MM|YYYY|CVV - Generar 10 tarjetas
+Ejemplo: /gen 477349002646|05|2027|123
+
+🔍 Consultas:
+/bin o .bin BIN - Consultar información de BIN
+Ejemplo: /bin 431940
+
+⭐️ Gestión de Favoritos:
+/favoritos o .favoritos - Ver BINs guardados
+/agregarbin o .agregarbin BIN mes? año? cvv? - Guardar BIN
+/eliminarbin o .eliminarbin índice - Eliminar BIN guardado
+
+📋 Otros:
+/historial o .historial - Ver historial de consultas
+/clear o .clear - Limpiar el chat
+/ayuda o .ayuda - Mostrar esta ayuda
+
+Desarrollado por @mat1520
+            `;
+            await ctx.reply(helpText);
+            return true;
+
+        case 'favoritos':
+            const userDataFav = loadUserData(ctx.from.id);
+            if (userDataFav.favorites.length === 0) {
+                await ctx.reply('📌 No tienes BINs favoritos guardados');
+                return true;
+            }
+            const responseFav = userDataFav.favorites.map((fav, index) => 
+                `${index + 1}. ${fav.bin} (${fav.month || 'MM'}/${fav.year || 'YY'})`
+            ).join('\n');
+            await ctx.reply(`📌 Tus BINs favoritos:\n\n${responseFav}`);
+            return true;
+
+        case 'historial':
+            const userDataHist = loadUserData(ctx.from.id);
+            if (userDataHist.history.length === 0) {
+                await ctx.reply('📝 No hay historial de consultas');
+                return true;
+            }
+            const responseHist = userDataHist.history.slice(0, 10).map((item, index) => {
+                const date = new Date(item.timestamp).toLocaleString();
+                if (item.type === 'gen') {
+                    return `${index + 1}. Generación: ${item.bin} (${item.count} tarjetas) - ${date}`;
+                } else {
+                    return `${index + 1}. Consulta: ${item.bin} - ${date}`;
+                }
+            }).join('\n');
+            await ctx.reply(`📝 Historial reciente:\n\n${responseHist}`);
+            return true;
+    }
+    return false;
+};
+
+// Middleware para comandos con punto
+bot.on('text', async (ctx, next) => {
+    try {
+        if (ctx.message.text.startsWith('.')) {
+            const userId = ctx.from.id;
+            const messageId = ctx.message.message_id;
+            const commandKey = `${userId}_${messageId}_dot`;
+            
+            // Si el usuario está en cooldown, ignorar el comando
+            if (!isCommandAllowed(userId)) {
+                console.log(`Comando con . ignorado por cooldown: ${commandKey}`);
+                await ctx.reply('⚠️ Por favor, espera unos segundos antes de usar otro comando.');
+                return;
+            }
+            
+            console.log(`Procesando comando con punto: ${ctx.message.text}`);
+            const handled = await handleDotCommand(ctx);
+            if (!handled) {
+                await next();
+            }
+        } else {
+            await next();
+        }
+    } catch (error) {
+        console.error('Error en middleware de texto:', error);
+    }
+});
+
 // Comandos del bot
-bot.command('start', (ctx) => {
+registerCommand('start', (ctx) => {
     const helpText = `
 👋 ¡Bienvenido al Generador de Tarjetas!
 
 Comandos disponibles:
 
 🔧 Generación de Tarjetas:
-/gen BIN|MM|YYYY|CVV - Generar 10 tarjetas
+/gen o .gen BIN|MM|YYYY|CVV - Generar 10 tarjetas
 Ejemplo: /gen 477349002646|05|2027|123
 
 🔍 Consultas:
-/bin BIN - Consultar información de BIN
+/bin o .bin BIN - Consultar información de BIN
 Ejemplo: /bin 431940
 
 ⭐️ Gestión de Favoritos:
-/favoritos - Ver BINs guardados
-/agregarbin BIN mes? año? cvv? - Guardar BIN
-/eliminarbin índice - Eliminar BIN guardado
+/favoritos o .favoritos - Ver BINs guardados
+/agregarbin o .agregarbin BIN mes? año? cvv? - Guardar BIN
+/eliminarbin o .eliminarbin índice - Eliminar BIN guardado
 
 📋 Otros:
-/historial - Ver historial de consultas
-/ayuda - Mostrar esta ayuda
+/historial o .historial - Ver historial de consultas
+/clear o .clear - Limpiar el chat
+/ayuda o .ayuda - Mostrar esta ayuda
 
 Desarrollado por @mat1520
     `;
     ctx.reply(helpText);
 });
 
-bot.command('help', (ctx) => {
-    ctx.reply('Para ver la lista de comandos, usa /start');
+registerCommand('help', (ctx) => {
+    ctx.reply('Para ver la lista de comandos, usa /start o .start');
 });
 
-bot.command('gen', async (ctx) => {
-    const input = ctx.message.text.split(' ')[1];
-    if (!input) {
-        return ctx.reply('❌ Uso: /gen BIN|MM|YYYY|CVV\nEjemplo: /gen 477349002646|05|2027|123');
-    }
-
-    const parts = input.split('|');
-    const bin = parts[0];
-    const fixedMonth = parts[1];
-    const fixedYear = parts[2];
-    const fixedCVV = parts[3];
-
-    if (!isValidBin(bin)) {
-        return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
-    }
-
+registerCommand('gen', async (ctx) => {
+    const messageId = ctx.message.message_id;
+    console.log(`Procesando comando gen, messageId: ${messageId}`);
+    
     try {
+        const input = getCommandArgs(ctx);
+        console.log('Input completo:', ctx.message.text);
+        console.log('Input procesado:', input);
+        
+        if (!input) {
+            return ctx.reply('❌ Uso: /gen o .gen BIN|MM|YYYY|CVV\nEjemplo: /gen 477349002646|05|2027|123');
+        }
+
+        const parts = input.split('|');
+        const bin = parts[0];
+        const fixedMonth = parts[1];
+        const fixedYear = parts[2];
+        const fixedCVV = parts[3];
+
+        console.log('Partes:', { bin, fixedMonth, fixedYear, fixedCVV });
+
+        if (!isValidBin(bin)) {
+            return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
+        }
+
+        // Validar mes si se proporciona
+        if (fixedMonth && !/^(0[1-9]|1[0-2])$/.test(fixedMonth)) {
+            return ctx.reply('❌ Mes inválido. Debe estar entre 01 y 12.');
+        }
+
+        // Validar año si se proporciona
+        if (fixedYear && !/^20[2-3][0-9]$/.test(fixedYear)) {
+            return ctx.reply('❌ Año inválido. Debe estar en formato YYYY y ser mayor al año actual.');
+        }
+
+        // Validar CVV si se proporciona
+        if (fixedCVV && !/^[0-9]{3,4}$/.test(fixedCVV)) {
+            return ctx.reply('❌ CVV inválido. Debe contener 3 o 4 dígitos.');
+        }
+
+        // Generar exactamente 10 tarjetas
         const cards = Array(10).fill().map(() => {
             const card = generateCard(bin);
-            // Si se proporcionaron valores fijos, los usamos
             if (fixedMonth) card.month = fixedMonth;
             if (fixedYear) card.year = fixedYear?.slice(-2) || card.year;
             if (fixedCVV) card.cvv = fixedCVV;
@@ -174,39 +450,46 @@ bot.command('gen', async (ctx) => {
             `${card.number}|${card.month}|${card.year}|${card.cvv}`
         ).join('\n');
 
+        console.log(`Generadas ${cards.length} tarjetas para messageId: ${messageId}`);
+
         // Guardar en historial
         const userId = ctx.from.id;
         const userData = loadUserData(userId);
         userData.history.unshift({
             type: 'gen',
             bin,
-            count: 10,
+            count: cards.length,
             timestamp: new Date().toISOString()
         });
         saveUserData(userId, userData);
 
-        ctx.reply(`🎲 Tarjetas generadas:\n\n${response}`);
+        await ctx.reply(`🎲 Tarjetas generadas:\n\n${response}`);
     } catch (error) {
-        ctx.reply(`❌ Error: ${error.message}`);
+        console.error(`Error en comando gen, messageId: ${messageId}:`, error);
+        await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
     }
 });
 
-bot.command('bin', async (ctx) => {
-    const bin = ctx.message.text.split(' ')[1];
-    if (!bin) {
-        return ctx.reply('❌ Uso: /bin BIN\nEjemplo: /bin 431940');
-    }
+registerCommand('bin', async (ctx) => {
+    try {
+        const bin = getCommandArgs(ctx);
+        console.log('Input completo:', ctx.message.text);
+        console.log('BIN procesado:', bin);
+        
+        if (!bin) {
+            return ctx.reply('❌ Uso: /bin o .bin BIN\nEjemplo: /bin 431940');
+        }
 
-    if (!isValidBin(bin)) {
-        return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
-    }
+        if (!isValidBin(bin)) {
+            return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
+        }
 
-    const binInfo = await lookupBin(bin);
-    if (!binInfo) {
-        return ctx.reply('❌ No se encontró información para este BIN');
-    }
+        const binInfo = await lookupBin(bin);
+        if (!binInfo) {
+            return ctx.reply('❌ No se encontró información para este BIN');
+        }
 
-    const response = `
+        const response = `
 🔍 Información del BIN: ${bin}
 
 🏦 Banco: ${binInfo.bank}
@@ -214,23 +497,27 @@ bot.command('bin', async (ctx) => {
 🌍 País: ${binInfo.country} (${binInfo.countryCode})
 📱 Tipo: ${binInfo.type}
 ⭐️ Nivel: ${binInfo.level}
-    `;
+        `;
 
-    // Guardar en historial
-    const userId = ctx.from.id;
-    const userData = loadUserData(userId);
-    userData.history.unshift({
-        type: 'lookup',
-        bin,
-        info: binInfo,
-        timestamp: new Date().toISOString()
-    });
-    saveUserData(userId, userData);
+        // Guardar en historial
+        const userId = ctx.from.id;
+        const userData = loadUserData(userId);
+        userData.history.unshift({
+            type: 'lookup',
+            bin,
+            info: binInfo,
+            timestamp: new Date().toISOString()
+        });
+        saveUserData(userId, userData);
 
-    ctx.reply(response);
+        await ctx.reply(response);
+    } catch (error) {
+        console.error('Error en comando bin:', error);
+        await ctx.reply(`❌ Error al consultar BIN: ${error.message}`);
+    }
 });
 
-bot.command('favoritos', (ctx) => {
+registerCommand('favoritos', (ctx) => {
     const userId = ctx.from.id;
     const userData = loadUserData(userId);
     
@@ -245,10 +532,10 @@ bot.command('favoritos', (ctx) => {
     ctx.reply(`📌 Tus BINs favoritos:\n\n${response}`);
 });
 
-bot.command('agregarbin', (ctx) => {
+registerCommand('agregarbin', (ctx) => {
     const args = ctx.message.text.split(' ').slice(1);
     if (args.length < 1) {
-        return ctx.reply('❌ Uso: /agregarbin BIN mes? año? cvv?');
+        return ctx.reply('❌ Uso: /agregarbin o .agregarbin BIN mes? año? cvv?');
     }
 
     const [bin, month, year, cvv] = args;
@@ -269,10 +556,10 @@ bot.command('agregarbin', (ctx) => {
     ctx.reply('✅ BIN agregado a favoritos');
 });
 
-bot.command('eliminarbin', (ctx) => {
+registerCommand('eliminarbin', (ctx) => {
     const args = ctx.message.text.split(' ').slice(1);
     if (args.length < 1) {
-        return ctx.reply('❌ Uso: /eliminarbin índice');
+        return ctx.reply('❌ Uso: /eliminarbin o .eliminarbin índice');
     }
 
     const userId = ctx.from.id;
@@ -289,7 +576,7 @@ bot.command('eliminarbin', (ctx) => {
     ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
 });
 
-bot.command('historial', (ctx) => {
+registerCommand('historial', (ctx) => {
     const userId = ctx.from.id;
     const userData = loadUserData(userId);
     
@@ -307,6 +594,14 @@ bot.command('historial', (ctx) => {
     }).join('\n');
 
     ctx.reply(`📝 Historial reciente:\n\n${response}`);
+});
+
+registerCommand('clear', async (ctx) => {
+    await ctx.reply(generateClearMessage());
+});
+
+registerCommand('limpiar', async (ctx) => {
+    await ctx.reply(generateClearMessage());
 });
 
 // Iniciar el bot

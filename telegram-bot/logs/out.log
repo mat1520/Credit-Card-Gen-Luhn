@@ -1,0 +1,341 @@
+2025-04-30T22:44:13: Input recibido: 477349002646|05|2027|12
+2025-04-30T22:44:13: Partes: {
+2025-04-30T22:44:13:   bin: '477349002646',
+2025-04-30T22:44:13:   fixedMonth: '05',
+2025-04-30T22:44:13:   fixedYear: '2027',
+2025-04-30T22:44:13:   fixedCVV: '12'
+2025-04-30T22:44:13: }
+2025-04-30T22:45:32: Input recibido: 4381
+2025-04-30T22:45:32: Partes: {
+2025-04-30T22:45:32:   bin: '4381',
+2025-04-30T22:45:32:   fixedMonth: undefined,
+2025-04-30T22:45:32:   fixedYear: undefined,
+2025-04-30T22:45:32:   fixedCVV: undefined
+2025-04-30T22:45:32: }
+2025-04-30T22:45:42: Input recibido: 438108
+2025-04-30T22:45:42: Partes: {
+2025-04-30T22:45:42:   bin: '438108',
+2025-04-30T22:45:42:   fixedMonth: undefined,
+2025-04-30T22:45:42:   fixedYear: undefined,
+2025-04-30T22:45:42:   fixedCVV: undefined
+2025-04-30T22:45:42: }
+2025-04-30T22:45:42: Generadas 10 tarjetas
+2025-04-30T22:45:43: Input recibido: 438108
+2025-04-30T22:45:43: Partes: {
+2025-04-30T22:45:43:   bin: '438108',
+2025-04-30T22:45:43:   fixedMonth: undefined,
+2025-04-30T22:45:43:   fixedYear: undefined,
+2025-04-30T22:45:43:   fixedCVV: undefined
+2025-04-30T22:45:43: }
+2025-04-30T22:45:43: Generadas 10 tarjetas
+2025-04-30T22:45:45: Input recibido: 438108
+2025-04-30T22:45:45: Partes: {
+2025-04-30T22:45:45:   bin: '438108',
+2025-04-30T22:45:45:   fixedMonth: undefined,
+2025-04-30T22:45:45:   fixedYear: undefined,
+2025-04-30T22:45:45:   fixedCVV: undefined
+2025-04-30T22:45:45: }
+2025-04-30T22:45:45: Generadas 10 tarjetas
+2025-04-30T22:45:46: Input recibido: 438108
+2025-04-30T22:45:46: Partes: {
+2025-04-30T22:45:46:   bin: '438108',
+2025-04-30T22:45:46:   fixedMonth: undefined,
+2025-04-30T22:45:46:   fixedYear: undefined,
+2025-04-30T22:45:46:   fixedCVV: undefined
+2025-04-30T22:45:46: }
+2025-04-30T22:45:46: Generadas 10 tarjetas
+2025-04-30T22:45:48: Input recibido: 438108
+2025-04-30T22:45:48: Partes: {
+2025-04-30T22:45:48:   bin: '438108',
+2025-04-30T22:45:48:   fixedMonth: undefined,
+2025-04-30T22:45:48:   fixedYear: undefined,
+2025-04-30T22:45:48:   fixedCVV: undefined
+2025-04-30T22:45:48: }
+2025-04-30T22:45:48: Generadas 10 tarjetas
+2025-04-30T22:45:49: Input recibido: 438108
+2025-04-30T22:45:49: Partes: {
+2025-04-30T22:45:49:   bin: '438108',
+2025-04-30T22:45:49:   fixedMonth: undefined,
+2025-04-30T22:45:49:   fixedYear: undefined,
+2025-04-30T22:45:49:   fixedCVV: undefined
+2025-04-30T22:45:49: }
+2025-04-30T22:45:49: Generadas 10 tarjetas
+2025-04-30T22:45:51: Input recibido: 438108
+2025-04-30T22:45:51: Partes: {
+2025-04-30T22:45:51:   bin: '438108',
+2025-04-30T22:45:51:   fixedMonth: undefined,
+2025-04-30T22:45:51:   fixedYear: undefined,
+2025-04-30T22:45:51:   fixedCVV: undefined
+2025-04-30T22:45:51: }
+2025-04-30T22:45:51: Generadas 10 tarjetas
+2025-04-30T22:45:52: Input recibido: 438108
+2025-04-30T22:45:52: Partes: {
+2025-04-30T22:45:52:   bin: '438108',
+2025-04-30T22:45:52:   fixedMonth: undefined,
+2025-04-30T22:45:52:   fixedYear: undefined,
+2025-04-30T22:45:52:   fixedCVV: undefined
+2025-04-30T22:45:52: }
+2025-04-30T22:45:52: Generadas 10 tarjetas
+2025-04-30T22:45:55: Input recibido: 438108
+2025-04-30T22:45:55: Partes: {
+2025-04-30T22:45:55:   bin: '438108',
+2025-04-30T22:45:55:   fixedMonth: undefined,
+2025-04-30T22:45:55:   fixedYear: undefined,
+2025-04-30T22:45:55:   fixedCVV: undefined
+2025-04-30T22:45:55: }
+2025-04-30T22:45:55: Generadas 10 tarjetas
+2025-04-30T22:45:56: Input recibido: 438108
+2025-04-30T22:45:56: Partes: {
+2025-04-30T22:45:56:   bin: '438108',
+2025-04-30T22:45:56:   fixedMonth: undefined,
+2025-04-30T22:45:56:   fixedYear: undefined,
+2025-04-30T22:45:56:   fixedCVV: undefined
+2025-04-30T22:45:56: }
+2025-04-30T22:45:56: Generadas 10 tarjetas
+2025-04-30T22:45:57: Input recibido: 438108
+2025-04-30T22:45:57: Partes: {
+2025-04-30T22:45:57:   bin: '438108',
+2025-04-30T22:45:57:   fixedMonth: undefined,
+2025-04-30T22:45:57:   fixedYear: undefined,
+2025-04-30T22:45:57:   fixedCVV: undefined
+2025-04-30T22:45:57: }
+2025-04-30T22:45:57: Generadas 10 tarjetas
+2025-04-30T22:45:59: Input recibido: 438108
+2025-04-30T22:45:59: Partes: {
+2025-04-30T22:45:59:   bin: '438108',
+2025-04-30T22:45:59:   fixedMonth: undefined,
+2025-04-30T22:45:59:   fixedYear: undefined,
+2025-04-30T22:45:59:   fixedCVV: undefined
+2025-04-30T22:45:59: }
+2025-04-30T22:45:59: Generadas 10 tarjetas
+2025-04-30T22:46:07: Input recibido: 438108
+2025-04-30T22:46:07: Partes: {
+2025-04-30T22:46:07:   bin: '438108',
+2025-04-30T22:46:07:   fixedMonth: undefined,
+2025-04-30T22:46:07:   fixedYear: undefined,
+2025-04-30T22:46:07:   fixedCVV: undefined
+2025-04-30T22:46:07: }
+2025-04-30T22:46:07: Generadas 10 tarjetas
+2025-04-30T22:46:08: Input recibido: 438108
+2025-04-30T22:46:08: Partes: {
+2025-04-30T22:46:08:   bin: '438108',
+2025-04-30T22:46:08:   fixedMonth: undefined,
+2025-04-30T22:46:08:   fixedYear: undefined,
+2025-04-30T22:46:08:   fixedCVV: undefined
+2025-04-30T22:46:08: }
+2025-04-30T22:46:08: Generadas 10 tarjetas
+2025-04-30T22:46:10: Input recibido: 438108
+2025-04-30T22:46:10: Partes: {
+2025-04-30T22:46:10:   bin: '438108',
+2025-04-30T22:46:10:   fixedMonth: undefined,
+2025-04-30T22:46:10:   fixedYear: undefined,
+2025-04-30T22:46:10:   fixedCVV: undefined
+2025-04-30T22:46:10: }
+2025-04-30T22:46:10: Generadas 10 tarjetas
+2025-04-30T22:46:11: Input recibido: 438108
+2025-04-30T22:46:11: Partes: {
+2025-04-30T22:46:11:   bin: '438108',
+2025-04-30T22:46:11:   fixedMonth: undefined,
+2025-04-30T22:46:11:   fixedYear: undefined,
+2025-04-30T22:46:11:   fixedCVV: undefined
+2025-04-30T22:46:11: }
+2025-04-30T22:46:11: Generadas 10 tarjetas
+2025-04-30T22:46:12: Input recibido: 438108
+2025-04-30T22:46:12: Partes: {
+2025-04-30T22:46:12:   bin: '438108',
+2025-04-30T22:46:12:   fixedMonth: undefined,
+2025-04-30T22:46:12:   fixedYear: undefined,
+2025-04-30T22:46:12:   fixedCVV: undefined
+2025-04-30T22:46:12: }
+2025-04-30T22:46:12: Generadas 10 tarjetas
+2025-04-30T22:46:14: Input recibido: 438108
+2025-04-30T22:46:14: Partes: {
+2025-04-30T22:46:14:   bin: '438108',
+2025-04-30T22:46:14:   fixedMonth: undefined,
+2025-04-30T22:46:14:   fixedYear: undefined,
+2025-04-30T22:46:14:   fixedCVV: undefined
+2025-04-30T22:46:14: }
+2025-04-30T22:46:14: Generadas 10 tarjetas
+2025-04-30T22:46:15: Input recibido: 438108
+2025-04-30T22:46:15: Partes: {
+2025-04-30T22:46:15:   bin: '438108',
+2025-04-30T22:46:15:   fixedMonth: undefined,
+2025-04-30T22:46:15:   fixedYear: undefined,
+2025-04-30T22:46:15:   fixedCVV: undefined
+2025-04-30T22:46:15: }
+2025-04-30T22:46:15: Generadas 10 tarjetas
+2025-04-30T22:46:16: Input recibido: 438108
+2025-04-30T22:46:16: Partes: {
+2025-04-30T22:46:16:   bin: '438108',
+2025-04-30T22:46:16:   fixedMonth: undefined,
+2025-04-30T22:46:16:   fixedYear: undefined,
+2025-04-30T22:46:16:   fixedCVV: undefined
+2025-04-30T22:46:16: }
+2025-04-30T22:46:16: Generadas 10 tarjetas
+2025-04-30T22:46:18: Input recibido: 438108
+2025-04-30T22:46:18: Partes: {
+2025-04-30T22:46:18:   bin: '438108',
+2025-04-30T22:46:18:   fixedMonth: undefined,
+2025-04-30T22:46:18:   fixedYear: undefined,
+2025-04-30T22:46:18:   fixedCVV: undefined
+2025-04-30T22:46:18: }
+2025-04-30T22:46:18: Generadas 10 tarjetas
+2025-04-30T22:46:19: Input recibido: 438108
+2025-04-30T22:46:19: Partes: {
+2025-04-30T22:46:19:   bin: '438108',
+2025-04-30T22:46:19:   fixedMonth: undefined,
+2025-04-30T22:46:19:   fixedYear: undefined,
+2025-04-30T22:46:19:   fixedCVV: undefined
+2025-04-30T22:46:19: }
+2025-04-30T22:46:19: Generadas 10 tarjetas
+2025-04-30T22:46:21: Input recibido: 438108
+2025-04-30T22:46:21: Partes: {
+2025-04-30T22:46:21:   bin: '438108',
+2025-04-30T22:46:21:   fixedMonth: undefined,
+2025-04-30T22:46:21:   fixedYear: undefined,
+2025-04-30T22:46:21:   fixedCVV: undefined
+2025-04-30T22:46:21: }
+2025-04-30T22:46:21: Generadas 10 tarjetas
+2025-04-30T22:46:23: Input recibido: 438108
+2025-04-30T22:46:23: Partes: {
+2025-04-30T22:46:23:   bin: '438108',
+2025-04-30T22:46:23:   fixedMonth: undefined,
+2025-04-30T22:46:23:   fixedYear: undefined,
+2025-04-30T22:46:23:   fixedCVV: undefined
+2025-04-30T22:46:23: }
+2025-04-30T22:46:23: Generadas 10 tarjetas
+2025-04-30T22:46:25: Input recibido: 438108
+2025-04-30T22:46:25: Partes: {
+2025-04-30T22:46:25:   bin: '438108',
+2025-04-30T22:46:25:   fixedMonth: undefined,
+2025-04-30T22:46:25:   fixedYear: undefined,
+2025-04-30T22:46:25:   fixedCVV: undefined
+2025-04-30T22:46:25: }
+2025-04-30T22:46:25: Generadas 10 tarjetas
+2025-04-30T22:46:26: Input recibido: 438108
+2025-04-30T22:46:26: Partes: {
+2025-04-30T22:46:26:   bin: '438108',
+2025-04-30T22:46:26:   fixedMonth: undefined,
+2025-04-30T22:46:26:   fixedYear: undefined,
+2025-04-30T22:46:26:   fixedCVV: undefined
+2025-04-30T22:46:26: }
+2025-04-30T22:46:26: Generadas 10 tarjetas
+2025-04-30T22:46:28: Input recibido: 438108
+2025-04-30T22:46:28: Partes: {
+2025-04-30T22:46:28:   bin: '438108',
+2025-04-30T22:46:28:   fixedMonth: undefined,
+2025-04-30T22:46:28:   fixedYear: undefined,
+2025-04-30T22:46:28:   fixedCVV: undefined
+2025-04-30T22:46:28: }
+2025-04-30T22:46:28: Generadas 10 tarjetas
+2025-04-30T22:46:29: Input recibido: 438108
+2025-04-30T22:46:29: Partes: {
+2025-04-30T22:46:29:   bin: '438108',
+2025-04-30T22:46:29:   fixedMonth: undefined,
+2025-04-30T22:46:29:   fixedYear: undefined,
+2025-04-30T22:46:29:   fixedCVV: undefined
+2025-04-30T22:46:29: }
+2025-04-30T22:46:29: Generadas 10 tarjetas
+2025-04-30T22:46:31: Input recibido: 438108
+2025-04-30T22:46:31: Partes: {
+2025-04-30T22:46:31:   bin: '438108',
+2025-04-30T22:46:31:   fixedMonth: undefined,
+2025-04-30T22:46:31:   fixedYear: undefined,
+2025-04-30T22:46:31:   fixedCVV: undefined
+2025-04-30T22:46:31: }
+2025-04-30T22:46:31: Generadas 10 tarjetas
+2025-04-30T22:46:32: Input recibido: 438108
+2025-04-30T22:46:32: Partes: {
+2025-04-30T22:46:32:   bin: '438108',
+2025-04-30T22:46:32:   fixedMonth: undefined,
+2025-04-30T22:46:32:   fixedYear: undefined,
+2025-04-30T22:46:32:   fixedCVV: undefined
+2025-04-30T22:46:32: }
+2025-04-30T22:46:32: Generadas 10 tarjetas
+2025-04-30T22:46:33: Input recibido: 438108
+2025-04-30T22:46:33: Partes: {
+2025-04-30T22:46:33:   bin: '438108',
+2025-04-30T22:46:33:   fixedMonth: undefined,
+2025-04-30T22:46:33:   fixedYear: undefined,
+2025-04-30T22:46:33:   fixedCVV: undefined
+2025-04-30T22:46:33: }
+2025-04-30T22:46:33: Generadas 10 tarjetas
+2025-04-30T22:46:35: Input recibido: 438108
+2025-04-30T22:46:35: Partes: {
+2025-04-30T22:46:35:   bin: '438108',
+2025-04-30T22:46:35:   fixedMonth: undefined,
+2025-04-30T22:46:35:   fixedYear: undefined,
+2025-04-30T22:46:35:   fixedCVV: undefined
+2025-04-30T22:46:35: }
+2025-04-30T22:46:35: Generadas 10 tarjetas
+2025-04-30T22:46:36: Input recibido: 438108
+2025-04-30T22:46:36: Partes: {
+2025-04-30T22:46:36:   bin: '438108',
+2025-04-30T22:46:36:   fixedMonth: undefined,
+2025-04-30T22:46:36:   fixedYear: undefined,
+2025-04-30T22:46:36:   fixedCVV: undefined
+2025-04-30T22:46:36: }
+2025-04-30T22:46:36: Generadas 10 tarjetas
+2025-04-30T22:46:38: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:38: Input recibido: 438108
+2025-04-30T22:46:38: Partes: {
+2025-04-30T22:46:38:   bin: '438108',
+2025-04-30T22:46:38:   fixedMonth: undefined,
+2025-04-30T22:46:38:   fixedYear: undefined,
+2025-04-30T22:46:38:   fixedCVV: undefined
+2025-04-30T22:46:38: }
+2025-04-30T22:46:38: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:40: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:40: Input recibido: 438108
+2025-04-30T22:46:40: Partes: {
+2025-04-30T22:46:40:   bin: '438108',
+2025-04-30T22:46:40:   fixedMonth: undefined,
+2025-04-30T22:46:40:   fixedYear: undefined,
+2025-04-30T22:46:40:   fixedCVV: undefined
+2025-04-30T22:46:40: }
+2025-04-30T22:46:40: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:42: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:42: Input recibido: 438108
+2025-04-30T22:46:42: Partes: {
+2025-04-30T22:46:42:   bin: '438108',
+2025-04-30T22:46:42:   fixedMonth: undefined,
+2025-04-30T22:46:42:   fixedYear: undefined,
+2025-04-30T22:46:42:   fixedCVV: undefined
+2025-04-30T22:46:42: }
+2025-04-30T22:46:42: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:43: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:43: Input recibido: 438108
+2025-04-30T22:46:43: Partes: {
+2025-04-30T22:46:43:   bin: '438108',
+2025-04-30T22:46:43:   fixedMonth: undefined,
+2025-04-30T22:46:43:   fixedYear: undefined,
+2025-04-30T22:46:43:   fixedCVV: undefined
+2025-04-30T22:46:43: }
+2025-04-30T22:46:43: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:44: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:44: Input recibido: 438108
+2025-04-30T22:46:44: Partes: {
+2025-04-30T22:46:44:   bin: '438108',
+2025-04-30T22:46:44:   fixedMonth: undefined,
+2025-04-30T22:46:44:   fixedYear: undefined,
+2025-04-30T22:46:44:   fixedCVV: undefined
+2025-04-30T22:46:44: }
+2025-04-30T22:46:44: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:46: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:46: Input recibido: 438108
+2025-04-30T22:46:46: Partes: {
+2025-04-30T22:46:46:   bin: '438108',
+2025-04-30T22:46:46:   fixedMonth: undefined,
+2025-04-30T22:46:46:   fixedYear: undefined,
+2025-04-30T22:46:46:   fixedCVV: undefined
+2025-04-30T22:46:46: }
+2025-04-30T22:46:46: Generadas 10 tarjetas para messageId: 386
+2025-04-30T22:46:47: Procesando comando /gen, messageId: 386
+2025-04-30T22:46:47: Input recibido: 438108
+2025-04-30T22:46:47: Partes: {
+2025-04-30T22:46:47:   bin: '438108',
+2025-04-30T22:46:47:   fixedMonth: undefined,
+2025-04-30T22:46:47:   fixedYear: undefined,
+2025-04-30T22:46:47:   fixedCVV: undefined
+2025-04-30T22:46:47: }
+2025-04-30T22:46:47: Generadas 10 tarjetas para messageId: 386
