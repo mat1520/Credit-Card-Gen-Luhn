@@ -2,6 +2,121 @@
   "favorites": [],
   "history": [
     {
+      "type": "lookup",
+      "bin": "474107",
+      "info": {
+        "number": {},
+        "scheme": "visa",
+        "type": "deferred_debit",
+        "brand": "Visa Business",
+        "country": {
+          "numeric": "250",
+          "alpha2": "FR",
+          "name": "France",
+          "emoji": "🇫🇷",
+          "currency": "EUR",
+          "latitude": 46,
+          "longitude": 2
+        },
+        "bank": {
+          "name": "Bpce"
+        }
+      },
+      "timestamp": "2025-05-01T03:17:17.094Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "474107",
+      "info": {
+        "number": {},
+        "scheme": "visa",
+        "type": "deferred_debit",
+        "brand": "Visa Business",
+        "country": {
+          "numeric": "250",
+          "alpha2": "FR",
+          "name": "France",
+          "emoji": "🇫🇷",
+          "currency": "EUR",
+          "latitude": 46,
+          "longitude": 2
+        },
+        "bank": {
+          "name": "Bpce"
+        }
+      },
+      "timestamp": "2025-05-01T03:17:14.858Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "474107",
+      "info": {
+        "number": {},
+        "scheme": "visa",
+        "type": "deferred_debit",
+        "brand": "Visa Business",
+        "country": {
+          "numeric": "250",
+          "alpha2": "FR",
+          "name": "France",
+          "emoji": "🇫🇷",
+          "currency": "EUR",
+          "latitude": 46,
+          "longitude": 2
+        },
+        "bank": {
+          "name": "Bpce"
+        }
+      },
+      "timestamp": "2025-05-01T03:17:12.632Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "474107",
+      "info": {
+        "number": {},
+        "scheme": "visa",
+        "type": "deferred_debit",
+        "brand": "Visa Business",
+        "country": {
+          "numeric": "250",
+          "alpha2": "FR",
+          "name": "France",
+          "emoji": "🇫🇷",
+          "currency": "EUR",
+          "latitude": 46,
+          "longitude": 2
+        },
+        "bank": {
+          "name": "Bpce"
+        }
+      },
+      "timestamp": "2025-05-01T03:17:11.035Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "474107",
+      "info": {
+        "number": {},
+        "scheme": "visa",
+        "type": "deferred_debit",
+        "brand": "Visa Business",
+        "country": {
+          "numeric": "250",
+          "alpha2": "FR",
+          "name": "France",
+          "emoji": "🇫🇷",
+          "currency": "EUR",
+          "latitude": 46,
+          "longitude": 2
+        },
+        "bank": {
+          "name": "Bpce"
+        }
+      },
+      "timestamp": "2025-05-01T03:17:08.768Z"
+    },
+    {
       "type": "gen",
       "bin": "123456",
       "count": "9",

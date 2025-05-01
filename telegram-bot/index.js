@@ -39,13 +39,40 @@ const saveUserData = (userId, data) => {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
-// Función para consultar BIN
+// Función para consultar BIN usando APIs alternativas
 const lookupBin = async (bin) => {
     try {
-        const response = await fetch(`https://lookup.binlist.net/${bin}`);
-        if (!response.ok) throw new Error('BIN no encontrado');
-        return await response.json();
+        // Primera API: binlist.net
+        const response1 = await fetch(`https://lookup.binlist.net/${bin}`);
+        if (response1.ok) {
+            const data1 = await response1.json();
+            return {
+                bank: data1.bank?.name || 'Desconocido',
+                brand: data1.scheme || 'Desconocida',
+                type: data1.type || 'Desconocido',
+                country: data1.country?.name || 'Desconocido',
+                countryCode: data1.country?.alpha2 || '??',
+                level: data1.brand || 'Desconocido'
+            };
+        }
+
+        // Segunda API: bintable.com
+        const response2 = await fetch(`https://api.bintable.com/v1/${bin}?api_key=19d935a6d3244f3f8bab8f09157e4936`);
+        if (response2.ok) {
+            const data2 = await response2.json();
+            return {
+                bank: data2.bank?.name || 'Desconocido',
+                brand: data2.scheme || data2.brand || 'Desconocida',
+                type: data2.type || 'Desconocido',
+                country: data2.country?.name || 'Desconocido',
+                countryCode: data2.country?.code || '??',
+                level: data2.level || 'Desconocido'
+            };
+        }
+
+        throw new Error('No se pudo obtener información del BIN');
     } catch (error) {
+        console.error('Error al consultar BIN:', error);
         return null;
     }
 };
@@ -53,18 +80,30 @@ const lookupBin = async (bin) => {
 // Comandos del bot
 bot.command('start', (ctx) => {
     const helpText = `
-👋 ¡Bienvenido al Generador de Tarjetas!
+🎉 *¡Bienvenido al Generador de Tarjetas!*
 
 Comandos disponibles:
+
+🔧 *Generación de Tarjetas:*
 /gen [BIN] [cantidad] - Generar tarjetas
+Ejemplo: /gen 431940 10
+
+🔍 *Consultas:*
 /bin [BIN] - Consultar información de BIN
-/favoritos - Ver BINs favoritos
-/agregarbin [BIN] [mes?] [año?] [cvv?] - Agregar BIN a favoritos
-/eliminarbin [índice] - Eliminar BIN de favoritos
+Ejemplo: /bin 431940
+
+⭐️ *Gestión de Favoritos:*
+/favoritos - Ver BINs guardados
+/agregarbin [BIN] [mes?] [año?] [cvv?] - Guardar BIN
+/eliminarbin [índice] - Eliminar BIN guardado
+
+📋 *Otros:*
 /historial - Ver historial de consultas
 /ayuda - Mostrar esta ayuda
+
+_Desarrollado por @mat1520_
     `;
-    ctx.reply(helpText);
+    ctx.reply(helpText, { parse_mode: 'Markdown' });
 });
 
 bot.command('help', (ctx) => {
@@ -74,19 +113,25 @@ bot.command('help', (ctx) => {
 bot.command('gen', async (ctx) => {
     const args = ctx.message.text.split(' ').slice(1);
     if (args.length < 2) {
-        return ctx.reply('❌ Uso: /gen [BIN] [cantidad]');
+        return ctx.reply('❌ Uso: /gen [BIN] [cantidad]\nEjemplo: /gen 431940 10');
     }
 
-    const [bin, count] = args;
+    const [bin, countStr] = args;
+    const count = parseInt(countStr);
+
     if (!isValidBin(bin)) {
         return ctx.reply('❌ BIN inválido. Debe contener solo números y x\'s, entre 6 y 16 dígitos.');
     }
 
+    if (isNaN(count) || count < 1 || count > 50) {
+        return ctx.reply('❌ La cantidad debe ser un número entre 1 y 50.');
+    }
+
     try {
-        const cards = Array(parseInt(count)).fill().map(() => generateCard(bin));
+        const cards = Array(count).fill().map(() => generateCard(bin));
         
         const response = cards.map(card => 
-            `${card.number}|${card.month}|${card.year}|${card.cvv}`
+            `💳 \`${card.number}|${card.month}|${card.year}|${card.cvv}\``
         ).join('\n');
 
         // Guardar en historial
@@ -100,7 +145,7 @@ bot.command('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        ctx.reply(`🔑 Tarjetas generadas:\n\n${response}`);
+        ctx.reply(`✅ *Tarjetas Generadas:*\n\n${response}`, { parse_mode: 'Markdown' });
     } catch (error) {
         ctx.reply(`❌ Error: ${error.message}`);
     }
@@ -109,7 +154,7 @@ bot.command('gen', async (ctx) => {
 bot.command('bin', async (ctx) => {
     const bin = ctx.message.text.split(' ')[1];
     if (!bin) {
-        return ctx.reply('❌ Uso: /bin [BIN]');
+        return ctx.reply('❌ Uso: /bin [BIN]\nEjemplo: /bin 431940');
     }
 
     if (!isValidBin(bin)) {
@@ -122,11 +167,13 @@ bot.command('bin', async (ctx) => {
     }
 
     const response = `
-🏦 Banco: ${binInfo.bank?.name || 'Desconocido'}
-💳 Marca: ${binInfo.scheme || 'Desconocida'}
-🌍 País: ${binInfo.country?.name || 'Desconocido'} (${binInfo.country?.alpha2 || '??'})
-📱 Tipo: ${binInfo.type || 'Desconocido'}
-⭐ Nivel: ${binInfo.brand || 'Desconocido'}
+🔍 *Información del BIN:* \`${bin}\`
+
+🏦 *Banco:* ${binInfo.bank}
+💳 *Marca:* ${binInfo.brand}
+🌍 *País:* ${binInfo.country} (${binInfo.countryCode})
+📱 *Tipo:* ${binInfo.type}
+⭐️ *Nivel:* ${binInfo.level}
     `;
 
     // Guardar en historial
@@ -140,7 +187,7 @@ bot.command('bin', async (ctx) => {
     });
     saveUserData(userId, userData);
 
-    ctx.reply(response);
+    ctx.reply(response, { parse_mode: 'Markdown' });
 });
 
 bot.command('favoritos', (ctx) => {
@@ -152,10 +199,10 @@ bot.command('favoritos', (ctx) => {
     }
 
     const response = userData.favorites.map((fav, index) => 
-        `${index + 1}. ${fav.bin} (${fav.month || 'MM'}/${fav.year || 'YY'})`
+        `${index + 1}. \`${fav.bin}\` (${fav.month || 'MM'}/${fav.year || 'YY'})`
     ).join('\n');
 
-    ctx.reply(`📌 Tus BINs favoritos:\n\n${response}`);
+    ctx.reply(`📌 *Tus BINs favoritos:*\n\n${response}`, { parse_mode: 'Markdown' });
 });
 
 bot.command('agregarbin', (ctx) => {
@@ -172,7 +219,6 @@ bot.command('agregarbin', (ctx) => {
     const userId = ctx.from.id;
     const userData = loadUserData(userId);
     
-    // Verificar si el BIN ya existe
     if (userData.favorites.some(fav => fav.bin === bin)) {
         return ctx.reply('❌ Este BIN ya está en tus favoritos');
     }
@@ -200,7 +246,7 @@ bot.command('eliminarbin', (ctx) => {
     const removedBin = userData.favorites.splice(index, 1)[0];
     saveUserData(userId, userData);
 
-    ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
+    ctx.reply(`✅ BIN \`${removedBin.bin}\` eliminado de favoritos`, { parse_mode: 'Markdown' });
 });
 
 bot.command('historial', (ctx) => {
@@ -214,13 +260,13 @@ bot.command('historial', (ctx) => {
     const response = userData.history.slice(0, 10).map((item, index) => {
         const date = new Date(item.timestamp).toLocaleString();
         if (item.type === 'gen') {
-            return `${index + 1}. Generación: ${item.bin} (${item.count} tarjetas) - ${date}`;
+            return `${index + 1}. Generación: \`${item.bin}\` (${item.count} tarjetas) - ${date}`;
         } else {
-            return `${index + 1}. Consulta: ${item.bin} - ${date}`;
+            return `${index + 1}. Consulta: \`${item.bin}\` - ${date}`;
         }
     }).join('\n');
 
-    ctx.reply(`📝 Historial reciente:\n\n${response}`);
+    ctx.reply(`📝 *Historial reciente:*\n\n${response}`, { parse_mode: 'Markdown' });
 });
 
 // Iniciar el bot
