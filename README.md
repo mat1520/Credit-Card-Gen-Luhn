@@ -1,202 +1,160 @@
-# 🎉 CardGen Pro
+# 🚀 CardGen Pro
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/MAT3810/card-gen-pro/main/public/logo.png" alt="CardGen Pro Logo" width="200"/>
+A sophisticated card number generator and BIN lookup tool built with Node.js and Telegram Bot API. Designed for educational and testing purposes, helping developers and QA teams simulate card inputs to validate forms, payment systems, or backend processing without using real data.
 
-  <p align="center">
-    <a href="https://credit-cart-gen-luhn.vercel.app">View Demo</a>
-    ·
-    <a href="https://github.com/yourusername/cardgen-pro/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/yourusername/cardgen-pro/issues">Request Feature</a>
-  </p>
+## 🌟 Features
 
-  ![License](https://img.shields.io/badge/license-MIT-blue)
-  ![Version](https://img.shields.io/badge/version-2.0.0-green)
-  ![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)
-</div>
+### Card Generation
+- **Multiple Formats**: PIPE, CSV, JSON, XML, SQL
+- **Customizable Parameters**: BIN, Month, Year, CVV
+- **Bulk Generation**: Generate up to 100 cards at once
+- **Luhn Algorithm**: Valid card number generation
+- **Favorites System**: Save and manage frequently used BINs
 
-## 📋 Table of Contents
+### BIN Lookup
+- **Detailed Information**: Bank, brand, country, type, level
+- **Multiple APIs**: Fallback support for reliable data
+- **History Tracking**: Keep track of your lookups
+- **Offline Cache**: Store results for faster access
 
-- [About The Project](#about-the-project)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## 🚀 About The Project
-
-CardGen Pro is an advanced card number generator and BIN lookup tool built with Node.js and Telegram Bot API. It provides a robust platform for generating valid card numbers using the Luhn algorithm and fetching detailed BIN information.
-
-### 🌟 Key Features
-
-- **Card Generation**
-  - Supports multiple formats (PIPE, CSV, JSON)
-  - Customizable month/year ranges
-  - Luhn algorithm validation
-  - Bulk generation capability
-
-- **BIN Lookup**
-  - Detailed bank information
-  - Card scheme identification
-  - Geographic data
-  - Type and level detection
-
-- **User Management**
-  - Favorites system
-  - Search history
-  - Custom preferences
+### User Experience
+- **Bilingual Support**: English and Spanish
+- **Responsive Design**: Works on all devices
+- **Dark Mode**: Eye-friendly interface
+- **Real-time Validation**: Instant feedback
+- **Export Options**: Multiple file formats
 
 ## 🏗 System Architecture
 
 ```mermaid
 graph TD
-    A[Telegram User] -->|Commands| B[Bot Interface]
+    A[User Interface] -->|HTTP| B[API Layer]
     B -->|Requests| C[Core Service]
     C -->|Card Generation| D[Generator Module]
     C -->|BIN Lookup| E[API Service]
     D -->|Validation| F[Luhn Algorithm]
     E -->|External API| G[BIN Database]
     C -->|Storage| H[User Data]
+    H -->|Local Storage| I[Favorites]
+    H -->|Local Storage| J[History]
 ```
 
-## 🚦 Getting Started
+## 🛠 Tech Stack
 
-### Prerequisites
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Backend**: Node.js, Express
+- **Database**: Local Storage
+- **APIs**: BIN Lookup, Telegram Bot API
+- **Tools**: Vite, ESLint, Prettier
 
-- Node.js >= 14.0.0
-- npm >= 6.14.0
-- Telegram Bot Token
+## 📦 Installation
 
-### Installation
-
-1. Clone the repository
+1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/cardgen-pro.git
+git clone https://github.com/mat1520/Credit-Cart-Gen-Luhn.git
+cd Credit-Cart-Gen-Luhn
 ```
 
-2. Install dependencies
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Configure environment variables
+3. Start the development server:
 ```bash
-cp .env.example .env
-# Edit .env with your settings
+npm run dev
 ```
 
-4. Start the bot
-```bash
-npm start
+## 🔧 Configuration
+
+Create a `.env` file in the root directory:
+```env
+BOT_TOKEN=your_telegram_bot_token
+API_KEY=your_bin_lookup_api_key
 ```
 
-## 💡 Usage
+## 📚 Usage
 
-### Bot Commands
+### Web Interface
+1. Open `index.html` in your browser
+2. Enter BIN number (6-16 digits)
+3. Select format and parameters
+4. Click "Generate" to create cards
 
-\`\`\`
-/start - Welcome message and command list
-/gen [BIN|month|year|] - Generate cards
-/bin [BIN] - Lookup BIN information
-/favorites - View saved BINs
-/addbin [BIN] - Add BIN to favorites
-/removebin [index] - Remove BIN from favorites
-/history - View search history
-/help - Show help message
-\`\`\`
+### Telegram Bot
+1. Start the bot: `/start`
+2. Generate cards: `/gen BIN|MM|YYYY|CVV`
+3. Lookup BIN: `/bin BIN`
+4. Manage favorites: `/favorites`
 
-### Example Usage
+## 🔍 Development Process
 
-1. Generate Cards:
-\`\`\`
-/gen 438108|05|25|
-\`\`\`
+```mermaid
+graph LR
+    A[Planning] --> B[Design]
+    B --> C[Development]
+    C --> D[Testing]
+    D --> E[Deployment]
+    E --> F[Maintenance]
+    
+    subgraph Planning
+        A1[Requirements]
+        A2[Architecture]
+        A3[Timeline]
+    end
+    
+    subgraph Design
+        B1[UI/UX]
+        B2[Database]
+        B3[API]
+    end
+    
+    subgraph Development
+        C1[Frontend]
+        C2[Backend]
+        C3[Integration]
+    end
+    
+    subgraph Testing
+        D1[Unit Tests]
+        D2[Integration]
+        D3[Security]
+    end
+```
 
-2. BIN Lookup:
-\`\`\`
-/bin 438108
-\`\`\`
+## 🛡️ Security Features
 
-## 📚 API Documentation
+- Rate limiting
+- Input validation
+- Error handling
+- Secure storage
+- API key protection
 
-### Card Generation API
+## 📈 Performance Optimization
 
-\`\`\`typescript
-interface CardGenOptions {
-  bin: string;
-  month?: string;
-  year?: string;
-  cvv?: string;
-  quantity?: number;
-}
-
-interface CardResponse {
-  number: string;
-  month: string;
-  year: string;
-  cvv: string;
-}
-\`\`\`
-
-### BIN Lookup API
-
-\`\`\`typescript
-interface BinResponse {
-  bank: string;
-  brand: string;
-  country: string;
-  type: string;
-  level: string;
-}
-\`\`\`
+- Lazy loading
+- Caching
+- Code splitting
+- Minification
+- Compression
 
 ## 🤝 Contributing
 
-1. Fork the Project
-2. Create your Feature Branch (\`git checkout -b feature/AmazingFeature\`)
-3. Commit your Changes (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push to the Branch (\`git push origin feature/AmazingFeature\`)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## 📄 License
 
-```
-MIT License
-
-Copyright (c) 2025 CardGen Pro
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-Owner - [@MAT3810](https://t.me/MAT3810)
-
-Project Link: [https://credit-cart-gen-luhn.vercel.app](https://credit-cart-gen-luhn.vercel.app)
+- Telegram: [@CardGenPro_BOT](https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx)
+- GitHub: [@mat1520](https://github.com/mat1520)
 
 ---
 
-<div align="center">
-  <sub>Built with ❤️ by <a href="https://t.me/MAT3810">MAT3810</a></sub>
-</div> 
+Built with ❤️ by MAT1520 
