@@ -1966,4 +1966,39 @@ button:disabled {
     }
 }
 
+/* ... existing code ... */
+
+.telegram-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    background: #0088cc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.telegram-link i {
+    font-size: 1.2rem;
+    transition: transform var(--transition-normal);
+}
+
+.telegram-link:hover {
+    background: #0077b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.telegram-link:hover i {
+    transform: scale(1.1);
+}
+
+.telegram-link:active {
+    transform: translateY(0);
+}
+
 /* ... existing code ... */ 
