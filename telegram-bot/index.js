@@ -14,6 +14,34 @@ const __dirname = dirname(__filename);
 const BOT_TOKEN = '7916820433:AAF3MB2Aw_sZWif1N4AxLZwRzEGolcRoVzg';
 const bot = new Telegraf(BOT_TOKEN);
 
+// Rate limiting and command debouncing
+const userStates = new Map();
+const COOLDOWN_PERIOD = 2000; // 2 seconds cooldown between commands
+
+const isCommandAllowed = (userId) => {
+    const now = Date.now();
+    const lastCommandTime = userStates.get(userId);
+    
+    if (!lastCommandTime || (now - lastCommandTime) >= COOLDOWN_PERIOD) {
+        userStates.set(userId, now);
+        return true;
+    }
+    return false;
+};
+
+// Middleware para rate limiting
+bot.use(async (ctx, next) => {
+    if (ctx.message && ctx.message.text && ctx.message.text.startsWith('/')) {
+        const userId = ctx.from.id;
+        
+        if (!isCommandAllowed(userId)) {
+            await ctx.reply('⚠️ Por favor, espera unos segundos antes de usar otro comando.');
+            return;
+        }
+    }
+    return next();
+});
+
 // Directorio de datos
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {
@@ -42,10 +70,12 @@ const saveUserData = (userId, data) => {
 // Función para consultar BIN usando APIs alternativas
 const lookupBin = async (bin) => {
     try {
+        console.log(`Consultando BIN ${bin} en binlist.net...`);
         // Primera API: binlist.net
         const response1 = await fetch(`https://lookup.binlist.net/${bin}`);
         if (response1.ok) {
             const data1 = await response1.json();
+            console.log('Respuesta de binlist.net:', data1);
             return {
                 bank: data1.bank?.name || 'Desconocido',
                 brand: data1.scheme || 'Desconocida',
@@ -55,11 +85,14 @@ const lookupBin = async (bin) => {
                 level: data1.brand || 'Desconocido'
             };
         }
+        console.log(`binlist.net falló con status ${response1.status}`);
 
+        console.log(`Consultando BIN ${bin} en bintable.com...`);
         // Segunda API: bintable.com
         const response2 = await fetch(`https://api.bintable.com/v1/${bin}?api_key=19d935a6d3244f3f8bab8f09157e4936`);
         if (response2.ok) {
             const data2 = await response2.json();
+            console.log('Respuesta de bintable.com:', data2);
             return {
                 bank: data2.bank?.name || 'Desconocido',
                 brand: data2.scheme || data2.brand || 'Desconocida',
@@ -69,6 +102,7 @@ const lookupBin = async (bin) => {
                 level: data2.level || 'Desconocido'
             };
         }
+        console.log(`bintable.com falló con status ${response2.status}`);
 
         throw new Error('No se pudo obtener información del BIN');
     } catch (error) {
@@ -276,10 +310,50 @@ bot.command('historial', (ctx) => {
 });
 
 // Iniciar el bot
-bot.launch()
-    .then(() => console.log('Bot iniciado'))
-    .catch(err => console.error('Error al iniciar el bot:', err));
+let isShuttingDown = false;
 
-// Manejar cierre gracioso
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+const startBot = async () => {
+    try {
+        await bot.launch();
+        console.log('Bot iniciado');
+        
+        // Signal ready to PM2
+        if (process.send) {
+            process.send('ready');
+        }
+    } catch (err) {
+        console.error('Error al iniciar el bot:', err);
+        process.exit(1);
+    }
+};
+
+// Error handling for the bot
+bot.catch((err, ctx) => {
+    console.error('Error en el manejo del comando:', err);
+    if (ctx && !isShuttingDown) {
+        ctx.reply('❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.');
+    }
+});
+
+// Graceful shutdown
+const shutdown = async (signal) => {
+    if (isShuttingDown) return;
+    isShuttingDown = true;
+    
+    console.log(`Recibida señal ${signal}. Iniciando apagado gracioso...`);
+    
+    try {
+        await bot.stop(signal);
+        console.log('Bot detenido correctamente');
+    } catch (err) {
+        console.error('Error al detener el bot:', err);
+    }
+    
+    process.exit(0);
+};
+
+process.once('SIGINT', () => shutdown('SIGINT'));
+process.once('SIGTERM', () => shutdown('SIGTERM'));
+
+// Start the bot
+startBot();
