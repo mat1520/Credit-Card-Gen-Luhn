@@ -1,0 +1,17 @@
+{
+  "favorites": [],
+  "history": [
+    {
+      "type": "gen",
+      "bin": "493176",
+      "count": 10,
+      "timestamp": "2025-05-01T03:02:39.420Z"
+    },
+    {
+      "type": "gen",
+      "bin": "438108",
+      "count": 10,
+      "timestamp": "2025-05-01T03:01:49.495Z"
+    }
+  ]
+}

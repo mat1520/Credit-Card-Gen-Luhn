@@ -3,6 +3,38 @@
   "history": [
     {
       "type": "lookup",
+      "bin": "438108",
+      "info": {
+        "bank_name": "Banco Pichincha C.a.",
+        "country": "Ecuador",
+        "url": "",
+        "type": "Classic",
+        "scheme": "Visa",
+        "bin": "438108"
+      },
+      "timestamp": "2025-05-01T03:02:38.924Z"
+    },
+    {
+      "type": "gen",
+      "bin": "414962935691",
+      "count": 10,
+      "timestamp": "2025-05-01T03:01:49.496Z"
+    },
+    {
+      "type": "lookup",
+      "bin": "414718",
+      "info": {
+        "bank_name": "Wells Fargo Bank N.a.",
+        "country": "United States Of America",
+        "url": "",
+        "type": "Signature",
+        "scheme": "Visa",
+        "bin": "414718"
+      },
+      "timestamp": "2025-04-30T02:48:09.384Z"
+    },
+    {
+      "type": "lookup",
       "bin": "401543",
       "info": {
         "bank_name": "Washington Federal Bank",

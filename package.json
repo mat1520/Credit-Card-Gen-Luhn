@@ -2,8 +2,9 @@
     "name": "cardgen",
     "version": "1.0.0",
     "description": "Credit Card Generator with Luhn Algorithm",
-    "main": "src/js/app.js",
+    "main": "telegram-bot/index.js",
     "scripts": {
+        "start": "node telegram-bot/index.js",
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview"
