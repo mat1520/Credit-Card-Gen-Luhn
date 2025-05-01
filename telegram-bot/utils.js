@@ -1,7 +1,7 @@
 // Función para validar BIN
 export const isValidBin = (bin) => {
     if (!bin) return false;
-    if (!/^[\dx]{6,16}$/.test(bin)) return false;
+    if (!/^\d{6,16}$/.test(bin)) return false;
     return true;
 };
 
@@ -49,9 +49,7 @@ const generateValidCardNumber = (bin) => {
     
     // Completar con números aleatorios hasta length-1
     while (cardNumber.length < length - 1) {
-        if (cardNumber.includes('x')) {
-            cardNumber = cardNumber.replace('x', randomNum(0, 9));
-        }
+        cardNumber = cardNumber + randomNum(0, 9);
     }
     
     // Encontrar el último dígito que hace válido el número

@@ -142,3 +142,524 @@
 2025-04-30T22:19:28: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 2025-04-30T22:19:28: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
 2025-04-30T22:19:28: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:19:33: (node:8356) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:19:33: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:19:33: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:19:33: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:19:55: (node:17552) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:19:55: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:19:55: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:19:55: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:20:06: (node:16024) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:20:06: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:20:06: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:20:06: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:20:30: (node:17420) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:20:30: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:20:30: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:20:30: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:20:43: (node:12140) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:20:43: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:20:43: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:20:43: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:20:48: (node:8348) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:20:48: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:20:48: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:20:48: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:21:17: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:21:17:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:21:17:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:21:17:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:21:17:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:21:17:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13) {
+2025-04-30T22:21:17:   response: {
+2025-04-30T22:21:17:     ok: false,
+2025-04-30T22:21:17:     error_code: 409,
+2025-04-30T22:21:17:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:21:17:   },
+2025-04-30T22:21:17:   on: {
+2025-04-30T22:21:17:     method: 'getUpdates',
+2025-04-30T22:21:17:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:21:17:   }
+2025-04-30T22:21:17: }
+2025-04-30T22:21:22: (node:13988) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:21:22: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:21:22: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:21:22: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:24:08: (node:18096) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:24:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:24:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:24:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:24:15: (node:6856) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:24:15: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:24:15: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:24:15: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:24:24: (node:15256) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:24:24: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:24:24: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:24:24: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:24:30: (node:15180) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:24:30: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:24:30: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:24:30: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:24:52: Error al consultar BIN: Error: No se pudo obtener información del BIN
+2025-04-30T22:24:52:     at lookupBin (file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:73:15)
+2025-04-30T22:24:52:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:24:52:     at async file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js:164:21
+2025-04-30T22:24:52:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:24:52:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:24:52:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:24:52:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:24:52:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:24:52:     at async C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:519:21
+2025-04-30T22:24:52:     at async execute (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\composer.js:518:17)
+2025-04-30T22:24:58: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:24:58:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:24:58:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:24:58:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:24:58:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:24:58:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13) {
+2025-04-30T22:24:58:   response: {
+2025-04-30T22:24:58:     ok: false,
+2025-04-30T22:24:58:     error_code: 409,
+2025-04-30T22:24:58:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:24:58:   },
+2025-04-30T22:24:58:   on: {
+2025-04-30T22:24:58:     method: 'getUpdates',
+2025-04-30T22:24:58:     payload: { timeout: 50, offset: 749971299, allowed_updates: [] }
+2025-04-30T22:24:58:   }
+2025-04-30T22:24:58: }
+2025-04-30T22:25:04: (node:18304) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:25:04: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:25:04: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:25:04: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:26:22: SyntaxError: Unexpected end of input
+2025-04-30T22:26:22:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:22:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:22:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:22:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:22:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:26: SyntaxError: Unexpected end of input
+2025-04-30T22:26:26:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:26:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:26:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:26:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:26:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:30: SyntaxError: Unexpected end of input
+2025-04-30T22:26:30:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:30:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:30:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:30:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:30:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:34: SyntaxError: Unexpected end of input
+2025-04-30T22:26:34:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:34:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:34:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:34:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:34:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:39: SyntaxError: Unexpected end of input
+2025-04-30T22:26:39:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:39:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:39:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:39:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:39:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:43: SyntaxError: Unexpected end of input
+2025-04-30T22:26:43:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:43:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:43:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:43:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:43:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:47: SyntaxError: Unexpected end of input
+2025-04-30T22:26:47:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:47:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:47:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:47:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:47:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:51: SyntaxError: Unexpected end of input
+2025-04-30T22:26:51:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:51:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:51:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:51:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:51:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:55: SyntaxError: Unexpected end of input
+2025-04-30T22:26:55:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:55:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:55:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:55:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:55:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:26:59: SyntaxError: Unexpected end of input
+2025-04-30T22:26:59:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:26:59:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:26:59:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:26:59:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:26:59:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:03: SyntaxError: Unexpected end of input
+2025-04-30T22:27:03:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:03:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:03:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:03:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:03:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:08: SyntaxError: Unexpected end of input
+2025-04-30T22:27:08:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:08:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:08:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:08:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:08:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:12: SyntaxError: Unexpected end of input
+2025-04-30T22:27:12:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:12:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:12:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:12:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:12:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:16: SyntaxError: Unexpected end of input
+2025-04-30T22:27:16:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:16:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:16:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:16:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:16:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:20: SyntaxError: Unexpected end of input
+2025-04-30T22:27:20:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:20:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:20:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:20:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:20:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:24: SyntaxError: Unexpected end of input
+2025-04-30T22:27:24:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:24:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:24:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:24:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:24:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:28: SyntaxError: Unexpected end of input
+2025-04-30T22:27:28:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:28:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:28:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:28:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:28:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:32: SyntaxError: Unexpected end of input
+2025-04-30T22:27:32:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:32:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:32:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:32:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:32:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:37: SyntaxError: Unexpected end of input
+2025-04-30T22:27:37:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:37:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:37:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:37:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:37:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:37: SyntaxError: Unexpected end of input
+2025-04-30T22:27:37:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:37:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:37:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:37:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:37:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:41: SyntaxError: Unexpected end of input
+2025-04-30T22:27:41:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:41:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:41:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:41:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:41:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:45: SyntaxError: Unexpected end of input
+2025-04-30T22:27:45:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:45:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:45:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:45:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:45:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:49: SyntaxError: Unexpected end of input
+2025-04-30T22:27:49:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:49:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:49:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:49:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:49:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:53: SyntaxError: Unexpected end of input
+2025-04-30T22:27:53:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:53:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:53:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:53:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:53:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:27:58: SyntaxError: Unexpected end of input
+2025-04-30T22:27:58:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:27:58:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:27:58:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:27:58:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:27:58:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:02: SyntaxError: Unexpected end of input
+2025-04-30T22:28:02:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:02:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:02:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:02:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:02:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:06: SyntaxError: Unexpected end of input
+2025-04-30T22:28:06:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:06:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:06:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:06:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:06:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:10: SyntaxError: Unexpected end of input
+2025-04-30T22:28:10:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:10:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:10:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:10:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:10:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:14: SyntaxError: Unexpected end of input
+2025-04-30T22:28:14:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:14:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:14:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:14:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:14:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:18: SyntaxError: Unexpected end of input
+2025-04-30T22:28:18:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:18:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:18:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:18:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:18:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:22: SyntaxError: Unexpected end of input
+2025-04-30T22:28:22:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:22:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:22:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:22:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:22:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:27: SyntaxError: Unexpected end of input
+2025-04-30T22:28:27:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:27:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:27:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:27:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:27:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:31: SyntaxError: Unexpected end of input
+2025-04-30T22:28:31:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:31:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:31:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:31:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:31:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:35: SyntaxError: Unexpected end of input
+2025-04-30T22:28:35:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:35:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:35:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:35:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:35:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:39: SyntaxError: Unexpected end of input
+2025-04-30T22:28:39:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:39:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:39:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:39:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:39:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:43: SyntaxError: Unexpected end of input
+2025-04-30T22:28:43:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:43:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:43:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:43:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:43:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:47: SyntaxError: Unexpected end of input
+2025-04-30T22:28:47:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:47:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:47:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:47:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:47:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:51: SyntaxError: Unexpected end of input
+2025-04-30T22:28:51:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:51:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:51:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:51:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:51:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:28:56: SyntaxError: Unexpected end of input
+2025-04-30T22:28:56:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:28:56:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:28:56:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:28:56:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:28:56:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:00: SyntaxError: Unexpected end of input
+2025-04-30T22:29:00:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:00:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:00:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:00:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:00:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:04: SyntaxError: Unexpected end of input
+2025-04-30T22:29:04:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:04:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:04:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:04:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:04:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:08: SyntaxError: Unexpected end of input
+2025-04-30T22:29:08:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:08:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:08:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:08:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:08:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:12: SyntaxError: Unexpected end of input
+2025-04-30T22:29:12:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:12:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:12:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:12:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:12:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:16: SyntaxError: Unexpected end of input
+2025-04-30T22:29:16:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:16:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:16:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:16:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:16:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:21: SyntaxError: Unexpected end of input
+2025-04-30T22:29:21:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:21:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:21:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:21:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:21:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:25: SyntaxError: Unexpected end of input
+2025-04-30T22:29:25:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:25:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:25:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:25:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:25:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:29: SyntaxError: Unexpected end of input
+2025-04-30T22:29:29:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:29:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:29:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:29:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:29:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:33: SyntaxError: Unexpected end of input
+2025-04-30T22:29:33:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:33:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:33:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:33:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:33:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:37: SyntaxError: Unexpected end of input
+2025-04-30T22:29:37:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:37:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:37:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:37:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:37:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:41: SyntaxError: Unexpected end of input
+2025-04-30T22:29:41:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:41:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:41:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:41:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:41:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:45: SyntaxError: Unexpected end of input
+2025-04-30T22:29:45:     at compileSourceTextModule (node:internal/modules/esm/utils:338:16)
+2025-04-30T22:29:45:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:102:18)
+2025-04-30T22:29:45:     at #translate (node:internal/modules/esm/loader:468:12)
+2025-04-30T22:29:45:     at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:515:27)
+2025-04-30T22:29:45:     at async ModuleJob._link (node:internal/modules/esm/module_job:115:19)
+2025-04-30T22:29:50: (node:15240) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:29:50: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:29:50: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:29:50: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:29:52: (node:6148) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:29:52: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:29:52: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:29:52: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:30:07: (node:14344) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:30:07: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:30:07: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:30:07: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:30:08: (node:2200) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:30:08: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:30:08: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:30:08: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:30:14: (node:15236) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:30:14: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:30:14: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:30:14: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:30:51: (node:19808) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:30:51: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:30:51: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:30:51: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:31:18: Error al iniciar el bot: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-04-30T22:31:18:     at Telegram.callApi (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\client.js:315:19)
+2025-04-30T22:31:18:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-30T22:31:18:     at async [Symbol.asyncIterator] (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:30:33)
+2025-04-30T22:31:18:     at async Polling.loop (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\core\network\polling.js:73:30)
+2025-04-30T22:31:18:     at async Telegraf.launch (C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\node_modules\telegraf\lib\telegraf.js:194:13) {
+2025-04-30T22:31:18:   response: {
+2025-04-30T22:31:18:     ok: false,
+2025-04-30T22:31:18:     error_code: 409,
+2025-04-30T22:31:18:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+2025-04-30T22:31:18:   },
+2025-04-30T22:31:18:   on: {
+2025-04-30T22:31:18:     method: 'getUpdates',
+2025-04-30T22:31:18:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+2025-04-30T22:31:18:   }
+2025-04-30T22:31:18: }
+2025-04-30T22:31:25: (node:16668) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:31:25: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:31:25: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:31:25: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:33:26: (node:2640) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:33:26: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:33:26: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:33:26: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:33:28: (node:14456) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:33:28: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:33:28: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:33:28: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:16: (node:20412) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:16: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:16: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:16: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:17: (node:18576) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:17: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:17: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:17: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:23: (node:7072) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:23: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:23: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:23: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:35: (node:4272) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:35: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:35: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:35: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:36: (node:17732) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:36: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:36: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:36: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:38: (node:3488) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:38: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:38: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:38: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:39: (node:1656) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:39: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:39: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:39: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:40: (node:14348) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:40: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:40: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:40: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:42: (node:17688) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:42: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:42: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:42: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:43: (node:20264) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:43: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:43: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:43: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:44: (node:12668) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:44: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:44: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:44: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:46: (node:7104) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:46: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:46: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:46: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:47: (node:228) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:47: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:47: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:47: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:49: (node:18864) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:49: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:49: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:49: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:50: (node:8368) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:50: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:50: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:50: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:51: (node:12512) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:51: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:51: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:51: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:53: (node:368) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:53: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:53: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:53: (Use `node --trace-warnings ...` to show where the warning was created)
+2025-04-30T22:34:54: (node:5768) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Ariel/OneDrive/Desktop/web%20gen/telegram-bot/index.js is not specified and it doesn't parse as CommonJS.
+2025-04-30T22:34:54: Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2025-04-30T22:34:54: To eliminate this warning, add "type": "module" to C:\Users\Ariel\OneDrive\Desktop\web gen\telegram-bot\package.json.
+2025-04-30T22:34:54: (Use `node --trace-warnings ...` to show where the warning was created)
