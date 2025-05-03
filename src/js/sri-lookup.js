@@ -6,9 +6,9 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
     const resultContent = document.getElementById('resultContent');
     
     try {
-        console.log('Iniciando consulta SRI para cédula:', cedula);
-        // Consulta directa a la API del SRI
-        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
+        console.log('Iniciando consulta de nombres para cédula:', cedula);
+        // Consulta a la nueva API
+        const url = `https://app3902.privynote.net/api/v1/client/find-names?cedula=${cedula}`;
         console.log('URL de la consulta:', url);
         
         const response = await fetch(url);
@@ -25,29 +25,10 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
             return;
         }
         
-        if (data.contribuyente) {
-            let html = `
-                <div class="result-item">
-                    <p><strong>Identificación:</strong> ${data.contribuyente.identificacion || 'No disponible'}</p>
-                    <p><strong>Nombre Comercial:</strong> ${data.contribuyente.nombreComercial || 'No disponible'}</p>
-                    <p><strong>Clase:</strong> ${data.contribuyente.clase || 'No disponible'}</p>
-                    <p><strong>Tipo de Identificación:</strong> ${data.contribuyente.tipoIdentificacion || 'No disponible'}</p>
-                </div>
-            `;
-            
-            if (data.deuda) {
-                html += `
-                    <div class="result-item">
-                        <h3>Información de Deuda</h3>
-                        <p><strong>Estado:</strong> ${data.deuda.estado || 'No disponible'}</p>
-                        <p><strong>Monto:</strong> ${data.deuda.monto || 'No disponible'}</p>
-                    </div>
-                `;
-            }
-            
-            resultContent.innerHTML = html;
+        if (data.nombres) {
+            resultContent.innerHTML = `<div class="result-item"><p><strong>Nombres:</strong> ${data.nombres}</p></div>`;
         } else {
-            resultContent.innerHTML = '<p class="error">No se encontró información para la cédula proporcionada.</p>';
+            resultContent.innerHTML = '<p class="error">No se encontró información de nombres para la cédula proporcionada.</p>';
         }
         
         resultDiv.style.display = 'block';
@@ -55,7 +36,7 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
         console.error('Error detallado:', error);
         let errorMessage = error.message;
         if (error.message.includes('Failed to fetch')) {
-            errorMessage = 'No se pudo conectar con el servidor del SRI. Por favor, intente más tarde.';
+            errorMessage = 'No se pudo conectar con el servidor. Por favor, intente más tarde.';
         }
         resultContent.innerHTML = `
             <p class="error">Error al realizar la consulta:</p>
