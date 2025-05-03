@@ -139,8 +139,8 @@ const lookupBin = async (bin) => {
 const registerCommand = (command, handler) => {
     // Registrar con prefijo /
     bot.command(command, handler);
-    // Registrar con prefijo .
-    bot.hears(`^\.${command}`, handler);
+    // Registrar con prefijo . usando regex insensible a mayúsculas
+    bot.hears(new RegExp(`^\\.${command}\\b`, 'i'), handler);
 };
 
 // Función para extraer argumentos del mensaje
