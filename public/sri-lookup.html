@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CardGen Pro - Consulta SRI por cédula">
+    <meta name="theme-color" content="#7c3aed">
+    <title>Consulta SRI | CardGen Pro</title>
+    <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg">
+    <link rel="stylesheet" href="./src/styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="background-animation">
+        <div class="gradient-sphere"></div>
+        <div class="gradient-sphere"></div>
+        <div class="gradient-sphere"></div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="./src/assets/logo.svg" alt="CardGen Pro Logo" width="40" height="40">
+                    <span>CardGen Pro</span>
+                </a>
+            </div>
+            <nav class="header-right">
+                <a href="bin-lookup.html" class="nav-button bin-lookup-button" title="Consultar BIN">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <span>Consultar BIN</span>
+                </a>
+                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
+                    <i class="fab fa-telegram" aria-hidden="true"></i>
+                    <span class="sr-only">Telegram</span>
+                </a>
+                <a href="https://github.com/mat1520" class="github-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="generator-container">
+            <h1>Consulta SRI por Cédula</h1>
+            <form id="sriForm" class="card-generator-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cedula">Número de Cédula</label>
+                        <input type="text" id="cedula" name="cedula" placeholder="Ingrese el número de cédula" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="generate-button">
+                            <i class="fas fa-search"></i>
+                            Consultar
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div id="result" class="results-section" style="display: none;">
+                <div class="results-header">
+                    <h3><i class="fas fa-list"></i> Resultados de la Consulta</h3>
+                </div>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-project-info">
+                    <span class="project-name">CardGen Pro</span>
+                    <p class="project-description">Generador avanzado de tarjetas con funcionalidades de BIN lookup y herramientas de validación.</p>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="footer-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                        <span>v2.0.0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <span>MIT License</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram" aria-hidden="true"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://github.com/mat520" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://github.com/mat520/cardgen-pro/issues" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-bug" aria-hidden="true"></i>
+                    <span>Issues</span>
+                </a>
+                <a href="https://github.com/mat520/cardgen-pro#readme" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <span>Docs</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sri-lookup.js"></script>
+</body>
+</html> 
