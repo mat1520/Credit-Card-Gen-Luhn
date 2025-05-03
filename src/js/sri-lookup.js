@@ -7,8 +7,8 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
     
     try {
         console.log('Iniciando consulta SRI para cédula:', cedula);
-        // Usar el proxy serverless en Vercel
-        const url = `/api/sri?cedula=${cedula}`;
+        // Consulta directa a la API del SRI
+        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
         console.log('URL de la consulta:', url);
         
         const response = await fetch(url);
