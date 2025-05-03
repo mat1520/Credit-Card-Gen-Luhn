@@ -12,48 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="dark-theme">
-    <div class="background-animation">
-        <div class="gradient-sphere"></div>
-        <div class="gradient-sphere"></div>
-        <div class="gradient-sphere"></div>
+    <div class="main-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;">
+        <img src="/src/assets/logo.svg" alt="CardGen Pro Logo" width="80" height="80" style="margin-bottom:24px;">
+        <h1>Consulta SRI por Cédula</h1>
+        <p style="font-size:1.2rem;margin:24px 0;max-width:400px;text-align:center;">
+            <strong>La consulta SRI por cédula solo está disponible en nuestro <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" target="_blank" rel="noopener noreferrer">bot de Telegram</a>.</strong><br><br>
+            Por restricciones de la API, realiza tus consultas directamente en Telegram.
+        </p>
+        <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" target="_blank" rel="noopener noreferrer" class="telegram-link" style="font-size:1.1rem;padding:12px 24px;background:#7c3aed;color:#fff;border-radius:8px;text-decoration:none;display:inline-block;margin-top:16px;">
+            <i class="fab fa-telegram"></i> Ir al Bot de Telegram
+        </a>
     </div>
-
-    <header class="header">
-        <div class="header-content">
-            <div class="header-left">
-                <a href="/" class="logo">
-                    <img src="/src/assets/logo.svg" alt="CardGen Pro Logo" width="40" height="40">
-                    <span>CardGen Pro</span>
-                </a>
-            </div>
-            <nav class="header-right">
-                <a href="/bin-lookup" class="nav-button bin-lookup-button" title="Consultar BIN">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <span>Consultar BIN</span>
-                </a>
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
-                    <i class="fab fa-telegram" aria-hidden="true"></i>
-                    <span class="sr-only">Telegram</span>
-                </a>
-                <a href="https://github.com/mat1520" class="github-link" target="_blank" rel="noopener noreferrer" title="GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                    <span class="sr-only">GitHub</span>
-                </a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="generator-container">
-            <h1>Consulta SRI por Cédula</h1>
-            <div class="info-box">
-                <p>Para realizar consultas SRI por cédula, utiliza nuestro <b>bot de Telegram</b>:</p>
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-telegram"></i> Ir al Bot de Telegram
-                </a>
-            </div>
-        </div>
-    </main>
 
     <footer class="footer">
         <div class="footer-content">
@@ -95,7 +64,5 @@
             </div>
         </div>
     </footer>
-
-    <script type="module" src="/src/js/sri-lookup.js"></script>
 </body>
 </html> 
