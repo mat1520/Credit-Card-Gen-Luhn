@@ -7,32 +7,23 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
     
     try {
         console.log('Iniciando consulta SRI para cédula:', cedula);
-        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
+        // Usar el proxy serverless en Vercel
+        const url = `/api/sri?cedula=${cedula}`;
         console.log('URL de la consulta:', url);
         
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Origin': window.location.origin,
-                'Referer': window.location.origin
-            },
-            mode: 'cors',
-            credentials: 'omit'
-        });
-        
-        console.log('Estado de la respuesta:', response.status);
-        console.log('Headers de la respuesta:', response.headers);
-        
+        const response = await fetch(url);
         if (!response.ok) {
-            if (response.status === 0) {
-                throw new Error('Error de CORS: No se puede acceder al recurso. Por favor, intente más tarde.');
-            }
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Datos recibidos:', data);
+        
+        if (data.error) {
+            resultContent.innerHTML = `<p class="error">${data.error}</p>`;
+            resultDiv.style.display = 'block';
+            return;
+        }
         
         if (data.contribuyente) {
             let html = `
