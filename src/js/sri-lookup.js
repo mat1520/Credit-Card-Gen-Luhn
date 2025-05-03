@@ -6,8 +6,28 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
     const resultContent = document.getElementById('resultContent');
     
     try {
-        const response = await fetch(`https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`);
+        console.log('Iniciando consulta SRI para cédula:', cedula);
+        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
+        console.log('URL de la consulta:', url);
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Origin': window.location.origin
+            },
+            mode: 'cors'
+        });
+        
+        console.log('Estado de la respuesta:', response.status);
+        console.log('Headers de la respuesta:', response.headers);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
+        console.log('Datos recibidos:', data);
         
         if (data.contribuyente) {
             let html = `
@@ -36,8 +56,12 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
         
         resultDiv.style.display = 'block';
     } catch (error) {
-        resultContent.innerHTML = '<p class="error">Error al realizar la consulta. Por favor, intente nuevamente.</p>';
+        console.error('Error detallado:', error);
+        resultContent.innerHTML = `
+            <p class="error">Error al realizar la consulta:</p>
+            <p class="error-details">${error.message}</p>
+            <p class="error-help">Por favor, intente nuevamente o contacte al soporte.</p>
+        `;
         resultDiv.style.display = 'block';
-        console.error('Error:', error);
     }
 }); 
