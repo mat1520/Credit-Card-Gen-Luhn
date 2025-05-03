@@ -14,15 +14,20 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Origin': window.location.origin
+                'Origin': window.location.origin,
+                'Referer': window.location.origin
             },
-            mode: 'cors'
+            mode: 'cors',
+            credentials: 'omit'
         });
         
         console.log('Estado de la respuesta:', response.status);
         console.log('Headers de la respuesta:', response.headers);
         
         if (!response.ok) {
+            if (response.status === 0) {
+                throw new Error('Error de CORS: No se puede acceder al recurso. Por favor, intente más tarde.');
+            }
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
@@ -57,9 +62,13 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
         resultDiv.style.display = 'block';
     } catch (error) {
         console.error('Error detallado:', error);
+        let errorMessage = error.message;
+        if (error.message.includes('Failed to fetch')) {
+            errorMessage = 'No se pudo conectar con el servidor del SRI. Por favor, intente más tarde.';
+        }
         resultContent.innerHTML = `
             <p class="error">Error al realizar la consulta:</p>
-            <p class="error-details">${error.message}</p>
+            <p class="error-details">${errorMessage}</p>
             <p class="error-help">Por favor, intente nuevamente o contacte al soporte.</p>
         `;
         resultDiv.style.display = 'block';

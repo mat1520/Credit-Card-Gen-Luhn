@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
     root: '.',
-    base: './',
+    base: '/',
     publicDir: 'public',
     build: {
         outDir: 'dist',
@@ -12,7 +12,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                binLookup: resolve(__dirname, 'bin-lookup.html')
+                binLookup: resolve(__dirname, 'bin-lookup.html'),
+                sriLookup: resolve(__dirname, 'sri-lookup.html')
             },
             output: {
                 assetFileNames: (assetInfo) => {
