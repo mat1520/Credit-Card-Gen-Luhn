@@ -275,33 +275,48 @@ const handleDotCommand = async (ctx) => {
         case 'start':
         case 'ayuda':
         case 'help':
-            const helpText = `
-👋 ¡Bienvenido al Generador de Tarjetas!
+            const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
 
-Comandos disponibles:
+Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
 
-🔧 Generación de Tarjetas:
-/gen o .gen BIN|MM|YYYY|CVV - Generar 10 tarjetas
-Ejemplo: /gen 477349002646|05|2027|123
+🔧 Generación de Tarjetas
+gen BIN|MM|YYYY|CVV  
+► Genera 10 tarjetas automáticamente  
+Ejemplo: gen 477349002646|05|2027|123
 
-🔍 Consultas:
-/bin o .bin BIN - Consultar información de BIN
-Ejemplo: /bin 431940
-/cedula o .cedula <número de cédula> - Consulta información SRI por cédula
-Ejemplo: /cedula 17xxxxxxxx
+🔍 Consultas Inteligentes
+bin BIN  
+► Información detallada de un BIN  
+Ejemplo: bin 431940
 
-⭐️ Gestión de Favoritos:
-/favoritos o .favoritos - Ver BINs guardados
-/agregarbin o .agregarbin BIN mes? año? cvv? - Guardar BIN
-/eliminarbin o .eliminarbin índice - Eliminar BIN guardado
+cedula <número de cédula>  
+► Consulta datos SRI por cédula  
+Ejemplo: cedula 17xxxxxxxx
 
-📋 Otros:
-/historial o .historial - Ver historial de consultas
-/clear o .clear - Limpiar el chat
-/ayuda o .ayuda - Mostrar esta ayuda
+⭐️ Favoritos
+favoritos  
+► Lista tus BINs guardados
 
-Desarrollado por @mat1520
-            `;
+agregarbin BIN [mes] [año] [cvv]  
+► Guarda un BIN para usarlo luego
+
+eliminarbin <índice>  
+► Elimina un BIN de tu lista
+
+📋 Utilidades
+historial  
+► Revisa tus consultas anteriores
+
+clear  
+► Limpia el chat
+
+ayuda  
+► Muestra esta guía de comandos
+
+🌐 Prueba también la versión web  
+https://credit-cart-gen-luhn.vercel.app/index.html
+
+Desarrollado con ❤️ por @mat1520`;
             await ctx.reply(helpText);
             return true;
 
@@ -367,33 +382,48 @@ bot.on('text', async (ctx, next) => {
 
 // Comandos del bot
 registerCommand('start', (ctx) => {
-    const helpText = `
-👋 ¡Bienvenido al Generador de Tarjetas!
+    const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
 
-Comandos disponibles:
+Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
 
-🔧 Generación de Tarjetas:
-/gen o .gen BIN|MM|YYYY|CVV - Generar 10 tarjetas
-Ejemplo: /gen 477349002646|05|2027|123
+🔧 Generación de Tarjetas
+gen BIN|MM|YYYY|CVV  
+► Genera 10 tarjetas automáticamente  
+Ejemplo: gen 477349002646|05|2027|123
 
-🔍 Consultas:
-/bin o .bin BIN - Consultar información de BIN
-Ejemplo: /bin 431940
-/cedula o .cedula <número de cédula> - Consulta información SRI por cédula
-Ejemplo: /cedula 17xxxxxxxx
+🔍 Consultas Inteligentes
+bin BIN  
+► Información detallada de un BIN  
+Ejemplo: bin 431940
 
-⭐️ Gestión de Favoritos:
-/favoritos o .favoritos - Ver BINs guardados
-/agregarbin o .agregarbin BIN mes? año? cvv? - Guardar BIN
-/eliminarbin o .eliminarbin índice - Eliminar BIN guardado
+cedula <número de cédula>  
+► Consulta datos SRI por cédula  
+Ejemplo: cedula 17xxxxxxxx
 
-📋 Otros:
-/historial o .historial - Ver historial de consultas
-/clear o .clear - Limpiar el chat
-/ayuda o .ayuda - Mostrar esta ayuda
+⭐️ Favoritos
+favoritos  
+► Lista tus BINs guardados
 
-Desarrollado por @mat1520
-    `;
+agregarbin BIN [mes] [año] [cvv]  
+► Guarda un BIN para usarlo luego
+
+eliminarbin <índice>  
+► Elimina un BIN de tu lista
+
+📋 Utilidades
+historial  
+► Revisa tus consultas anteriores
+
+clear  
+► Limpia el chat
+
+ayuda  
+► Muestra esta guía de comandos
+
+🌐 Prueba también la versión web  
+https://credit-cart-gen-luhn.vercel.app/index.html
+
+Desarrollado con ❤️ por @mat1520`;
     ctx.reply(helpText);
 });
 
