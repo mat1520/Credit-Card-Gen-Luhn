@@ -79,21 +79,10 @@ class CardGenerator {
         });
 
         // Favorites
-        const addFavoriteButton = document.getElementById('add-favorite');
         const favoriteModal = document.getElementById('favorite-modal');
         const closeModalButton = document.getElementById('close-modal');
         const cancelModalButton = document.querySelector('.modal-cancel');
         const favoriteForm = document.getElementById('favorite-form');
-
-        addFavoriteButton?.addEventListener('click', () => {
-            const bin = document.getElementById('bin').value;
-            if (bin) {
-                document.getElementById('favorite-bin').value = bin;
-                favoriteModal.classList.add('show');
-            } else {
-                this.showNotification('Por favor ingresa un BIN válido', 'error');
-            }
-        });
 
         closeModalButton?.addEventListener('click', () => {
             favoriteModal.classList.remove('show');
@@ -106,6 +95,31 @@ class CardGenerator {
         favoriteForm?.addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveFavorite();
+        });
+
+        // Nuevo: abrir modal de favoritos desde el header
+        const openFavoritesButton = document.getElementById('open-favorites');
+        openFavoritesButton?.addEventListener('click', () => {
+            document.getElementById('favorite-modal').classList.add('show');
+            this.updateFavoritesList();
+        });
+
+        // Mostrar/ocultar favoritos con el botón de ojo
+        const favoritesSection = document.querySelector('.favorites-section');
+        const favoritesList = document.getElementById('favorites-list');
+        const toggleFavoritesBtn = document.getElementById('toggle-favorites-visibility');
+        const favoritesVisibilityIcon = document.getElementById('favorites-visibility-icon');
+        let favoritesVisible = true;
+        toggleFavoritesBtn?.addEventListener('click', () => {
+            favoritesVisible = !favoritesVisible;
+            if (favoritesVisible) {
+                favoritesList.style.display = '';
+                favoritesVisibilityIcon.className = 'fas fa-eye';
+                this.updateFavoritesList();
+            } else {
+                favoritesList.style.display = 'none';
+                favoritesVisibilityIcon.className = 'fas fa-eye-slash';
+            }
         });
     }
 
@@ -442,12 +456,14 @@ class CardGenerator {
 
     saveFavorite() {
         const bin = document.getElementById('favorite-bin').value;
+        const name = document.getElementById('favorite-name').value;
         const month = document.getElementById('favorite-month').value;
         const year = document.getElementById('favorite-year').value;
         const cvv = document.getElementById('favorite-cvv').value;
 
         const favorite = {
             bin,
+            name: name || null,
             month: month || null,
             year: year || null,
             cvv: cvv || null,
@@ -484,6 +500,7 @@ class CardGenerator {
             item.innerHTML = `
                 <div class="favorite-item-content">
                     <span class="favorite-item-bin">${favorite.bin}</span>
+                    <span class="favorite-item-name">${favorite.name ? `<b>${favorite.name}</b> | ` : ''}</span>
                     <span class="favorite-item-details">
                         ${favorite.month ? `Mes: ${favorite.month}` : ''}
                         ${favorite.year ? ` | Año: ${favorite.year}` : ''}

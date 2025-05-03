@@ -35,6 +35,9 @@
                     <i class="fas fa-id-card" aria-hidden="true"></i>
                     <span>Consultar SRI</span>
                 </a>
+                <button id="open-favorites" class="nav-button favorite-header-button" title="Ver favoritos">
+                    <i class="fas fa-star"></i>
+                </button>
                 <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
                     <i class="fab fa-telegram" aria-hidden="true"></i>
                     <span class="sr-only">Telegram</span>
@@ -55,9 +58,6 @@
                         <label for="bin">BIN</label>
                         <div class="bin-input-container">
                             <input type="text" id="bin" placeholder="Ingresa los dígitos (1-16)" maxlength="16" required>
-                            <button type="button" id="add-favorite" class="favorite-button" title="Agregar a favoritos">
-                                <i class="fas fa-star"></i>
-                            </button>
                         </div>
                     </div>
 
@@ -133,7 +133,11 @@
 
             <div class="favorites-section">
                 <div class="favorites-header">
-                    <h3><i class="fas fa-star"></i> BINs Favoritos</h3>
+                    <h3><i class="fas fa-star"></i> BINs Favoritos
+                        <button id="toggle-favorites-visibility" class="favorites-visibility-btn" title="Mostrar/Ocultar favoritos" style="background:none;border:none;outline:none;cursor:pointer;margin-left:8px;vertical-align:middle;">
+                            <i id="favorites-visibility-icon" class="fas fa-eye"></i>
+                        </button>
+                    </h3>
                 </div>
                 <div id="favorites-list" class="favorites-list">
                     <!-- Los favoritos se agregarán aquí dinámicamente -->
@@ -229,6 +233,10 @@
                     <input type="text" id="favorite-bin" readonly>
                 </div>
                 <div class="form-group">
+                    <label for="favorite-name">Nombre (opcional)</label>
+                    <input type="text" id="favorite-name" maxlength="32" placeholder="Ej: Mi BIN de prueba">
+                </div>
+                <div class="form-group">
                     <label for="favorite-month">Mes (opcional)</label>
                     <select id="favorite-month">
                         <option value="">Seleccionar mes</option>
@@ -256,6 +264,11 @@
                         <option value="2028">2028</option>
                         <option value="2029">2029</option>
                         <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                        <option value="2033">2033</option>
+                        <option value="2034">2034</option>
+                        <option value="2035">2035</option>
                     </select>
                 </div>
                 <div class="form-group">
