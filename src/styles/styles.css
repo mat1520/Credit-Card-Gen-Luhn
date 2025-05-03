@@ -1611,11 +1611,9 @@ button:disabled {
     100% {
         box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
     }
-    }
-
-.generate-button {
-    animation: pulse 2s infinite;
 }
+
+/* Elimino la animación pulse del botón generate-button */
 
 /* Efecto de brillo para los bordes activos */
 @keyframes borderGlow {
