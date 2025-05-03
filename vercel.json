@@ -8,6 +8,8 @@
   ],
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/bin-lookup", "dest": "/bin-lookup.html" },
+    { "src": "/sri-lookup", "dest": "/sri-lookup.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 } 
