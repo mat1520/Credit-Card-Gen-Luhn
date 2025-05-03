@@ -62,3 +62,4 @@ logs
 # Telegram bot data
 telegram-bot/logs/
 telegram-bot/data/ 
+.vercel
