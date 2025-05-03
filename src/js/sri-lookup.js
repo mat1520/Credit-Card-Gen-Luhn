@@ -7,8 +7,8 @@ document.getElementById('sriForm').addEventListener('submit', async (e) => {
     
     try {
         console.log('Iniciando consulta de nombres para cédula:', cedula);
-        // Consulta a la nueva API
-        const url = `https://app3902.privynote.net/api/v1/client/find-names?cedula=${cedula}`;
+        // Consulta al nuevo endpoint serverless
+        const url = `/api/cedula?cedula=${cedula}`;
         console.log('URL de la consulta:', url);
         
         const response = await fetch(url);
