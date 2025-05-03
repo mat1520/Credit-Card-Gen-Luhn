@@ -28,6 +28,87 @@ A powerful and elegant card generation tool with advanced BIN lookup capabilitie
 - **Search History**: Track and manage recent BIN lookups
 - **Quick Access**: One-click reuse of previous searches
 
+## 🚀 New Features (2025)
+
+### SRI Lookup by ID (Cédula)
+- **SRI Lookup**: Now available exclusively via our [Telegram Bot](https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx) due to API restrictions. Secure, fast, and always up-to-date.
+- **Direct Access**: Use the new animated Telegram button for instant access.
+
+### Enhanced UI & Animations
+- **Animated Telegram Button**: Modern, gradient, and interactive button for Telegram access.
+- **Glassmorphism**: Improved glass effect and background gradients for a more immersive experience.
+- **Responsive Centered Layout**: Main actions and info are always centered and accessible.
+
+### Algorithms & Core Functions
+- **Luhn Algorithm**: For card validation and generation (see code below).
+- **BIN Lookup**: Real-time API integration for card info.
+- **SRI Lookup**: Securely redirects to Telegram for ID-based queries.
+
+### Diagrams & Workflow
+
+#### Card Generation Flow
+```mermaid
+graph TD;
+    A[Input BIN] --> B[Generate Number];
+    B --> C[Validate Luhn];
+    C --> D[Format Output];
+```
+
+#### BIN Lookup Flow
+```mermaid
+graph TD;
+    A[Input BIN] --> B[API Request];
+    B --> C[Parse Response];
+    C --> D[Display Information];
+```
+
+#### SRI Lookup Flow
+```mermaid
+graph TD;
+    A[Input ID] --> B[Redirect to Telegram Bot];
+    B --> C[Bot Processes Query];
+    C --> D[Show SRI Info];
+```
+
+### Example: Animated Telegram Button (HTML)
+```html
+<a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" target="_blank" rel="noopener noreferrer" class="telegram-boton-mejorado">
+    <i class="fab fa-telegram"></i>
+    <span>Go to Telegram Bot</span>
+</a>
+```
+
+### Example: Animated Telegram Button (CSS)
+```css
+.telegram-boton-mejorado {
+    font-size: 1.15rem;
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #7c3aed 60%, #4f46e5 100%);
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 4px 18px rgba(124,58,237,0.18);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+.telegram-boton-mejorado i {
+    font-size: 1.5rem;
+}
+.telegram-boton-mejorado:hover, .telegram-boton-mejorado:focus {
+    background: linear-gradient(90deg, #a78bfa 60%, #6366f1 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(124,58,237,0.25);
+    text-decoration: none;
+}
+```
+
 ## 🛠️ Technical Implementation
 
 ### Core Algorithms
