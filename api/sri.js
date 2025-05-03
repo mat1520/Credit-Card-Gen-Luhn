@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Solo GET permitido
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Método no permitido' });
@@ -26,4 +26,4 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ error: 'Error consultando SRI', details: err.message });
   }
-} 
+}; 
