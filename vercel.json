@@ -10,6 +10,7 @@
     { "handle": "filesystem" },
     { "src": "/bin-lookup", "dest": "/bin-lookup.html" },
     { "src": "/sri-lookup", "dest": "/sri-lookup.html" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 } 
