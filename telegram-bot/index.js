@@ -287,6 +287,8 @@ Ejemplo: /gen 477349002646|05|2027|123
 🔍 Consultas:
 /bin o .bin BIN - Consultar información de BIN
 Ejemplo: /bin 431940
+/cedula o .cedula <número de cédula> - Consulta información SRI por cédula
+Ejemplo: /cedula 17xxxxxxxx
 
 ⭐️ Gestión de Favoritos:
 /favoritos o .favoritos - Ver BINs guardados
@@ -377,6 +379,8 @@ Ejemplo: /gen 477349002646|05|2027|123
 🔍 Consultas:
 /bin o .bin BIN - Consultar información de BIN
 Ejemplo: /bin 431940
+/cedula o .cedula <número de cédula> - Consulta información SRI por cédula
+Ejemplo: /cedula 17xxxxxxxx
 
 ⭐️ Gestión de Favoritos:
 /favoritos o .favoritos - Ver BINs guardados
@@ -602,6 +606,34 @@ registerCommand('clear', async (ctx) => {
 
 registerCommand('limpiar', async (ctx) => {
     await ctx.reply(generateClearMessage());
+});
+
+registerCommand('cedula', async (ctx) => {
+    const cedula = getCommandArgs(ctx).trim();
+    if (!cedula || !/^[0-9]{10}$/.test(cedula)) {
+        return ctx.reply('❌ Uso: /cedula <número de cédula>\nEjemplo: /cedula 17xxxxxxxx');
+    }
+    try {
+        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data && data.contribuyente) {
+            const info = data.contribuyente;
+            let msg = `🪪 Información SRI para la cédula: <code>${cedula}</code>\n\n`;
+            msg += `• <b>Nombre Comercial:</b> ${info.nombreComercial || 'No disponible'}\n`;
+            msg += `• <b>Clase:</b> ${info.clase || 'No disponible'}\n`;
+            msg += `• <b>Tipo de Identificación:</b> ${info.tipoIdentificacion || 'No disponible'}\n`;
+            if (data.deuda) {
+                msg += `\n💸 <b>Deuda:</b> ${data.deuda.estado || 'No disponible'} - ${data.deuda.monto || 'No disponible'}`;
+            }
+            await ctx.replyWithHTML(msg);
+        } else {
+            await ctx.reply('❌ No se encontró información para la cédula proporcionada.');
+        }
+    } catch (error) {
+        console.error('Error en comando /cedula:', error);
+        await ctx.reply('❌ Error al consultar la cédula. Intenta más tarde.');
+    }
 });
 
 // Iniciar el bot
