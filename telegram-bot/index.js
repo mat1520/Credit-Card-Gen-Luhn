@@ -414,16 +414,16 @@ bot.on('text', async (ctx, next) => {
     }
 });
 
-// Ruta absoluta de la imagen del hacker
-const HACKER_IMG_PATH = 'E:/Credit-Cart-Gen-Luhn/20250504_1812_Hacker en Acción_remix_01jtes3f1peerat8cm99hbdass.png';
+// URL RAW de la imagen hacker en GitHub
+const HACKER_IMG_URL = 'https://raw.githubusercontent.com/mat1520/Credit-Cart-Gen-Luhn/main/telegram-bot/hacker.png';
 
 // Comandos del bot
 registerCommand('start', async (ctx) => {
     const warning = '⚡️ <b>¡ADVERTENCIA!</b> Esto no es un simulacro';
     const desc = '<i>Este bot es irreal y grosero, las conversaciones célebres son pobres imitaciones y, debido a su contenido, nadie lo debe usar.</i>';
     const welcome = '<b>CardGen Pro BOT</b>\n';
-    // Enviar la imagen primero
-    await ctx.replyWithPhoto({ source: HACKER_IMG_PATH }, {
+    // Enviar la imagen desde la URL RAW de GitHub
+    await ctx.replyWithPhoto(HACKER_IMG_URL, {
         caption: `${warning}\n\n${welcome}\n${desc}`,
         parse_mode: 'HTML'
     });
