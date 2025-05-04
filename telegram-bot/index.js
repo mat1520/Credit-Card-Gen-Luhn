@@ -222,8 +222,8 @@ const handleDotCommand = async (ctx) => {
                 await ctx.reply('❌ Mes inválido. Debe estar entre 01 y 12.');
                 return true;
             }
-            if (fixedYear && !/^20[2-3][0-9]$/.test(fixedYear)) {
-                await ctx.reply('❌ Año inválido. Debe estar en formato YYYY y ser mayor al año actual.');
+            if (fixedYear && !/^([0-9]{2}|20[2-3][0-9])$/.test(fixedYear)) {
+                await ctx.reply('❌ Año inválido. Debe estar en formato YY o YYYY y ser mayor al año actual.');
                 return true;
             }
             if (fixedCVV && !/^[0-9]{3,4}$/.test(fixedCVV)) {
@@ -414,55 +414,57 @@ bot.on('text', async (ctx, next) => {
     }
 });
 
+// Ruta absoluta de la imagen del hacker
+const HACKER_IMG_PATH = 'E:/Credit-Cart-Gen-Luhn/20250504_1812_Hacker en Acción_remix_01jtes3f1peerat8cm99hbdass.png';
+
 // Comandos del bot
-registerCommand('start', (ctx) => {
-    const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
+registerCommand('start', async (ctx) => {
+    const warning = '⚡️ <b>¡ADVERTENCIA!</b> Esto no es un simulacro';
+    const desc = '<i>Este bot es irreal y grosero, las conversaciones célebres son pobres imitaciones y, debido a su contenido, nadie lo debe usar.</i>';
+    const welcome = '<b>CardGen Pro BOT</b>\n';
+    // Enviar la imagen primero
+    await ctx.replyWithPhoto({ source: HACKER_IMG_PATH }, {
+        caption: `${warning}\n\n${welcome}\n${desc}`,
+        parse_mode: 'HTML'
+    });
+    // Menú con botones
+    await ctx.reply('Selecciona una opción del menú:', {
+        reply_markup: {
+            keyboard: [
+                ['🛠 Tools', '👤 Creator'],
+                ['💸 Donate', '🐙 GitHub']
+            ],
+            resize_keyboard: true,
+            one_time_keyboard: true
+        }
+    });
+});
 
-Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
+// Handlers para los botones del menú principal
+bot.hears('🛠 Tools', (ctx) => {
+    const toolsText = `🛠 Herramientas disponibles:
 
-🔧 Generación de Tarjetas
-gen BIN|MM|YYYY|CVV  
-► Genera 10 tarjetas automáticamente  
-Ejemplo: gen 477349002646|05|2027|123
+/gen BIN|MM|YYYY|CVV  - Genera tarjetas 💳
+/bin BIN  - Consulta BIN 🔍
+/cedula <número>  - Consulta SRI por cédula 🪪
+/placa <número>  - Consulta datos de vehículo 🚗
+/favoritos  - Tus BINs favoritos ⭐️
+/agregarbin BIN [mes] [año] [cvv]  - Agrega BIN a favoritos ➕
+/eliminarbin <índice>  - Elimina BIN de favoritos 🗑
+/historial  - Tu historial 📝
+/clear  - Limpiar chat 🧹
 
-🔍 Consultas Inteligentes
-bin BIN  
-► Información detallada de un BIN  
-Ejemplo: bin 431940
-
-cedula <número de cédula>  
-► Consulta datos SRI por cédula  
-Ejemplo: cedula 17xxxxxxxx
-
-placa <número de placa>
-► Consulta datos de vehículo por placa
-Ejemplo: placa PDF9627
-
-⭐️ Favoritos
-favoritos  
-► Lista tus BINs guardados
-
-agregarbin BIN [mes] [año] [cvv]  
-► Guarda un BIN para usarlo luego
-
-eliminarbin <índice>  
-► Elimina un BIN de tu lista
-
-📋 Utilidades
-historial  
-► Revisa tus consultas anteriores
-
-clear  
-► Limpia el chat
-
-ayuda  
-► Muestra esta guía de comandos
-
-🌐 Prueba también la versión web  
-https://credit-cart-gen-luhn.vercel.app/index.html
-
-Desarrollado con ❤️ por @mat1520`;
-    ctx.reply(helpText);
+Todos los comandos funcionan con / o .`;
+    ctx.reply(toolsText);
+});
+bot.hears('👤 Creator', (ctx) => {
+    ctx.reply('👤 Creador: @MAT3810\nhttps://t.me/MAT3810');
+});
+bot.hears('💸 Donate', (ctx) => {
+    ctx.reply('💸 Puedes apoyar el proyecto aquí:\nhttps://paypal.me/ArielMelo200?country.x=EC&locale.x=es_XC');
+});
+bot.hears('🐙 GitHub', (ctx) => {
+    ctx.reply('🐙 GitHub: https://github.com/mat1520');
 });
 
 registerCommand('help', (ctx) => {
@@ -488,8 +490,8 @@ registerCommand('gen', async (ctx) => {
         if (fixedMonth && !/^(0[1-9]|1[0-2])$/.test(fixedMonth)) {
             return ctx.reply('❌ Mes inválido. Debe estar entre 01 y 12.');
         }
-        if (fixedYear && !/^20[2-3][0-9]$/.test(fixedYear)) {
-            return ctx.reply('❌ Año inválido. Debe estar en formato YYYY y ser mayor al año actual.');
+        if (fixedYear && !/^([0-9]{2}|20[2-3][0-9])$/.test(fixedYear)) {
+            return ctx.reply('❌ Año inválido. Debe estar en formato YY o YYYY y ser mayor al año actual.');
         }
         if (fixedCVV && !/^[0-9]{3,4}$/.test(fixedCVV)) {
             return ctx.reply('❌ CVV inválido. Debe contener 3 o 4 dígitos.');
