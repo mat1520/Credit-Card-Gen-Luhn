@@ -527,7 +527,7 @@ registerCommand('gen', async (ctx) => {
 
         // Enviar en tres partes para evitar errores de Markdown
         await ctx.replyWithMarkdown(`${header}\n\n${binLine}\n${sep}`);
-        await ctx.replyWithCode(cardsList);
+        await ctx.reply('```\n' + cardsList + '\n```', { parse_mode: 'Markdown' });
         await ctx.replyWithMarkdown(`${sep}\n${binData}\n${sep}\n${genBy}`);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
