@@ -502,13 +502,14 @@ registerCommand('gen', async (ctx) => {
         // Formato mejorado y profesional
         const userName = ctx.from.first_name || 'Usuario';
         const header = `
-╔══════════════════════════╗
+╔═══════════════════════════╗
 ║    💳 CARD GEN PRO 💳    ║
-╚══════════════════════════╝
+╚═══════════════════════════╝
 
+═══════════════════════════════
 👤 Usuario: ${userName}
 📅 Fecha: ${new Date().toLocaleDateString()}
-`;
+═══════════════════════════════`;
 
         // Lista de tarjetas en bloque de código para fácil copia
         const tarjetas = cards.map(card => 
@@ -519,6 +520,7 @@ registerCommand('gen', async (ctx) => {
 
         // Información del BIN con formato mejorado
         const binInfoFormatted = `
+═══════════════════════════════
 📊 Detalles del BIN:
 • BIN: ${bin}
 • Mes: ${fixedMonth || 'xx'}
@@ -531,9 +533,9 @@ registerCommand('gen', async (ctx) => {
 • País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
 • Tipo: ${type}
 • Nivel: ${level}
-`;
+═══════════════════════════════`;
 
-        const response = `${header}${cardBlock}\n${binInfoFormatted}`;
+        const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
