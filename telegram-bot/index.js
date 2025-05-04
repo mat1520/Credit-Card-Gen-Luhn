@@ -506,10 +506,15 @@ registerCommand('gen', async (ctx) => {
 ║    💳 CARD GEN PRO 💳    ║
 ╚═══════════════════════════╝
 
-═══════════════════════════════
+┌───────────────────────────┐
+│      📋 INFORMACIÓN       │
+└───────────────────────────┘
 👤 Usuario: ${userName}
 📅 Fecha: ${new Date().toLocaleDateString()}
-═══════════════════════════════`;
+
+┌───────────────────────────┐
+│      💳 TARJETAS         │
+└───────────────────────────┘`;
 
         // Lista de tarjetas en bloque de código para fácil copia
         const tarjetas = cards.map(card => 
@@ -520,25 +525,28 @@ registerCommand('gen', async (ctx) => {
 
         // Información del BIN con formato mejorado
         const binInfoFormatted = `
-═══════════════════════════════
-📊 Detalles del BIN:
+┌───────────────────────────┐
+│      📊 DETALLES         │
+└───────────────────────────┘
 • BIN: ${bin}
 • Mes: ${fixedMonth || 'xx'}
 • Año: ${fixedYear ? fixedYear.slice(-2) : 'xx'}
 • CVV: ${fixedCVV || 'rnd'}
 
-🏦 Información:
+┌───────────────────────────┐
+│      🏦 INFORMACIÓN      │
+└───────────────────────────┘
 • Banco: ${bank}
 • Marca: ${brand}
 • País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
 • Tipo: ${type}
 • Nivel: ${level}
-═══════════════════════════════`;
 
-        // Enviar mensajes separados para evitar problemas de formato
-        await ctx.reply(header);
-        await ctx.reply(cardBlock);
-        await ctx.reply(binInfoFormatted);
+╔═══════════════════════════╗
+║     FIN DE REPORTE       ║
+╚═══════════════════════════╝`;
+
+        const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -551,6 +559,7 @@ registerCommand('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
+        await ctx.reply(response);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
         await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
