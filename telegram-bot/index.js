@@ -488,11 +488,13 @@ registerCommand('gen', async (ctx) => {
             return card;
         });
         
-        const response = cards.map(card => 
+        // Formato solicitado con bloque de código
+        const header = `•𝘽𝙞𝙣 -» ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
+        const cardsList = cards.map(card => 
             `${card.number}|${card.month}|${card.year}|${card.cvv}`
         ).join('\n');
-
-        console.log(`Generadas ${cards.length} tarjetas para messageId: ${messageId}`);
+        const footer = `─━─━─━─━─━─━─━─━─━─━─━─━─\n*DATOS DEL BIN*\n─━─━─━─━─━─━─━─━─━─━─━─━─\n•  *USUARIO*: ${ctx.from.first_name || 'Usuario'}`;
+        const response = `${header}\n\`\`\`\n${cardsList}\n\`\`\`\n${footer}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -505,7 +507,7 @@ registerCommand('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        await ctx.reply(`🎲 Tarjetas generadas:\n\n${response}`);
+        await ctx.replyWithMarkdown(response);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
         await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);

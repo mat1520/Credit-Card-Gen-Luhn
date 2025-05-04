@@ -211,14 +211,14 @@ bot.command('gen', async (ctx) => {
             };
         });
         
-        // Formato solicitado con bloque de código
+        // Formatear la respuesta con el formato solicitado
         const header = `•𝘽𝙞𝙣 -» ${bin}|${month || 'xx'}|${year || 'xx'}|rnd\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
         const cardsList = cards.map(card => 
             `${card.number}|${card.month}|${card.year}|${card.cvv}`
         ).join('\n');
         const footer = `─━─━─━─━─━─━─━─━─━─━─━─━─\n*DATOS DEL BIN*\n─━─━─━─━─━─━─━─━─━─━─━─━─\n•  *USUARIO*: ${ctx.from.first_name || 'Usuario'}`;
 
-        const response = `${header}\n\`\`\`\n${cardsList}\n\`\`\`\n${footer}`;
+        const response = `${header}\n${cardsList}\n${footer}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
