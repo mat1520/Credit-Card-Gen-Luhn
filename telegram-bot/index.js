@@ -519,7 +519,7 @@ registerCommand('gen', async (ctx) => {
 • 𝘽𝙖𝙣𝙠 -» ${bank}
 • 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}
 ─━─━─━─━─━─━─━─━─━─━─━─━─
-• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} 💸🐧`;
+• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} -» @CardGenPro_BOT`;
 
         const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
 
