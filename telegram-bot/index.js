@@ -499,19 +499,41 @@ registerCommand('gen', async (ctx) => {
         const level = binInfo.level || 'No disponible';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
-        // Encabezado mejorado y seguro
-        const header = '💳 Tarjetas generadas 🦾\n━━━━━━━━━━━━━━';
-        const tarjetas = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
-        const cvvHeader = fixedCVV ? fixedCVV : 'rnd';
-        const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${cvvHeader}`;
-        const binData = [
-            `🏦 Banco: ${bank}`,
-            `💳 Marca: ${brand}`,
-            `🌍 País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}`,
-            `📱 Tipo: ${type}`,
-            `⭐️ Nivel: ${level}`
-        ].join(' | ');
-        const response = `${header}\n${tarjetas}\n\n${binLine}\n${binData}`;
+        // Formato mejorado y profesional
+        const userName = ctx.from.first_name || 'Usuario';
+        const header = `
+╔══════════════════════════╗
+║    💳 CARD GEN PRO 💳    ║
+╚══════════════════════════╝
+
+👤 Usuario: ${userName}
+📅 Fecha: ${new Date().toLocaleDateString()}
+`;
+
+        // Lista de tarjetas en bloque de código para fácil copia
+        const tarjetas = cards.map(card => 
+            `${card.number}|${card.month}|${card.year}|${card.cvv}`
+        ).join('\n');
+        
+        const cardBlock = '```\n' + tarjetas + '\n```';
+
+        // Información del BIN con formato mejorado
+        const binInfoFormatted = `
+📊 Detalles del BIN:
+• BIN: ${bin}
+• Mes: ${fixedMonth || 'xx'}
+• Año: ${fixedYear ? fixedYear.slice(-2) : 'xx'}
+• CVV: ${fixedCVV || 'rnd'}
+
+🏦 Información:
+• Banco: ${bank}
+• Marca: ${brand}
+• País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
+• Tipo: ${type}
+• Nivel: ${level}
+`;
+
+        const response = `${header}${cardBlock}\n${binInfoFormatted}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
