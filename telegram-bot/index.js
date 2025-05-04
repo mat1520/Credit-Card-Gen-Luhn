@@ -293,6 +293,10 @@ cedula <número de cédula>
 ► Consulta datos SRI por cédula  
 Ejemplo: cedula 17xxxxxxxx
 
+placa <número de placa>
+► Consulta datos de vehículo por placa
+Ejemplo: placa PDF9627
+
 ⭐️ Favoritos
 favoritos  
 ► Lista tus BINs guardados
@@ -399,6 +403,10 @@ Ejemplo: bin 431940
 cedula <número de cédula>  
 ► Consulta datos SRI por cédula  
 Ejemplo: cedula 17xxxxxxxx
+
+placa <número de placa>
+► Consulta datos de vehículo por placa
+Ejemplo: placa PDF9627
 
 ⭐️ Favoritos
 favoritos  
