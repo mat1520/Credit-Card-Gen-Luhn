@@ -535,7 +535,10 @@ registerCommand('gen', async (ctx) => {
 • Nivel: ${level}
 ═══════════════════════════════`;
 
-        const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
+        // Enviar mensajes separados para evitar problemas de formato
+        await ctx.reply(header);
+        await ctx.reply(cardBlock);
+        await ctx.reply(binInfoFormatted);
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -548,7 +551,6 @@ registerCommand('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        await ctx.reply(response);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
         await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
