@@ -488,15 +488,15 @@ registerCommand('gen', async (ctx) => {
             return card;
         });
 
-        // Consultar info del BIN
-        let binInfo = await lookupBin(bin);
+        // Consultar info del BIN usando solo los primeros 6 dígitos
+        let binInfo = await lookupBin(bin.slice(0, 6));
         if (!binInfo) binInfo = {};
-        const brand = binInfo.brand && binInfo.brand !== 'Desconocido' ? binInfo.brand : 'No disponible';
-        const type = binInfo.type && binInfo.type !== 'Desconocido' ? binInfo.type : 'No disponible';
-        const level = binInfo.level && binInfo.level !== 'Desconocido' ? binInfo.level : 'No disponible';
-        const bank = binInfo.bank && binInfo.bank !== 'Desconocido' ? binInfo.bank : 'No disponible';
-        const country = binInfo.country && binInfo.country !== 'Desconocido' ? binInfo.country : 'No disponible';
-        const countryCode = binInfo.countryCode && binInfo.countryCode !== '??' ? binInfo.countryCode : '';
+        const bank = binInfo.bank || 'No disponible';
+        const brand = binInfo.brand || 'No disponible';
+        const country = binInfo.country || 'No disponible';
+        const countryCode = binInfo.countryCode || '';
+        const type = binInfo.type || 'No disponible';
+        const level = binInfo.level || 'No disponible';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
         // Encabezado mejorado y seguro
@@ -505,11 +505,11 @@ registerCommand('gen', async (ctx) => {
         const cvvHeader = fixedCVV ? fixedCVV : 'rnd';
         const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${cvvHeader}`;
         const binData = [
-            `Marca: ${brand}`,
-            `Tipo: ${type}`,
-            `Nivel: ${level}`,
-            `Banco: ${bank}`,
-            `País: ${country} ${flag}`
+            `🏦 Banco: ${bank}`,
+            `💳 Marca: ${brand}`,
+            `🌍 País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}`,
+            `📱 Tipo: ${type}`,
+            `⭐️ Nivel: ${level}`
         ].join(' | ');
         const response = `${header}\n${tarjetas}\n\n${binLine}\n${binData}`;
 
