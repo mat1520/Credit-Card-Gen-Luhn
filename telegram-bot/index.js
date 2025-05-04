@@ -499,10 +499,11 @@ registerCommand('gen', async (ctx) => {
         const countryCode = binInfo.countryCode && binInfo.countryCode !== '??' ? binInfo.countryCode : '';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
-        // Encabezado mejorado
-        const header = '💳 𝗧𝗮𝗿𝗷𝗲𝘁𝗮𝘀 𝗚𝗲𝗻𝗲𝗿𝗮𝗱𝗮𝘀 🦾\n━━━━━━━━━━━━━━━';
+        // Encabezado mejorado y seguro
+        const header = '💳 Tarjetas generadas 🦾\n━━━━━━━━━━━━━━';
         const tarjetas = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
-        const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
+        const cvvHeader = fixedCVV ? fixedCVV : 'rnd';
+        const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${cvvHeader}`;
         const binData = [
             `Marca: ${brand}`,
             `Tipo: ${type}`,
