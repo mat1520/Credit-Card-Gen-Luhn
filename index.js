@@ -231,7 +231,8 @@ bot.command('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        ctx.replyWithMarkdown(response);
+        // Enviar mensaje con formato Markdown
+        await ctx.replyWithMarkdown(response);
     } catch (error) {
         ctx.reply(`❌ Error: ${error.message}`);
     }
