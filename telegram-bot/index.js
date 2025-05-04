@@ -506,14 +506,10 @@ registerCommand('gen', async (ctx) => {
 ║    💳 CARD GEN PRO 💳    ║
 ╚═══════════════════════════╝
 
-┌───────────────────────────┐
-│      📋 INFORMACIÓN       │
-└───────────────────────────┘
-👤 Usuario: ${userName}
-📅 Fecha: ${new Date().toLocaleDateString()}
+👤 ${userName} | 📅 ${new Date().toLocaleDateString()}
 
 ┌───────────────────────────┐
-│      💳 TARJETAS         │
+│         💳 LISTA         │
 └───────────────────────────┘`;
 
         // Lista de tarjetas en bloque de código para fácil copia
@@ -526,24 +522,15 @@ registerCommand('gen', async (ctx) => {
         // Información del BIN con formato mejorado
         const binInfoFormatted = `
 ┌───────────────────────────┐
-│      📊 DETALLES         │
+│         📊 INFO          │
 └───────────────────────────┘
-• BIN: ${bin}
-• Mes: ${fixedMonth || 'xx'}
-• Año: ${fixedYear ? fixedYear.slice(-2) : 'xx'}
-• CVV: ${fixedCVV || 'rnd'}
-
-┌───────────────────────────┐
-│      🏦 INFORMACIÓN      │
-└───────────────────────────┘
+• BIN: ${bin} | MM: ${fixedMonth || 'xx'} | YY: ${fixedYear ? fixedYear.slice(-2) : 'xx'} | CVV: ${fixedCVV || 'rnd'}
 • Banco: ${bank}
-• Marca: ${brand}
-• País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
-• Tipo: ${type}
-• Nivel: ${level}
+• Marca: ${brand} | País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
+• Tipo: ${type} | Nivel: ${level}
 
 ╔═══════════════════════════╗
-║     FIN DE REPORTE       ║
+║         FIN              ║
 ╚═══════════════════════════╝`;
 
         const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
