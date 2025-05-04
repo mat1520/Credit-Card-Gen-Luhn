@@ -163,6 +163,32 @@ const generateClearMessage = () => {
     return '⠀\n'.repeat(100) + '🧹 Chat limpiado';
 };
 
+// Función robusta para parsear el input del comando gen
+function parseGenInput(input) {
+    // Quitar espacios al inicio y final
+    input = input.trim();
+    // Reemplazar múltiples separadores por uno solo
+    input = input.replace(/\|/g, ' ').replace(/\s+/g, ' ');
+    // Quitar caracteres x o X al final del bin
+    let [bin, month, year, cvv] = input.split(' ');
+    if (bin) bin = bin.replace(/x+$/i, '');
+    // Si el mes y año vienen juntos (ej: 06/25 o 06/2025)
+    if (month && /\//.test(month)) {
+        const [m, y] = month.split('/');
+        month = m;
+        year = y && y.length === 2 ? '20' + y : y;
+    }
+    // Si el año es de 2 dígitos, convertir a 4
+    if (year && year.length === 2) year = '20' + year;
+    // Si el mes es inválido pero el año parece mes (ej: 2025 06)
+    if (year && month && month.length === 4 && /^20[2-3][0-9]$/.test(month) && /^0[1-9]|1[0-2]$/.test(year)) {
+        [month, year] = [year, month];
+    }
+    // Si el cvv contiene x, ignorar
+    if (cvv && /x/i.test(cvv)) cvv = undefined;
+    return { bin, month, year, cvv };
+}
+
 // Función para procesar comandos con punto
 const handleDotCommand = async (ctx) => {
     const text = ctx.message.text;
@@ -186,17 +212,24 @@ const handleDotCommand = async (ctx) => {
                 await ctx.reply('❌ Uso: .gen BIN|MM|YYYY|CVV\nEjemplo: .gen 477349002646|05|2027|123');
                 return true;
             }
-            const parts = args.split('|');
-            const bin = parts[0];
-            const fixedMonth = parts[1];
-            const fixedYear = parts[2];
-            const fixedCVV = parts[3];
-
+            // Usar el nuevo parser
+            const { bin, month: fixedMonth, year: fixedYear, cvv: fixedCVV } = parseGenInput(args);
             if (!isValidBin(bin)) {
                 await ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
                 return true;
             }
-
+            if (fixedMonth && !/^(0[1-9]|1[0-2])$/.test(fixedMonth)) {
+                await ctx.reply('❌ Mes inválido. Debe estar entre 01 y 12.');
+                return true;
+            }
+            if (fixedYear && !/^20[2-3][0-9]$/.test(fixedYear)) {
+                await ctx.reply('❌ Año inválido. Debe estar en formato YYYY y ser mayor al año actual.');
+                return true;
+            }
+            if (fixedCVV && !/^[0-9]{3,4}$/.test(fixedCVV)) {
+                await ctx.reply('❌ CVV inválido. Debe contener 3 o 4 dígitos.');
+                return true;
+            }
             try {
                 const cards = Array(10).fill().map(() => {
                     const card = generateCard(bin);
@@ -205,11 +238,9 @@ const handleDotCommand = async (ctx) => {
                     if (fixedCVV) card.cvv = fixedCVV;
                     return card;
                 });
-                
                 const response = cards.map(card => 
                     `${card.number}|${card.month}|${card.year}|${card.cvv}`
                 ).join('\n');
-
                 // Guardar en historial
                 const userId = ctx.from.id;
                 const userData = loadUserData(userId);
@@ -220,7 +251,6 @@ const handleDotCommand = async (ctx) => {
                     timestamp: new Date().toISOString()
                 });
                 saveUserData(userId, userData);
-
                 await ctx.reply(`🎲 Tarjetas generadas:\n\n${response}`);
             } catch (error) {
                 console.error('Error en comando .gen:', error);
@@ -442,44 +472,28 @@ registerCommand('help', (ctx) => {
 registerCommand('gen', async (ctx) => {
     const messageId = ctx.message.message_id;
     console.log(`Procesando comando gen, messageId: ${messageId}`);
-    
     try {
         const input = getCommandArgs(ctx);
         console.log('Input completo:', ctx.message.text);
         console.log('Input procesado:', input);
-        
         if (!input) {
             return ctx.reply('❌ Uso: /gen o .gen BIN|MM|YYYY|CVV\nEjemplo: /gen 477349002646|05|2027|123');
         }
-
-        const parts = input.split('|');
-        const bin = parts[0];
-        const fixedMonth = parts[1];
-        const fixedYear = parts[2];
-        const fixedCVV = parts[3];
-
-        console.log('Partes:', { bin, fixedMonth, fixedYear, fixedCVV });
-
+        // Usar el nuevo parser
+        const { bin, month: fixedMonth, year: fixedYear, cvv: fixedCVV } = parseGenInput(input);
+        console.log('Parseado:', { bin, fixedMonth, fixedYear, fixedCVV });
         if (!isValidBin(bin)) {
             return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
         }
-
-        // Validar mes si se proporciona
         if (fixedMonth && !/^(0[1-9]|1[0-2])$/.test(fixedMonth)) {
             return ctx.reply('❌ Mes inválido. Debe estar entre 01 y 12.');
         }
-
-        // Validar año si se proporciona
         if (fixedYear && !/^20[2-3][0-9]$/.test(fixedYear)) {
             return ctx.reply('❌ Año inválido. Debe estar en formato YYYY y ser mayor al año actual.');
         }
-
-        // Validar CVV si se proporciona
         if (fixedCVV && !/^[0-9]{3,4}$/.test(fixedCVV)) {
             return ctx.reply('❌ CVV inválido. Debe contener 3 o 4 dígitos.');
         }
-
-        // Generar exactamente 10 tarjetas
         const cards = Array(10).fill().map(() => {
             const card = generateCard(bin);
             if (fixedMonth) card.month = fixedMonth;
@@ -487,8 +501,6 @@ registerCommand('gen', async (ctx) => {
             if (fixedCVV) card.cvv = fixedCVV;
             return card;
         });
-
-        // Consultar info del BIN usando solo los primeros 6 dígitos
         let binInfo = await lookupBin(bin.slice(0, 6));
         if (!binInfo) binInfo = {};
         const bank = binInfo.bank || 'No disponible';
@@ -498,32 +510,12 @@ registerCommand('gen', async (ctx) => {
         const type = binInfo.type || 'No disponible';
         const level = binInfo.level || 'No disponible';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
-
-        // Formato mejorado y profesional
         const userName = ctx.from.first_name || 'Usuario';
-        const header = `
-𝘽𝙞𝙣 -» ${bin}xxxx|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${fixedCVV || 'rnd'}
-─━─━─━─━─━─━─━─━─━─━─━─━─`;
-
-        // Lista de tarjetas en bloque de código para fácil copia
-        const tarjetas = cards.map(card => 
-            `${card.number}|${card.month}|${card.year}|${card.cvv}`
-        ).join('\n');
-        
+        const header = `\n𝘽𝙞𝙣 -» ${bin}xxxx|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${fixedCVV || 'rnd'}\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
+        const tarjetas = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
         const cardBlock = tarjetas;
-
-        // Información del BIN con formato mejorado
-        const binInfoFormatted = `
-─━─━─━─━─━─━─━─━─━─━─━─━─
-• 𝙄𝙣𝙛𝙤 -» ${brand} - ${type} - ${level}
-• 𝘽𝙖𝙣𝙠 -» ${bank}
-• 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}
-─━─━─━─━─━─━─━─━─━─━─━─━─
-• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} -» @CardGenPro_BOT`;
-
+        const binInfoFormatted = `\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙄𝙣𝙛𝙤 -» ${brand} - ${type} - ${level}\n• 𝘽𝙖𝙣𝙠 -» ${bank}\n• 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} -» @CardGenPro_BOT`;
         const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
-
-        // Guardar en historial
         const userId = ctx.from.id;
         const userData = loadUserData(userId);
         userData.history.unshift({
@@ -533,7 +525,6 @@ registerCommand('gen', async (ctx) => {
             timestamp: new Date().toISOString()
         });
         saveUserData(userId, userData);
-
         await ctx.reply(response);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
