@@ -4,11 +4,58 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const { isValidBin, generateCard } = require('./utils');
+const Cache = require('./cache');
 
 // Configuración
-const API_KEY = 'Lj0lF3jdVtV4QWlEbJy2T6ymyCe1bHFa';
-const BOT_TOKEN = '7916820433:AAF3MB2Aw_sZWif1N4AxLZwRzEGolcRoVzg';
+const API_KEY = process.env.BIN_API_KEY;
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+
+if (!API_KEY || !BOT_TOKEN) {
+    console.error('Error: API_KEY and BOT_TOKEN must be set in environment variables');
+    process.exit(1);
+}
+
+// Inicializar caché
+const cache = new Cache({
+    defaultTTL: 3600000, // 1 hora
+    maxSize: 1000,
+    cleanupInterval: 1800000 // 30 minutos
+});
+
 const bot = new Telegraf(BOT_TOKEN);
+
+// Rate limiting configuration
+const rateLimits = new Map();
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const MAX_REQUESTS = 30; // 30 requests per minute
+
+// Rate limiting middleware
+const rateLimiter = (ctx, next) => {
+    const userId = ctx.from.id;
+    const now = Date.now();
+    
+    if (!rateLimits.has(userId)) {
+        rateLimits.set(userId, []);
+    }
+    
+    const userRequests = rateLimits.get(userId);
+    const windowStart = now - RATE_LIMIT_WINDOW;
+    
+    // Remove old requests
+    while (userRequests.length && userRequests[0] < windowStart) {
+        userRequests.shift();
+    }
+    
+    if (userRequests.length >= MAX_REQUESTS) {
+        return ctx.reply('⚠️ Rate limit exceeded. Please wait a minute before making more requests.');
+    }
+    
+    userRequests.push(now);
+    return next();
+};
+
+// Apply rate limiting to all commands
+bot.use(rateLimiter);
 
 // Directorio de datos
 const DATA_DIR = path.join(__dirname, 'data');
@@ -35,9 +82,16 @@ const saveUserData = (userId, data) => {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
 
-// Función para consultar BIN
+// Función para consultar BIN con caché
 const lookupBin = async (bin) => {
     try {
+        // Intentar obtener de caché primero
+        const cachedData = await cache.get(bin);
+        if (cachedData) {
+            console.log(`BIN ${bin} encontrado en caché`);
+            return cachedData;
+        }
+
         console.log(`Consultando BIN: ${bin}`);
         const response = await axios({
             method: 'GET',
@@ -49,6 +103,9 @@ const lookupBin = async (bin) => {
         
         console.log('Status de la respuesta:', response.status);
         console.log('Datos recibidos:', JSON.stringify(response.data, null, 2));
+        
+        // Guardar en caché
+        await cache.set(bin, response.data);
         
         return response.data;
     } catch (error) {
@@ -154,10 +211,14 @@ bot.command('gen', async (ctx) => {
             };
         });
         
-        // Formatear la respuesta con el formato exacto
-        const response = cards.map(card => 
+        // Formatear la respuesta con el formato solicitado
+        const header = `•𝘽𝙞𝙣 -» ${bin}|${month || 'xx'}|${year || 'xx'}|rnd\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
+        const cardsList = cards.map(card => 
             `${card.number}|${card.month}|${card.year}|${card.cvv}`
         ).join('\n');
+        const footer = `─━─━─━─━─━─━─━─━─━─━─━─━─\n*DATOS DEL BIN*\n─━─━─━─━─━─━─━─━─━─━─━─━─\n•  *USUARIO*: ${ctx.from.first_name || 'Usuario'}`;
+
+        const response = `${header}\n${cardsList}\n${footer}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -170,7 +231,7 @@ bot.command('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        ctx.reply(`🔑 Tarjetas generadas:\n\n${response}`);
+        ctx.replyWithMarkdown(response);
     } catch (error) {
         ctx.reply(`❌ Error: ${error.message}`);
     }
@@ -328,6 +389,37 @@ bot.command('historial', (ctx) => {
     }).join('\n');
 
     ctx.reply(`📝 Historial reciente:\n\n${response}`);
+});
+
+// Agregar comando para ver estadísticas de caché
+bot.command('cachestats', async (ctx) => {
+    try {
+        const stats = await cache.getStats();
+        if (!stats) {
+            return ctx.reply('❌ Error al obtener estadísticas de caché');
+        }
+
+        const response = `📊 *Estadísticas de Caché*
+
+📦 Total de entradas: ${stats.total}
+💾 Tamaño total: ${(stats.size / 1024).toFixed(2)} KB
+⏰ Entrada más antigua: ${new Date(stats.oldest).toLocaleString()}
+🕒 Entrada más reciente: ${new Date(stats.newest).toLocaleString()}`;
+
+        ctx.replyWithMarkdown(response);
+    } catch (error) {
+        ctx.reply('❌ Error al obtener estadísticas de caché');
+    }
+});
+
+// Agregar comando para limpiar caché manualmente
+bot.command('clearcache', async (ctx) => {
+    try {
+        await cache.cleanup();
+        ctx.reply('✅ Caché limpiada correctamente');
+    } catch (error) {
+        ctx.reply('❌ Error al limpiar la caché');
+    }
 });
 
 // Iniciar el bot
