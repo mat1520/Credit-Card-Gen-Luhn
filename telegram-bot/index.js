@@ -499,20 +499,18 @@ registerCommand('gen', async (ctx) => {
         const countryCode = binInfo.countryCode || '';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
-        // Formato seguro y profesional
-        const user = ctx.from.first_name ? ctx.from.first_name.toUpperCase() : 'USUARIO';
-        const username = ctx.from.username ? `@${ctx.from.username}` : '';
-        const header = '🦾 𝙃𝘼𝘾𝙆𝙀𝘿 𝘾𝘼𝙍𝘿 𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙊𝙍 🕶️';
+        // Encabezado mejorado
+        const header = '💳 𝗧𝗮𝗿𝗷𝗲𝘁𝗮𝘀 𝗚𝗲𝗻𝗲𝗿𝗮𝗱𝗮𝘀 🦾\n━━━━━━━━━━━━━━━';
+        const tarjetas = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
         const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
-        const sep = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
-        const cardsList = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
         const binData = [
-            '•  𝙄𝙉𝙁𝙊 𝘽𝙄𝙉',
-            `•  𝙏𝙮𝙥𝙚: ${brand} - ${type} - ${level}`,
-            `•  𝘽𝙖𝙣𝙠: ${bank}`,
-            `•  𝘾𝙤𝙪𝙣𝙩𝙧𝙮: ${country} ${flag}`
-        ].join('\n');
-        const genBy = `•  𝙃𝙖𝙘𝙠𝙚𝙙 𝙗𝙮: ${user} ${username} -» @CardGenPro_BOT`;
+            `Marca: ${brand}`,
+            `Tipo: ${type}`,
+            `Nivel: ${level}`,
+            `Banco: ${bank}`,
+            `País: ${country} ${flag}`
+        ].join(' | ');
+        const response = `${header}\n${tarjetas}\n\n${binLine}\n${binData}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -525,10 +523,7 @@ registerCommand('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        // Enviar en tres partes para evitar errores de Markdown
-        await ctx.replyWithMarkdown(`${header}\n\n${binLine}\n${sep}`);
-        await ctx.reply('```\n' + cardsList + '\n```', { parse_mode: 'Markdown' });
-        await ctx.replyWithMarkdown(`${sep}\n${binData}\n${sep}\n${genBy}`);
+        await ctx.reply(response);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
         await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
