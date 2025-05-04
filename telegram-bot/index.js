@@ -506,7 +506,6 @@ registerCommand('gen', async (ctx) => {
         const binLine = `BIN: ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
         const sep = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
         const cardsList = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
-        const codeBlock = `\`\`\`\n${cardsList}\n\`\`\``;
         const binData = [
             '•  𝙄𝙉𝙁𝙊 𝘽𝙄𝙉',
             `•  𝙏𝙮𝙥𝙚: ${brand} - ${type} - ${level}`,
@@ -514,7 +513,6 @@ registerCommand('gen', async (ctx) => {
             `•  𝘾𝙤𝙪𝙣𝙩𝙧𝙮: ${country} ${flag}`
         ].join('\n');
         const genBy = `•  𝙃𝙖𝙘𝙠𝙚𝙙 𝙗𝙮: ${user} ${username} -» @CardGenPro_BOT`;
-        const response = `${header}\n\n${binLine}\n${sep}\n${codeBlock}\n${sep}\n${binData}\n${sep}\n${genBy}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
@@ -527,7 +525,10 @@ registerCommand('gen', async (ctx) => {
         });
         saveUserData(userId, userData);
 
-        await ctx.replyWithMarkdown(response);
+        // Enviar en tres partes para evitar errores de Markdown
+        await ctx.replyWithMarkdown(`${header}\n\n${binLine}\n${sep}`);
+        await ctx.replyWithCode(cardsList);
+        await ctx.replyWithMarkdown(`${sep}\n${binData}\n${sep}\n${genBy}`);
     } catch (error) {
         console.error(`Error en comando gen, messageId: ${messageId}:`, error);
         await ctx.reply(`❌ Error al generar tarjetas: ${error.message}`);
