@@ -414,13 +414,13 @@ bot.on('text', async (ctx, next) => {
     }
 });
 
-// URL RAW de la imagen hacker en GitHub
-const HACKER_IMG_URL = 'https://raw.githubusercontent.com/mat1520/Credit-Cart-Gen-Luhn/main/telegram-bot/hacker.png';
+// URL RAW de la imagen oficial OFFICIALT.png en GitHub
+const HACKER_IMG_URL = 'https://raw.githubusercontent.com/mat1520/Credit-Cart-Gen-Luhn/main/telegram-bot/OFFICIALT.png';
 
 // Comandos del bot
 registerCommand('start', async (ctx) => {
     const warning = '⚡️ <b>¡ADVERTENCIA!</b> Esto no es un simulacro';
-    const desc = '<i>Este bot es irreal y grosero, las conversaciones célebres son pobres imitaciones y, debido a su contenido, nadie lo debe usar.</i>';
+    const desc = '<i>Este bot es solo para fines educativos y de pruebas en ciberseguridad. Bienvenido al laboratorio virtual de tarjetas y OSINT. Solo para hackers éticos, pentesters y mentes curiosas. El uso indebido de la información generada puede tener consecuencias legales. ¡Explora bajo tu propio riesgo! 👾</i>';
     const welcome = '<b>CardGen Pro BOT</b>\n';
     // Enviar la imagen desde la URL RAW de GitHub
     await ctx.replyWithPhoto(HACKER_IMG_URL, {
