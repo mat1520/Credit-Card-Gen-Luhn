@@ -275,7 +275,7 @@ const handleDotCommand = async (ctx) => {
         case 'start':
         case 'ayuda':
         case 'help':
-            const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
+            const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
 
 Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
 
@@ -386,7 +386,7 @@ bot.on('text', async (ctx, next) => {
 
 // Comandos del bot
 registerCommand('start', (ctx) => {
-    const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
+    const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
 
 Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
 
@@ -487,14 +487,35 @@ registerCommand('gen', async (ctx) => {
             if (fixedCVV) card.cvv = fixedCVV;
             return card;
         });
-        
-        // Formato solicitado con bloque de código
-        const header = `•𝘽𝙞𝙣 -» ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
-        const cardsList = cards.map(card => 
-            `${card.number}|${card.month}|${card.year}|${card.cvv}`
-        ).join('\n');
-        const footer = `─━─━─━─━─━─━─━─━─━─━─━─━─\n*DATOS DEL BIN*\n─━─━─━─━─━─━─━─━─━─━─━─━─\n•  *USUARIO*: ${ctx.from.first_name || 'Usuario'}`;
-        const response = `${header}\n\`\`\`\n${cardsList}\n\`\`\`\n${footer}`;
+
+        // Consultar info del BIN
+        let binInfo = await lookupBin(bin);
+        if (!binInfo) binInfo = {};
+        const brand = binInfo.brand || 'Desconocido';
+        const type = binInfo.type || 'Desconocido';
+        const level = binInfo.level || 'Desconocido';
+        const bank = binInfo.bank || 'Desconocido';
+        const country = binInfo.country || 'Desconocido';
+        const countryCode = binInfo.countryCode || '';
+        const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
+
+        // Formato intimidante y experto
+        const user = ctx.from.first_name ? ctx.from.first_name.toUpperCase() : 'USUARIO';
+        const username = ctx.from.username ? `@${ctx.from.username}` : '';
+        const boxTop = '┏━━━━━━━[ 𝙀𝙓𝙋𝙀𝙍𝙏 𝙃𝘼𝘾𝙆𝙀𝙍 𝘾𝘼𝙍𝘿 𝙂𝙀𝙉 ]━━━━━━━┓';
+        const boxBottom = '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛';
+        const header = '🕶️ 𝙋𝙍𝙊 𝙂𝙀𝙉𝙀𝙍𝘼𝘿𝙊𝙍 𝘿𝙀 𝙏𝘼𝙍𝙅𝙀𝙏𝘼𝙎 🦾';
+        const binLine = `𝙱𝙸𝙽 ➤ ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
+        const sep = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+        const cardsList = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
+        const binData = [
+            '•  𝙄𝙉𝙁𝙊 𝘽𝙄𝙉',
+            `•  𝙏𝙮𝙥𝙚: ${brand.toUpperCase()} - ${type.toUpperCase()} - ${level.toUpperCase()}`,
+            `•  𝘽𝙖𝙣𝙠: ${bank}`,
+            `•  𝘾𝙤𝙪𝙣𝙩𝙧𝙮: ${country} ${flag}`
+        ].join('\n');
+        const genBy = `•  𝙃𝙖𝙘𝙠𝙚𝙙 𝙗𝙮: ${user} ${username} -» @CardGenPro_BOT`;
+        const response = `\`\`\`\n${boxTop}\n${header}\n${binLine}\n${sep}\n${cardsList}\n${sep}\n${binData}\n${sep}\n${genBy}\n${boxBottom}\n\`\`\``;
 
         // Guardar en historial
         const userId = ctx.from.id;
