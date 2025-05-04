@@ -502,36 +502,24 @@ registerCommand('gen', async (ctx) => {
         // Formato mejorado y profesional
         const userName = ctx.from.first_name || 'Usuario';
         const header = `
-╔═══════════════════════════╗
-║    💳 CARD GEN PRO 💳    ║
-╚═══════════════════════════╝
-
-👤 ${userName} | 📅 ${new Date().toLocaleDateString()}
-
-┌───────────────────────────┐
-│         💳 LISTA         │
-└───────────────────────────┘`;
+𝘽𝙞𝙣 -» ${bin}xxxx|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${fixedCVV || 'rnd'}
+─━─━─━─━─━─━─━─━─━─━─━─━─`;
 
         // Lista de tarjetas en bloque de código para fácil copia
         const tarjetas = cards.map(card => 
             `${card.number}|${card.month}|${card.year}|${card.cvv}`
         ).join('\n');
         
-        const cardBlock = '```\n' + tarjetas + '\n```';
+        const cardBlock = tarjetas;
 
         // Información del BIN con formato mejorado
         const binInfoFormatted = `
-┌───────────────────────────┐
-│         📊 INFO          │
-└───────────────────────────┘
-• BIN: ${bin} | MM: ${fixedMonth || 'xx'} | YY: ${fixedYear ? fixedYear.slice(-2) : 'xx'} | CVV: ${fixedCVV || 'rnd'}
-• Banco: ${bank}
-• Marca: ${brand} | País: ${country}${countryCode ? ` (${countryCode})` : ''} ${flag}
-• Tipo: ${type} | Nivel: ${level}
-
-╔═══════════════════════════╗
-║         FIN              ║
-╚═══════════════════════════╝`;
+─━─━─━─━─━─━─━─━─━─━─━─━─
+• 𝙄𝙣𝙛𝙤 -» ${brand} - ${type} - ${level}
+• 𝘽𝙖𝙣𝙠 -» ${bank}
+• 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}
+─━─━─━─━─━─━─━─━─━─━─━─━─
+• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} 💸🐧`;
 
         const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
 
