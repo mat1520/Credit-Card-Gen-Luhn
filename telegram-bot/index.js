@@ -491,12 +491,12 @@ registerCommand('gen', async (ctx) => {
         // Consultar info del BIN
         let binInfo = await lookupBin(bin);
         if (!binInfo) binInfo = {};
-        const brand = binInfo.brand || 'Desconocido';
-        const type = binInfo.type || 'Desconocido';
-        const level = binInfo.level || 'Desconocido';
-        const bank = binInfo.bank || 'Desconocido';
-        const country = binInfo.country || 'Desconocido';
-        const countryCode = binInfo.countryCode || '';
+        const brand = binInfo.brand && binInfo.brand !== 'Desconocido' ? binInfo.brand : 'No disponible';
+        const type = binInfo.type && binInfo.type !== 'Desconocido' ? binInfo.type : 'No disponible';
+        const level = binInfo.level && binInfo.level !== 'Desconocido' ? binInfo.level : 'No disponible';
+        const bank = binInfo.bank && binInfo.bank !== 'Desconocido' ? binInfo.bank : 'No disponible';
+        const country = binInfo.country && binInfo.country !== 'Desconocido' ? binInfo.country : 'No disponible';
+        const countryCode = binInfo.countryCode && binInfo.countryCode !== '??' ? binInfo.countryCode : '';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
         // Encabezado mejorado
