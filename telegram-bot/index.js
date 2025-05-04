@@ -499,23 +499,24 @@ registerCommand('gen', async (ctx) => {
         const countryCode = binInfo.countryCode || '';
         const flag = countryCode ? String.fromCodePoint(...[...countryCode.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
-        // Formato intimidante y experto
+        // Formato profesional, rudo y hacker
         const user = ctx.from.first_name ? ctx.from.first_name.toUpperCase() : 'USUARIO';
         const username = ctx.from.username ? `@${ctx.from.username}` : '';
-        const boxTop = '┏━━━━━━━[ 𝙀𝙓𝙋𝙀𝙍𝙏 𝙃𝘼𝘾𝙆𝙀𝙍 𝘾𝘼𝙍𝘿 𝙂𝙀𝙉 ]━━━━━━━┓';
-        const boxBottom = '┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛';
-        const header = '🕶️ 𝙋𝙍𝙊 𝙂𝙀𝙉𝙀𝙍𝘼𝘿𝙊𝙍 𝘿𝙀 𝙏𝘼𝙍𝙅𝙀𝙏𝘼𝙎 🦾';
-        const binLine = `𝙱𝙸𝙽 ➤ ${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
+        const header = '🦾 𝙃𝘼𝘾𝙆𝙀𝘿 𝘾𝘼𝙍𝘿 𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙊𝙍 🕶️';
+        const binBoxTop = '┌────[ 𝙱𝙸𝙽 𝙎𝙀𝙏 ]────┐';
+        const binBoxBottom = '└──────────────────────┘';
+        const binLine = `${bin}|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|rnd`;
         const sep = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
         const cardsList = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
+        const codeBlock = `\`\`\`\n${cardsList}\n\`\`\``;
         const binData = [
             '•  𝙄𝙉𝙁𝙊 𝘽𝙄𝙉',
-            `•  𝙏𝙮𝙥𝙚: ${brand.toUpperCase()} - ${type.toUpperCase()} - ${level.toUpperCase()}`,
+            `•  𝙏𝙮𝙥𝙚: ${brand} - ${type} - ${level}`,
             `•  𝘽𝙖𝙣𝙠: ${bank}`,
             `•  𝘾𝙤𝙪𝙣𝙩𝙧𝙮: ${country} ${flag}`
         ].join('\n');
         const genBy = `•  𝙃𝙖𝙘𝙠𝙚𝙙 𝙗𝙮: ${user} ${username} -» @CardGenPro_BOT`;
-        const response = `\`\`\`\n${boxTop}\n${header}\n${binLine}\n${sep}\n${cardsList}\n${sep}\n${binData}\n${sep}\n${genBy}\n${boxBottom}\n\`\`\``;
+        const response = `${header}\n\n${binBoxTop}\n${binLine}\n${binBoxBottom}\n${sep}\n${codeBlock}\n${sep}\n${binData}\n${sep}\n${genBy}`;
 
         // Guardar en historial
         const userId = ctx.from.id;
