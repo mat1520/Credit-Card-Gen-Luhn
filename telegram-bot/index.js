@@ -719,7 +719,7 @@ function handleTelegramCommand(command, placa) {
 
 // Registrar comando placa
 registerCommand('placa', async (ctx) => {
-    const placa = getCommandArgs(ctx);
+    const placa = getCommandArgs(ctx).toUpperCase(); // Convertir a mayúsculas
     if (!placa) {
         await ctx.reply('❌ Uso: .placa PLACA\nEjemplo: .placa PDF9627');
         return;
