@@ -382,6 +382,59 @@ Desarrollado con ❤️ por @mat1520`;
             }).join('\n');
             await ctx.reply(`📝 Historial reciente:\n\n${responseHist}`);
             return true;
+
+        case 'agregarbin':
+            if (!args) {
+                await ctx.reply('❌ Uso: .agregarbin BIN mes? año? cvv?');
+                return true;
+            }
+            // Usar el parser flexible
+            const parsedAdd = parseGenInput(args);
+            if (!isValidBin(parsedAdd.bin)) {
+                await ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
+                return true;
+            }
+            const userIdAdd = ctx.from.id;
+            const userDataAdd = loadUserData(userIdAdd);
+            if (userDataAdd.favorites.some(fav => fav.bin === parsedAdd.bin)) {
+                await ctx.reply('❌ Este BIN ya está en tus favoritos');
+                return true;
+            }
+            userDataAdd.favorites.push({ bin: parsedAdd.bin, month: parsedAdd.month, year: parsedAdd.year, cvv: parsedAdd.cvv });
+            saveUserData(userIdAdd, userDataAdd);
+            await ctx.reply('✅ BIN agregado a favoritos');
+            return true;
+
+        case 'eliminarbin':
+            if (!args) {
+                await ctx.reply('❌ Uso: .eliminarbin índice o BIN');
+                return true;
+            }
+            const userIdDel = ctx.from.id;
+            const userDataDel = loadUserData(userIdDel);
+            // Si es número, eliminar por índice
+            if (/^\d+$/.test(args)) {
+                const index = parseInt(args) - 1;
+                if (isNaN(index) || index < 0 || index >= userDataDel.favorites.length) {
+                    await ctx.reply('❌ Índice inválido');
+                    return true;
+                }
+                const removedBin = userDataDel.favorites.splice(index, 1)[0];
+                saveUserData(userIdDel, userDataDel);
+                await ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
+                return true;
+            }
+            // Si es BIN flexible, usar el parser
+            const parsedDel = parseGenInput(args);
+            const favIndex = userDataDel.favorites.findIndex(fav => fav.bin === parsedDel.bin);
+            if (favIndex === -1) {
+                await ctx.reply('❌ No se encontró ese BIN en tus favoritos');
+                return true;
+            }
+            const removedBin = userDataDel.favorites.splice(favIndex, 1)[0];
+            saveUserData(userIdDel, userDataDel);
+            await ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
+            return true;
     }
     return false;
 };
@@ -594,50 +647,6 @@ registerCommand('favoritos', (ctx) => {
     ).join('\n');
 
     ctx.reply(`📌 Tus BINs favoritos:\n\n${response}`);
-});
-
-registerCommand('agregarbin', (ctx) => {
-    const args = ctx.message.text.split(' ').slice(1);
-    if (args.length < 1) {
-        return ctx.reply('❌ Uso: /agregarbin o .agregarbin BIN mes? año? cvv?');
-    }
-
-    const [bin, month, year, cvv] = args;
-    if (!isValidBin(bin)) {
-        return ctx.reply('❌ BIN inválido. Debe contener solo números, entre 6 y 16 dígitos.');
-    }
-
-    const userId = ctx.from.id;
-    const userData = loadUserData(userId);
-    
-    if (userData.favorites.some(fav => fav.bin === bin)) {
-        return ctx.reply('❌ Este BIN ya está en tus favoritos');
-    }
-
-    userData.favorites.push({ bin, month, year, cvv });
-    saveUserData(userId, userData);
-
-    ctx.reply('✅ BIN agregado a favoritos');
-});
-
-registerCommand('eliminarbin', (ctx) => {
-    const args = ctx.message.text.split(' ').slice(1);
-    if (args.length < 1) {
-        return ctx.reply('❌ Uso: /eliminarbin o .eliminarbin índice');
-    }
-
-    const userId = ctx.from.id;
-    const userData = loadUserData(userId);
-    
-    const index = parseInt(args[0]) - 1;
-    if (isNaN(index) || index < 0 || index >= userData.favorites.length) {
-        return ctx.reply('❌ Índice inválido');
-    }
-
-    const removedBin = userData.favorites.splice(index, 1)[0];
-    saveUserData(userId, userData);
-
-    ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
 });
 
 registerCommand('historial', (ctx) => {
