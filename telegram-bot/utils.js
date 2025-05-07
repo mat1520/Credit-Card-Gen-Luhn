@@ -76,15 +76,47 @@ export const generateCard = (bin) => {
 // Función para generar correo temporal
 export const generateTempMail = async () => {
     try {
+        console.log('Iniciando generación de correo temporal...');
+
         // Obtener dominios disponibles
-        const domainsResponse = await fetch('https://api.mail.tm/domains');
-        const domainsData = await domainsResponse.json();
+        const domainsResponse = await fetch('https://api.mail.tm/domains', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const domainsText = await domainsResponse.text();
+        console.log('Respuesta de dominios:', domainsText);
+
+        if (!domainsResponse.ok) {
+            console.error('Error al obtener dominios:', domainsText);
+            throw new Error('Error al obtener dominios disponibles');
+        }
+
+        let domainsData;
+        try {
+            domainsData = JSON.parse(domainsText);
+        } catch (parseError) {
+            console.error('Error al parsear respuesta de dominios:', parseError);
+            throw new Error('Error al procesar la respuesta del servidor');
+        }
+
+        if (!domainsData['hydra:member'] || !Array.isArray(domainsData['hydra:member']) || domainsData['hydra:member'].length === 0) {
+            console.error('No se encontraron dominios disponibles:', domainsData);
+            throw new Error('No hay dominios disponibles');
+        }
+
         const domain = domainsData['hydra:member'][0].domain;
+        console.log('Dominio seleccionado:', domain);
 
         // Generar nombre de usuario aleatorio
         const username = Math.random().toString(36).substring(2, 10);
         const email = `${username}@${domain}`;
         const password = Math.random().toString(36).substring(2, 15);
+
+        console.log('Creando cuenta con:', { email, password });
 
         // Crear cuenta
         const accountResponse = await fetch('https://api.mail.tm/accounts', {
@@ -99,11 +131,15 @@ export const generateTempMail = async () => {
             })
         });
 
+        const accountText = await accountResponse.text();
+        console.log('Respuesta de creación de cuenta:', accountText);
+
         if (!accountResponse.ok) {
-            const errorData = await accountResponse.json();
-            console.error('Error al crear cuenta:', errorData);
+            console.error('Error al crear cuenta:', accountText);
             throw new Error('Error al crear cuenta de correo');
         }
+
+        console.log('Cuenta creada, obteniendo token...');
 
         // Obtener token
         const tokenResponse = await fetch('https://api.mail.tm/token', {
@@ -118,14 +154,28 @@ export const generateTempMail = async () => {
             })
         });
 
+        const tokenText = await tokenResponse.text();
+        console.log('Respuesta de token:', tokenText);
+
         if (!tokenResponse.ok) {
-            const errorData = await tokenResponse.json();
-            console.error('Error al obtener token:', errorData);
+            console.error('Error al obtener token:', tokenText);
             throw new Error('Error al obtener token');
         }
 
-        const tokenData = await tokenResponse.json();
-        console.log('Token obtenido:', tokenData);
+        let tokenData;
+        try {
+            tokenData = JSON.parse(tokenText);
+        } catch (parseError) {
+            console.error('Error al parsear respuesta de token:', parseError);
+            throw new Error('Error al procesar la respuesta del servidor');
+        }
+
+        if (!tokenData.token) {
+            console.error('Token no encontrado en la respuesta:', tokenData);
+            throw new Error('Token no encontrado en la respuesta');
+        }
+
+        console.log('Token obtenido correctamente');
 
         return {
             email,
@@ -143,17 +193,27 @@ export const checkTempMail = async (token) => {
     try {
         console.log('Iniciando verificación de mensajes...');
 
+        // Validar que el token no esté vacío
+        if (!token) {
+            console.error('Token vacío');
+            throw new Error('Token no válido');
+        }
+
         // Primero verificamos que el token sea válido
         const meResponse = await fetch('https://api.mail.tm/me', {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         });
 
+        const meText = await meResponse.text();
+        console.log('Respuesta de verificación de token:', meText);
+
         if (!meResponse.ok) {
-            const errorText = await meResponse.text();
-            console.error('Error al verificar token:', errorText);
+            console.error('Error al verificar token:', meText);
             throw new Error('Token inválido o expirado');
         }
 
@@ -161,20 +221,29 @@ export const checkTempMail = async (token) => {
 
         // Obtenemos los mensajes con parámetros específicos
         const messagesResponse = await fetch('https://api.mail.tm/messages?page=1&limit=50', {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         });
 
+        const messagesText = await messagesResponse.text();
+        console.log('Respuesta de mensajes:', messagesText);
+
         if (!messagesResponse.ok) {
-            const errorText = await messagesResponse.text();
-            console.error('Error al obtener mensajes:', errorText);
+            console.error('Error al obtener mensajes:', messagesText);
             throw new Error('Error al obtener mensajes');
         }
 
-        const messagesData = await messagesResponse.json();
-        console.log('Respuesta de mensajes:', JSON.stringify(messagesData, null, 2));
+        let messagesData;
+        try {
+            messagesData = JSON.parse(messagesText);
+        } catch (parseError) {
+            console.error('Error al parsear respuesta JSON:', parseError);
+            throw new Error('Error al procesar la respuesta del servidor');
+        }
         
         if (!messagesData['hydra:member'] || !Array.isArray(messagesData['hydra:member'])) {
             console.error('Formato de respuesta inválido:', messagesData);
@@ -189,21 +258,30 @@ export const checkTempMail = async (token) => {
                 try {
                     console.log(`Obteniendo detalles del mensaje ${msg.id}...`);
                     const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
+                        method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
-                            'Accept': 'application/json'
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
                         }
                     });
                     
+                    const messageText = await messageResponse.text();
+                    console.log(`Respuesta del mensaje ${msg.id}:`, messageText);
+                    
                     if (!messageResponse.ok) {
-                        const errorText = await messageResponse.text();
-                        console.error(`Error al obtener mensaje ${msg.id}:`, errorText);
+                        console.error(`Error al obtener mensaje ${msg.id}:`, messageText);
                         return msg; // Si falla, retornamos el mensaje básico
                     }
                     
-                    const messageData = await messageResponse.json();
-                    console.log(`Mensaje ${msg.id} obtenido correctamente`);
-                    return messageData;
+                    try {
+                        const messageData = JSON.parse(messageText);
+                        console.log(`Mensaje ${msg.id} obtenido correctamente`);
+                        return messageData;
+                    } catch (parseError) {
+                        console.error(`Error al parsear mensaje ${msg.id}:`, parseError);
+                        return msg;
+                    }
                 } catch (error) {
                     console.error(`Error al obtener mensaje individual ${msg.id}:`, error);
                     return msg;
