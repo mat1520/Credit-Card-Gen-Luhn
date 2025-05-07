@@ -802,16 +802,17 @@ const handleMailCommand = async (ctx) => {
         const userData = loadUserData(userId);
         
         // Generar nuevo correo temporal
-        const { email, token } = await generateTempMail();
+        const { email, token, password } = await generateTempMail();
         
-        // Guardar el token en los datos del usuario
-        userData.tempMail = { email, token };
+        // Guardar el token y la contraseña en los datos del usuario
+        userData.tempMail = { email, token, password };
         saveUserData(userId, userData);
         
         // Enviar mensaje con el correo
         await ctx.reply(
             `📧 *Correo Temporal Generado*\n\n` +
-            `📨 *Correo:* \`${email}\`\n\n` +
+            `📨 *Correo:* \`${email}\`\n` +
+            `🔑 *Contraseña:* \`${password}\`\n\n` +
             `⚠️ Este correo es temporal y se eliminará automáticamente.\n` +
             `📝 Usa \`.check\` para verificar si hay nuevos mensajes.`,
             { parse_mode: 'Markdown' }
@@ -833,41 +834,98 @@ const handleCheckCommand = async (ctx) => {
             return;
         }
         
-        const messages = await checkTempMail(userData.tempMail.token);
-        
-        if (messages.length === 0) {
-            await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
-            return;
-        }
-        
-        // Mostrar los mensajes con más detalles
-        for (const msg of messages) {
-            let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
-            messageText += `*De:* ${msg.from.address}\n`;
-            messageText += `*Para:* ${msg.to[0].address}\n`;
-            messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
-            messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+        // Si el token ha expirado, intentamos renovarlo
+        try {
+            const messages = await checkTempMail(userData.tempMail.token);
             
-            // Intentar extraer el contenido del mensaje
-            let content = msg.text || msg.html || 'Sin contenido';
-            if (msg.html) {
-                // Eliminar tags HTML básicos
-                content = content.replace(/<[^>]*>/g, '');
+            if (messages.length === 0) {
+                await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
+                return;
             }
-            messageText += `*Contenido:*\n${content}\n`;
             
-            await ctx.reply(messageText, { 
-                parse_mode: 'Markdown',
-                disable_web_page_preview: true 
-            });
+            // Mostrar los mensajes con más detalles
+            for (const msg of messages) {
+                let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
+                messageText += `*De:* ${msg.from.address}\n`;
+                messageText += `*Para:* ${msg.to[0].address}\n`;
+                messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
+                messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+                
+                // Intentar extraer el contenido del mensaje
+                let content = msg.text || msg.html || 'Sin contenido';
+                if (msg.html) {
+                    // Eliminar tags HTML básicos
+                    content = content.replace(/<[^>]*>/g, '');
+                }
+                messageText += `*Contenido:*\n${content}\n`;
+                
+                await ctx.reply(messageText, { 
+                    parse_mode: 'Markdown',
+                    disable_web_page_preview: true 
+                });
+            }
+        } catch (error) {
+            if (error.message === 'Token inválido o expirado') {
+                // Intentar renovar el token
+                try {
+                    const tokenResponse = await fetch('https://api.mail.tm/token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            address: userData.tempMail.email,
+                            password: userData.tempMail.password
+                        })
+                    });
+
+                    if (!tokenResponse.ok) {
+                        throw new Error('No se pudo renovar el token');
+                    }
+
+                    const tokenData = await tokenResponse.json();
+                    userData.tempMail.token = tokenData.token;
+                    saveUserData(userId, userData);
+
+                    // Intentar verificar mensajes nuevamente
+                    const messages = await checkTempMail(tokenData.token);
+                    
+                    if (messages.length === 0) {
+                        await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
+                        return;
+                    }
+
+                    // Mostrar los mensajes
+                    for (const msg of messages) {
+                        let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
+                        messageText += `*De:* ${msg.from.address}\n`;
+                        messageText += `*Para:* ${msg.to[0].address}\n`;
+                        messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
+                        messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+                        
+                        let content = msg.text || msg.html || 'Sin contenido';
+                        if (msg.html) {
+                            content = content.replace(/<[^>]*>/g, '');
+                        }
+                        messageText += `*Contenido:*\n${content}\n`;
+                        
+                        await ctx.reply(messageText, { 
+                            parse_mode: 'Markdown',
+                            disable_web_page_preview: true 
+                        });
+                    }
+                } catch (renewError) {
+                    console.error('Error al renovar token:', renewError);
+                    await ctx.reply('❌ Tu sesión de correo ha expirado. Por favor, genera un nuevo correo con \`.mail\`');
+                }
+            } else {
+                throw error;
+            }
         }
     } catch (error) {
         console.error('Error en comando check:', error);
-        if (error.message === 'Token inválido o expirado') {
-            await ctx.reply('❌ Tu sesión de correo ha expirado. Por favor, genera un nuevo correo con \`.mail\`');
-        } else {
-            await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
-        }
+        await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
     }
 };
 
