@@ -141,7 +141,7 @@ export const generateTempMail = async () => {
 // Función para verificar mensajes en el correo temporal
 export const checkTempMail = async (token) => {
     try {
-        console.log('Verificando mensajes con token:', token);
+        console.log('Iniciando verificación de mensajes...');
 
         // Primero verificamos que el token sea válido
         const meResponse = await fetch('https://api.mail.tm/me', {
@@ -152,12 +152,15 @@ export const checkTempMail = async (token) => {
         });
 
         if (!meResponse.ok) {
-            console.error('Error al verificar token:', await meResponse.text());
+            const errorText = await meResponse.text();
+            console.error('Error al verificar token:', errorText);
             throw new Error('Token inválido o expirado');
         }
 
-        // Obtenemos los mensajes
-        const messagesResponse = await fetch('https://api.mail.tm/messages?page=1', {
+        console.log('Token válido, obteniendo mensajes...');
+
+        // Obtenemos los mensajes con parámetros específicos
+        const messagesResponse = await fetch('https://api.mail.tm/messages?page=1&limit=50', {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json'
@@ -165,17 +168,26 @@ export const checkTempMail = async (token) => {
         });
 
         if (!messagesResponse.ok) {
-            console.error('Error al obtener mensajes:', await messagesResponse.text());
+            const errorText = await messagesResponse.text();
+            console.error('Error al obtener mensajes:', errorText);
             throw new Error('Error al obtener mensajes');
         }
 
         const messagesData = await messagesResponse.json();
-        console.log('Mensajes obtenidos:', messagesData);
+        console.log('Respuesta de mensajes:', JSON.stringify(messagesData, null, 2));
+        
+        if (!messagesData['hydra:member'] || !Array.isArray(messagesData['hydra:member'])) {
+            console.error('Formato de respuesta inválido:', messagesData);
+            throw new Error('Formato de respuesta inválido');
+        }
+
+        console.log(`Se encontraron ${messagesData['hydra:member'].length} mensajes`);
         
         // Si hay mensajes, obtenemos el contenido completo de cada uno
         const messages = await Promise.all(
             messagesData['hydra:member'].map(async (msg) => {
                 try {
+                    console.log(`Obteniendo detalles del mensaje ${msg.id}...`);
                     const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
                         headers: {
                             'Authorization': `Bearer ${token}`,
@@ -184,18 +196,22 @@ export const checkTempMail = async (token) => {
                     });
                     
                     if (!messageResponse.ok) {
-                        console.error('Error al obtener mensaje:', await messageResponse.text());
+                        const errorText = await messageResponse.text();
+                        console.error(`Error al obtener mensaje ${msg.id}:`, errorText);
                         return msg; // Si falla, retornamos el mensaje básico
                     }
                     
-                    return messageResponse.json();
+                    const messageData = await messageResponse.json();
+                    console.log(`Mensaje ${msg.id} obtenido correctamente`);
+                    return messageData;
                 } catch (error) {
-                    console.error('Error al obtener mensaje individual:', error);
+                    console.error(`Error al obtener mensaje individual ${msg.id}:`, error);
                     return msg;
                 }
             })
         );
 
+        console.log('Procesamiento de mensajes completado');
         return messages;
     } catch (error) {
         console.error('Error al verificar correo temporal:', error);

@@ -833,40 +833,73 @@ const handleCheckCommand = async (ctx) => {
             await ctx.reply('❌ No tienes un correo temporal activo. Usa \`.mail\` para generar uno.');
             return;
         }
+
+        // Enviar mensaje de espera
+        const waitMsg = await ctx.reply('⏳ Verificando mensajes...');
         
-        // Si el token ha expirado, intentamos renovarlo
         try {
             const messages = await checkTempMail(userData.tempMail.token);
             
-            if (messages.length === 0) {
-                await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
+            if (!messages || messages.length === 0) {
+                await ctx.telegram.editMessageText(
+                    ctx.chat.id,
+                    waitMsg.message_id,
+                    null,
+                    `📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`
+                );
                 return;
             }
             
+            // Actualizar mensaje de espera
+            await ctx.telegram.editMessageText(
+                ctx.chat.id,
+                waitMsg.message_id,
+                null,
+                `📨 Se encontraron ${messages.length} mensajes en ${userData.tempMail.email}`
+            );
+            
             // Mostrar los mensajes con más detalles
             for (const msg of messages) {
-                let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
-                messageText += `*De:* ${msg.from.address}\n`;
-                messageText += `*Para:* ${msg.to[0].address}\n`;
-                messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
-                messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
-                
-                // Intentar extraer el contenido del mensaje
-                let content = msg.text || msg.html || 'Sin contenido';
-                if (msg.html) {
-                    // Eliminar tags HTML básicos
-                    content = content.replace(/<[^>]*>/g, '');
+                try {
+                    let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
+                    messageText += `*De:* ${msg.from?.address || 'Desconocido'}\n`;
+                    messageText += `*Para:* ${msg.to?.[0]?.address || userData.tempMail.email}\n`;
+                    messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
+                    messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+                    
+                    // Intentar extraer el contenido del mensaje
+                    let content = msg.text || msg.html || 'Sin contenido';
+                    if (msg.html) {
+                        // Eliminar tags HTML básicos y decodificar entidades HTML
+                        content = content
+                            .replace(/<[^>]*>/g, '')
+                            .replace(/&nbsp;/g, ' ')
+                            .replace(/&amp;/g, '&')
+                            .replace(/&lt;/g, '<')
+                            .replace(/&gt;/g, '>')
+                            .replace(/&quot;/g, '"')
+                            .replace(/&#39;/g, "'");
+                    }
+                    
+                    // Limitar el contenido si es muy largo
+                    if (content.length > 1000) {
+                        content = content.substring(0, 1000) + '...\n(contenido truncado)';
+                    }
+                    
+                    messageText += `*Contenido:*\n${content}\n`;
+                    
+                    await ctx.reply(messageText, { 
+                        parse_mode: 'Markdown',
+                        disable_web_page_preview: true 
+                    });
+                } catch (msgError) {
+                    console.error('Error al procesar mensaje individual:', msgError);
+                    await ctx.reply('❌ Error al procesar un mensaje. Continuando con los demás...');
                 }
-                messageText += `*Contenido:*\n${content}\n`;
-                
-                await ctx.reply(messageText, { 
-                    parse_mode: 'Markdown',
-                    disable_web_page_preview: true 
-                });
             }
         } catch (error) {
             if (error.message === 'Token inválido o expirado') {
-                // Intentar renovar el token
+                console.log('Token expirado, intentando renovar...');
                 try {
                     const tokenResponse = await fetch('https://api.mail.tm/token', {
                         method: 'POST',
@@ -881,6 +914,8 @@ const handleCheckCommand = async (ctx) => {
                     });
 
                     if (!tokenResponse.ok) {
+                        const errorData = await tokenResponse.json();
+                        console.error('Error al renovar token:', errorData);
                         throw new Error('No se pudo renovar el token');
                     }
 
@@ -888,36 +923,79 @@ const handleCheckCommand = async (ctx) => {
                     userData.tempMail.token = tokenData.token;
                     saveUserData(userId, userData);
 
+                    // Actualizar mensaje de espera
+                    await ctx.telegram.editMessageText(
+                        ctx.chat.id,
+                        waitMsg.message_id,
+                        null,
+                        '🔄 Token renovado, verificando mensajes...'
+                    );
+
                     // Intentar verificar mensajes nuevamente
                     const messages = await checkTempMail(tokenData.token);
                     
-                    if (messages.length === 0) {
-                        await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
+                    if (!messages || messages.length === 0) {
+                        await ctx.telegram.editMessageText(
+                            ctx.chat.id,
+                            waitMsg.message_id,
+                            null,
+                            `📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`
+                        );
                         return;
                     }
 
+                    // Actualizar mensaje de espera
+                    await ctx.telegram.editMessageText(
+                        ctx.chat.id,
+                        waitMsg.message_id,
+                        null,
+                        `📨 Se encontraron ${messages.length} mensajes en ${userData.tempMail.email}`
+                    );
+
                     // Mostrar los mensajes
                     for (const msg of messages) {
-                        let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
-                        messageText += `*De:* ${msg.from.address}\n`;
-                        messageText += `*Para:* ${msg.to[0].address}\n`;
-                        messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
-                        messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
-                        
-                        let content = msg.text || msg.html || 'Sin contenido';
-                        if (msg.html) {
-                            content = content.replace(/<[^>]*>/g, '');
+                        try {
+                            let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
+                            messageText += `*De:* ${msg.from?.address || 'Desconocido'}\n`;
+                            messageText += `*Para:* ${msg.to?.[0]?.address || userData.tempMail.email}\n`;
+                            messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
+                            messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+                            
+                            let content = msg.text || msg.html || 'Sin contenido';
+                            if (msg.html) {
+                                content = content
+                                    .replace(/<[^>]*>/g, '')
+                                    .replace(/&nbsp;/g, ' ')
+                                    .replace(/&amp;/g, '&')
+                                    .replace(/&lt;/g, '<')
+                                    .replace(/&gt;/g, '>')
+                                    .replace(/&quot;/g, '"')
+                                    .replace(/&#39;/g, "'");
+                            }
+                            
+                            if (content.length > 1000) {
+                                content = content.substring(0, 1000) + '...\n(contenido truncado)';
+                            }
+                            
+                            messageText += `*Contenido:*\n${content}\n`;
+                            
+                            await ctx.reply(messageText, { 
+                                parse_mode: 'Markdown',
+                                disable_web_page_preview: true 
+                            });
+                        } catch (msgError) {
+                            console.error('Error al procesar mensaje individual:', msgError);
+                            await ctx.reply('❌ Error al procesar un mensaje. Continuando con los demás...');
                         }
-                        messageText += `*Contenido:*\n${content}\n`;
-                        
-                        await ctx.reply(messageText, { 
-                            parse_mode: 'Markdown',
-                            disable_web_page_preview: true 
-                        });
                     }
                 } catch (renewError) {
                     console.error('Error al renovar token:', renewError);
-                    await ctx.reply('❌ Tu sesión de correo ha expirado. Por favor, genera un nuevo correo con \`.mail\`');
+                    await ctx.telegram.editMessageText(
+                        ctx.chat.id,
+                        waitMsg.message_id,
+                        null,
+                        '❌ Tu sesión de correo ha expirado. Por favor, genera un nuevo correo con \`.mail\`'
+                    );
                 }
             } else {
                 throw error;
