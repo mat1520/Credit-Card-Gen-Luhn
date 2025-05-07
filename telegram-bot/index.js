@@ -320,6 +320,10 @@ bin BIN
 ► Información detallada de un BIN  
 Ejemplo: bin 431940
 
+ip <dirección IP>  
+► Consulta información y riesgo de una IP  
+Ejemplo: ip 8.8.8.8
+
 cedula <número de cédula>  
 ► Consulta datos SRI por cédula  
 Ejemplo: cedula 17xxxxxxxx
@@ -508,22 +512,29 @@ registerCommand('start', async (ctx) => {
 
 // Handlers para los botones del menú principal
 bot.hears('🛠 Tools', (ctx) => {
-    const toolsText = `🛠 *Herramientas disponibles:*\n\n` +
-        `*Generación y Consultas:*\n` +
-        `• \`/gen\` BIN|MM|YYYY|CVV - Genera tarjetas 💳\n` +
-        `• \`/bin\` BIN - Consulta BIN 🔍\n` +
-        `• \`/cedula\` <número> - Consulta SRI por cédula 🪪\n` +
-        `• \`/placa\` <número> - Consulta datos de vehículo 🚗\n\n` +
-        `*Correo Temporal:*\n` +
-        `• \`/mail\` - Genera correo temporal 📧\n` +
-        `• \`/check\` - Verifica mensajes del correo 📨\n\n` +
-        `*Favoritos:*\n` +
-        `• \`/favoritos\` - Tus BINs favoritos ⭐️\n` +
-        `• \`/agregarbin\` BIN [mes] [año] [cvv] - Agrega BIN a favoritos ➕\n` +
-        `• \`/eliminarbin\` <índice> - Elimina BIN de favoritos 🗑\n\n` +
-        `*Utilidades:*\n` +
-        `• \`/historial\` - Tu historial 📝\n` +
-        `• \`/clear\` - Limpiar chat 🧹\n\n` +
+    const toolsText = `🛠 *Herramientas disponibles:*
+
+` +
+        `*Generación y Consultas:*
+` +
+        `• \/gen BIN|MM|YYYY|CVV - Genera tarjetas 💳\n` +
+        `• \/bin BIN - Consulta BIN 🔍\n` +
+        `• \/ip <IP> - Consulta IP y riesgo 🌐\n` +
+        `• \/cedula <número> - Consulta SRI por cédula 🪪\n` +
+        `• \/placa <número> - Consulta datos de vehículo 🚗\n\n` +
+        `*Correo Temporal:*
+` +
+        `• \/mail - Genera correo temporal 📧\n` +
+        `• \/check - Verifica mensajes del correo 📨\n\n` +
+        `*Favoritos:*
+` +
+        `• \/favoritos - Tus BINs favoritos ⭐️\n` +
+        `• \/agregarbin BIN [mes] [año] [cvv] - Agrega BIN a favoritos ➕\n` +
+        `• \/eliminarbin <índice> - Elimina BIN de favoritos 🗑\n\n` +
+        `*Utilidades:*
+` +
+        `• \/historial - Tu historial 📝\n` +
+        `• \/clear - Limpiar chat 🧹\n\n` +
         `*Todos los comandos funcionan con / o .*`;
     ctx.reply(toolsText, { parse_mode: 'Markdown' });
 });
