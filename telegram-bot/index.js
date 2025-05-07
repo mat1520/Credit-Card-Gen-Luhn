@@ -504,20 +504,24 @@ registerCommand('start', async (ctx) => {
 
 // Handlers para los botones del menú principal
 bot.hears('🛠 Tools', (ctx) => {
-    const toolsText = `🛠 Herramientas disponibles:
-
-/gen BIN|MM|YYYY|CVV  - Genera tarjetas 💳
-/bin BIN  - Consulta BIN 🔍
-/cedula <número>  - Consulta SRI por cédula 🪪
-/placa <número>  - Consulta datos de vehículo 🚗
-/favoritos  - Tus BINs favoritos ⭐️
-/agregarbin BIN [mes] [año] [cvv]  - Agrega BIN a favoritos ➕
-/eliminarbin <índice>  - Elimina BIN de favoritos 🗑
-/historial  - Tu historial 📝
-/clear  - Limpiar chat 🧹
-
-Todos los comandos funcionan con / o .`;
-    ctx.reply(toolsText);
+    const toolsText = `🛠 *Herramientas disponibles:*\n\n` +
+        `*Generación y Consultas:*\n` +
+        `• \`/gen\` BIN|MM|YYYY|CVV - Genera tarjetas 💳\n` +
+        `• \`/bin\` BIN - Consulta BIN 🔍\n` +
+        `• \`/cedula\` <número> - Consulta SRI por cédula 🪪\n` +
+        `• \`/placa\` <número> - Consulta datos de vehículo 🚗\n\n` +
+        `*Correo Temporal:*\n` +
+        `• \`/mail\` - Genera correo temporal 📧\n` +
+        `• \`/check\` - Verifica mensajes del correo 📨\n\n` +
+        `*Favoritos:*\n` +
+        `• \`/favoritos\` - Tus BINs favoritos ⭐️\n` +
+        `• \`/agregarbin\` BIN [mes] [año] [cvv] - Agrega BIN a favoritos ➕\n` +
+        `• \`/eliminarbin\` <índice> - Elimina BIN de favoritos 🗑\n\n` +
+        `*Utilidades:*\n` +
+        `• \`/historial\` - Tu historial 📝\n` +
+        `• \`/clear\` - Limpiar chat 🧹\n\n` +
+        `*Todos los comandos funcionan con / o .*`;
+    ctx.reply(toolsText, { parse_mode: 'Markdown' });
 });
 bot.hears('👤 Creator', (ctx) => {
     ctx.reply('👤 Creador: @MAT3810\nhttps://t.me/MAT3810');
@@ -874,15 +878,25 @@ registerCommand('check', handleCheckCommand);
 // Actualizar el mensaje de ayuda
 const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `*Comandos disponibles:*\n` +
+    `• \`/start\` o \`.start\` - Mostrar ayuda y comandos disponibles\n` +
     `• \`/gen\` o \`.gen\` - Generar tarjetas\n` +
-    `• \`/bin\` o \`.bin\` - Consultar BIN\n` +
+    `• \`/bin\` o \`.bin\` - Consultar información de BIN\n` +
+    `• \`/cedula\` o \`.cedula\` - Consulta información SRI por cédula\n` +
+    `• \`/placa\` o \`.placa\` - Consulta información Vehicular\n` +
     `• \`/mail\` o \`.mail\` - Generar correo temporal\n` +
     `• \`/check\` o \`.check\` - Verificar mensajes del correo\n` +
-    `• \`/clear\` o \`.clear\` - Limpiar chat\n` +
-    `• \`/help\` o \`.help\` - Mostrar este mensaje\n\n` +
+    `• \`/favoritos\` o \`.favoritos\` - Ver BINs favoritos\n` +
+    `• \`/agregarbin\` o \`.agregarbin\` - Guardar BIN en favoritos\n` +
+    `• \`/eliminarbin\` o \`.eliminarbin\` - Eliminar BIN de favoritos\n` +
+    `• \`/historial\` o \`.historial\` - Ver historial de consultas\n` +
+    `• \`/clear\` o \`.clear\` - Limpiar el chat\n` +
+    `• \`/limpiar\` o \`.limpiar\` - Limpiar el chat\n` +
+    `• \`/ayuda\` o \`.ayuda\` - Mostrar ayuda\n\n` +
     `*Ejemplos:*\n` +
     `• \`.gen 477349002646|05|2027|123\`\n` +
     `• \`.bin 477349\`\n` +
+    `• \`.cedula 17xxxxxxxx\`\n` +
+    `• \`.placa PDF9627\`\n` +
     `• \`.mail\`\n` +
     `• \`.check\``;
 
