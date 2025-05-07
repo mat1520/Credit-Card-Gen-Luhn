@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Correo temporal - CardGen Pro">
+    <meta name="theme-color" content="#7c3aed">
+    <title>Correo Temporal | CardGen Pro</title>
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg">
+    <link rel="stylesheet" href="/src/styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .temp-mail-container {
+            max-width: 800px;
+            margin: 6rem auto 2rem;
+            background: var(--surface-1);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem 2rem 2rem;
+            box-shadow: var(--panel-shadow);
+            border: var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .temp-mail-email-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 18px;
+            width: 100%;
+            justify-content: center;
+        }
+        .temp-mail-email {
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: var(--surface-2);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            word-break: break-all;
+            color: var(--primary);
+            letter-spacing: 0.01em;
+            box-shadow: 0 2px 8px #0002;
+            border: 1px solid var(--primary);
+            transition: background 0.3s;
+        }
+        .copy-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px #0002;
+            transition: background 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .copy-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .temp-mail-btn {
+            background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px #0002;
+            transition: background 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .temp-mail-btn:hover {
+            background: linear-gradient(90deg, var(--primary-hover), var(--primary));
+            transform: translateY(-2px) scale(1.04);
+        }
+        .temp-mail-messages {
+            margin-top: 24px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .temp-mail-message {
+            background: var(--surface-2);
+            border-radius: var(--radius-md);
+            padding: 18px 18px 12px 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0001;
+            border: 1.5px solid var(--border-color);
+            transition: background 0.2s, border 0.2s, transform 0.2s;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .temp-mail-message:hover {
+            background: var(--primary);
+            border: 1.5px solid var(--primary);
+            color: #fff;
+            transform: translateY(-2px) scale(1.01);
+        }
+        .temp-mail-message-subject {
+            font-weight: 700;
+            font-size: 1.08rem;
+            color: var(--primary);
+        }
+        .temp-mail-message-from {
+            font-size: 0.99rem;
+            color: var(--text-secondary);
+        }
+        .temp-mail-message-body-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(20,20,30,0.85);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .temp-mail-message-body-panel {
+            background: var(--surface-1);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.5rem;
+            min-width: 320px;
+            max-width: 90vw;
+            box-shadow: 0 8px 32px #0005;
+            color: var(--text-primary);
+            position: relative;
+        }
+        .close-modal-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-modal-btn:hover {
+            color: #fff;
+        }
+        #temp-mail-notification div {
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            box-shadow: 0 2px 8px #0002;
+        }
+        @media (max-width: 900px) {
+            .temp-mail-container { max-width: 99vw; }
+            .temp-mail-message-body-panel { padding: 1rem 0.5rem; }
+        }
+        @media (max-width: 600px) {
+            .temp-mail-container { padding: 1.2rem 0.5rem; }
+            .temp-mail-message { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="/" class="logo">
+                    <img src="/src/assets/logo.svg" alt="CardGen Pro Logo" width="40" height="40">
+                    <span>CardGen Pro</span>
+                </a>
+            </div>
+            <nav class="header-right">
+                <a href="bin-lookup.html" class="nav-button bin-lookup-button" title="Consultar BIN">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <span>Consultar BIN</span>
+                </a>
+                <a href="sri-lookup.html" class="nav-button sri-lookup-button" title="Consulta SRI">
+                    <i class="fas fa-id-card" aria-hidden="true"></i>
+                    <span>Consulta SRI</span>
+                </a>
+                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
+                    <i class="fab fa-telegram" aria-hidden="true"></i>
+                    <span class="sr-only">Telegram</span>
+                </a>
+                <a href="https://github.com/mat1520" class="github-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="temp-mail-container">
+            <h1 style="margin-bottom: 12px;">Correo Temporal</h1>
+            <div class="temp-mail-email-row">
+                <div id="temp-mail-email" class="temp-mail-email">Generando correo temporal...</div>
+                <button id="copy-email-btn" class="copy-btn" title="Copiar correo temporal"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <button id="temp-mail-refresh" class="temp-mail-btn"><i class="fas fa-sync-alt"></i> Actualizar mensajes</button>
+            <div id="temp-mail-messages" class="temp-mail-messages"></div>
+            <div id="temp-mail-notification" style="margin-top:16px;"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-project-info">
+                    <span class="project-name">CardGen Pro</span>
+                    <p class="project-description">Generador avanzado de tarjetas con funcionalidades de BIN lookup, correo temporal y herramientas de validación.</p>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="footer-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
+                        <span>v2.0.0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <span>MIT License</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram" aria-hidden="true"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://github.com/mat1520" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://github.com/mat1520/Credit-Cart-Gen-Luhn/issues" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-bug" aria-hidden="true"></i>
+                    <span>Issues</span>
+                </a>
+                <a href="https://github.com/mat1520/Credit-Cart-Gen-Luhn#readme" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <span>Docs</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Utilidades para generar usuario aleatorio
+    function randomString(length) {
+        const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
+    // Variables globales
+    let tempMail = { address: '', password: '', token: '', accountId: '' };
+
+    function showNotification(msg, type = 'info') {
+        const notif = document.getElementById('temp-mail-notification');
+        notif.innerHTML = `<div style="padding:10px;border-radius:8px;background:${type==='error'?'#ef4444':'#7c3aed'}20;color:${type==='error'?'#fff':'#7c3aed'};margin-top:8px;text-align:center;">${msg}</div>`;
+        if(type==='error'){
+            notif.innerHTML += `<div style='font-size:0.95em;margin-top:6px;color:#fff;'>¿Ves este error en local? Prueba abrir la página en modo incógnito o usa un servidor HTTPS.<br>Si el error persiste, la API de mail.tm puede estar caída o bloqueada por CORS.</div>`;
+        }
+        setTimeout(()=>{notif.innerHTML='';}, 6000);
+    }
+
+    async function getDomain() {
+        try {
+            const res = await fetch('https://api.mail.tm/domains');
+            if (!res.ok) throw new Error('No se pudo obtener dominio');
+            const data = await res.json();
+            return data['hydra:member'][0].domain;
+        } catch (e) {
+            showNotification('Error al obtener dominio de correo temporal', 'error');
+            throw e;
+        }
+    }
+
+    async function createAccount(domain) {
+        const username = randomString(10);
+        const password = randomString(12);
+        const address = `${username}@${domain}`;
+        try {
+            const res = await fetch('https://api.mail.tm/accounts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ address, password })
+            });
+            if (!res.ok) throw new Error('No se pudo crear la cuenta');
+            const data = await res.json();
+            tempMail.address = address;
+            tempMail.password = password;
+            tempMail.accountId = data.id;
+            return address;
+        } catch (e) {
+            showNotification('Error al crear cuenta temporal', 'error');
+            throw e;
+        }
+    }
+
+    async function getToken() {
+        try {
+            const res = await fetch('https://api.mail.tm/token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ address: tempMail.address, password: tempMail.password })
+            });
+            if (!res.ok) throw new Error('No se pudo obtener token');
+            const data = await res.json();
+            tempMail.token = data.token;
+        } catch (e) {
+            showNotification('Error al autenticar con el correo temporal', 'error');
+            throw e;
+        }
+    }
+
+    async function listMessages() {
+        try {
+            const res = await fetch('https://api.mail.tm/messages', {
+                headers: { 'Authorization': 'Bearer ' + tempMail.token }
+            });
+            if (!res.ok) throw new Error('No se pudo obtener mensajes');
+            const data = await res.json();
+            return data['hydra:member'];
+        } catch (e) {
+            showNotification('Error al obtener mensajes', 'error');
+            return [];
+        }
+    }
+
+    async function getMessage(id) {
+        try {
+            const res = await fetch(`https://api.mail.tm/messages/${id}`, {
+                headers: { 'Authorization': 'Bearer ' + tempMail.token }
+            });
+            if (!res.ok) throw new Error('No se pudo leer el mensaje');
+            return await res.json();
+        } catch (e) {
+            showNotification('Error al leer el mensaje', 'error');
+            return { subject: '(Error)', from: { address: '' }, text: '' };
+        }
+    }
+
+    function renderMessages(messages) {
+        const container = document.getElementById('temp-mail-messages');
+        container.innerHTML = '';
+        if (!messages.length) {
+            container.innerHTML = '<div style="color:#a1a1aa;">No hay mensajes aún. Espera unos segundos y actualiza.</div>';
+            return;
+        }
+        messages.forEach(msg => {
+            const div = document.createElement('div');
+            div.className = 'temp-mail-message';
+            div.innerHTML = `<div class='temp-mail-message-subject'>${msg.subject || '(Sin asunto)'}</div><div class='temp-mail-message-from'>De: ${msg.from.address}</div>`;
+            div.onclick = async () => {
+                // Modal para mostrar el mensaje completo
+                const full = await getMessage(msg.id);
+                const modal = document.createElement('div');
+                modal.className = 'temp-mail-message-body-modal';
+                modal.innerHTML = `<div class='temp-mail-message-body-panel'>
+                    <button class='close-modal-btn' title='Cerrar'>&times;</button>
+                    <div class='temp-mail-message-subject' style='font-size:1.2rem;margin-bottom:8px;'>${full.subject || '(Sin asunto)'}</div>
+                    <div class='temp-mail-message-from' style='margin-bottom:12px;'>De: ${full.from.address}</div>
+                    <div style='font-size:0.98rem;line-height:1.6;'>${full.text ? full.text.replace(/\n/g, '<br>') : '(Sin contenido)'}</div>
+                </div>`;
+                modal.querySelector('.close-modal-btn').onclick = () => modal.remove();
+                modal.onclick = e => { if(e.target===modal) modal.remove(); };
+                document.body.appendChild(modal);
+            };
+            container.appendChild(div);
+        });
+    }
+
+    async function initTempMail() {
+        document.getElementById('temp-mail-email').textContent = 'Generando correo temporal...';
+        document.getElementById('temp-mail-messages').innerHTML = '';
+        showNotification('Generando correo temporal...');
+        try {
+            const domain = await getDomain();
+            await createAccount(domain);
+            await getToken();
+            document.getElementById('temp-mail-email').textContent = tempMail.address;
+            showNotification('Correo temporal generado con éxito', 'success');
+            await refreshMessages();
+        } catch (e) {
+            document.getElementById('temp-mail-email').textContent = 'Error al generar correo temporal';
+        }
+    }
+
+    async function refreshMessages() {
+        document.getElementById('temp-mail-messages').innerHTML = '<div style="color:#a1a1aa;">Cargando mensajes...</div>';
+        const messages = await listMessages();
+        renderMessages(messages);
+    }
+
+    document.getElementById('temp-mail-refresh').onclick = refreshMessages;
+    window.onload = initTempMail;
+
+    // Copiar correo temporal
+    document.getElementById('copy-email-btn').onclick = function() {
+        const email = document.getElementById('temp-mail-email').textContent;
+        navigator.clipboard.writeText(email);
+        showNotification('Correo copiado al portapapeles', 'success');
+    };
+    </script>
+</body>
+</html> 

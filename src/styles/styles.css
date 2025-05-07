@@ -556,15 +556,12 @@ p {
 
 /* Botones de acción */
 .action-button {
-    background: rgba(31, 41, 55, 0.95);
-    border: 1px solid var(--border-color);
-    padding: 0.625rem 1rem;
-    color: var(--text-primary);
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 2px 12px rgba(124,58,237,0.10), 0 1.5px 8px #0002;
+    backdrop-filter: var(--glass-blur);
+    transition: all var(--transition-normal), box-shadow 0.3s;
     position: relative;
     overflow: hidden;
 }
@@ -591,8 +588,9 @@ p {
 
 .action-button:hover {
     border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 24px rgba(124,58,237,0.18), 0 2px 16px #0003;
+    z-index: 2;
 }
 
 .action-button:active {
@@ -666,18 +664,12 @@ p {
 
 /* Botón de exportar mejorado */
 .export-button {
-    background: linear-gradient(135deg, var(--primary), #9333ea);
-    color: white;
-    border: none;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 2px 12px rgba(124,58,237,0.10), 0 1.5px 8px #0002;
+    backdrop-filter: var(--glass-blur);
+    transition: all var(--transition-normal), box-shadow 0.3s;
     position: relative;
     overflow: hidden;
 }
@@ -703,9 +695,10 @@ p {
 }
 
 .export-button:hover {
-    background: linear-gradient(135deg, #9333ea, var(--primary));
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    background: linear-gradient(90deg, var(--primary-hover), var(--primary));
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 24px rgba(124,58,237,0.18), 0 2px 16px #0003;
+    z-index: 2;
 }
 
 .export-button:active {
