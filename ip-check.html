@@ -156,50 +156,48 @@
                     errorMessage.style.display = 'none';
                     resultContainer.style.display = 'none';
 
-                    // First check with ipapi.co
-                    const response = await fetch(`https://ipapi.co/${ip}/json/`);
+                    // Nueva API: ipwho.is
+                    const response = await fetch(`https://ipwho.is/${ip}`);
                     const data = await response.json();
 
-                    if (data.error) {
-                        throw new Error(data.reason || 'Error checking IP');
+                    if (!data.success) {
+                        throw new Error(data.message || 'Error checking IP');
                     }
 
-                    // Then check with ipqualityscore.com for fraud check
-                    const fraudResponse = await fetch(`https://www.ipqualityscore.com/api/json/ip/YOUR_API_KEY/${ip}`);
-                    const fraudData = await fraudResponse.json();
-
                     document.getElementById('ipAddress').textContent = ip;
-                    document.getElementById('country').textContent = data.country_name || 'Unknown';
+                    document.getElementById('country').textContent = data.country || 'Unknown';
                     document.getElementById('city').textContent = data.city || 'Unknown';
-                    document.getElementById('isp').textContent = data.org || 'Unknown';
-                    document.getElementById('asn').textContent = data.asn || 'Unknown';
-                    document.getElementById('organization').textContent = data.org || 'Unknown';
-                    document.getElementById('timezone').textContent = data.timezone || 'Unknown';
+                    document.getElementById('isp').textContent = data.connection?.isp || 'Unknown';
+                    document.getElementById('asn').textContent = data.connection?.asn || 'Unknown';
+                    document.getElementById('organization').textContent = data.connection?.org || 'Unknown';
+                    document.getElementById('timezone').textContent = data.timezone?.id || 'Unknown';
 
+                    // Proxy/Hosting info
                     const proxyStatus = document.getElementById('proxyStatus');
-                    const torStatus = document.getElementById('torStatus');
                     const hostingStatus = document.getElementById('hostingStatus');
+                    const torStatus = document.getElementById('torStatus');
                     const riskLevel = document.getElementById('riskLevel');
 
-                    proxyStatus.textContent = fraudData.proxy ? 'Yes' : 'No';
-                    proxyStatus.style.color = fraudData.proxy ? '#f44336' : '#4CAF50';
+                    proxyStatus.textContent = data.proxy ? 'Yes' : 'No';
+                    proxyStatus.style.color = data.proxy ? '#f44336' : '#4CAF50';
 
-                    torStatus.textContent = fraudData.tor ? 'Yes' : 'No';
-                    torStatus.style.color = fraudData.tor ? '#f44336' : '#4CAF50';
+                    hostingStatus.textContent = data.hosting ? 'Yes' : 'No';
+                    hostingStatus.style.color = data.hosting ? '#f44336' : '#4CAF50';
 
-                    hostingStatus.textContent = fraudData.hosting ? 'Yes' : 'No';
-                    hostingStatus.style.color = fraudData.hosting ? '#f44336' : '#4CAF50';
+                    torStatus.textContent = data.tor ? 'Yes' : 'No';
+                    torStatus.style.color = data.tor ? '#f44336' : '#4CAF50';
 
+                    // Simple risk logic
                     let riskScore = 0;
-                    if (fraudData.proxy) riskScore += 2;
-                    if (fraudData.tor) riskScore += 3;
-                    if (fraudData.hosting) riskScore += 1;
+                    if (data.proxy) riskScore += 2;
+                    if (data.tor) riskScore += 3;
+                    if (data.hosting) riskScore += 1;
 
-                    riskLevel.textContent = riskScore >= 3 ? 'High Risk' : 
-                                          riskScore >= 1 ? 'Medium Risk' : 'Low Risk';
-                    riskLevel.className = 'risk-indicator ' + 
-                        (riskScore >= 3 ? 'risk-high' : 
-                         riskScore >= 1 ? 'risk-medium' : 'risk-low');
+                    riskLevel.textContent = riskScore >= 3 ? 'High Risk' :
+                                            riskScore >= 1 ? 'Medium Risk' : 'Low Risk';
+                    riskLevel.className = 'risk-indicator ' +
+                        (riskScore >= 3 ? 'risk-high' :
+                        riskScore >= 1 ? 'risk-medium' : 'risk-low');
 
                     resultContainer.style.display = 'block';
                 } catch (error) {

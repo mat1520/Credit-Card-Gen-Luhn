@@ -223,44 +223,37 @@ export const checkIP = async (ip) => {
     try {
         console.log(`Consultando IP ${ip}...`);
 
-        // Primera API: ipapi.co
-        const response = await fetch(`https://ipapi.co/${ip}/json/`);
+        // Nueva API: ipwho.is
+        const response = await fetch(`https://ipwho.is/${ip}`);
         if (!response.ok) {
             throw new Error('Error al consultar IP');
         }
         const data = await response.json();
 
-        if (data.error) {
-            throw new Error(data.reason || 'Error al consultar IP');
+        if (!data.success) {
+            throw new Error(data.message || 'Error al consultar IP');
         }
-
-        // Segunda API: ipqualityscore.com para verificación de fraude
-        const fraudResponse = await fetch(`https://www.ipqualityscore.com/api/json/ip/YOUR_API_KEY/${ip}`);
-        if (!fraudResponse.ok) {
-            throw new Error('Error al verificar fraude');
-        }
-        const fraudData = await fraudResponse.json();
 
         // Calcular nivel de riesgo
         let riskScore = 0;
-        if (fraudData.proxy) riskScore += 2;
-        if (fraudData.tor) riskScore += 3;
-        if (fraudData.hosting) riskScore += 1;
+        if (data.proxy) riskScore += 2;
+        if (data.tor) riskScore += 3;
+        if (data.hosting) riskScore += 1;
 
         const riskLevel = riskScore >= 3 ? 'Alto' : 
                          riskScore >= 1 ? 'Medio' : 'Bajo';
 
         return {
             ip: ip,
-            country: data.country_name || 'Desconocido',
+            country: data.country || 'Desconocido',
             city: data.city || 'Desconocido',
-            isp: data.org || 'Desconocido',
-            asn: data.asn || 'Desconocido',
-            organization: data.org || 'Desconocido',
-            timezone: data.timezone || 'Desconocido',
-            proxy: fraudData.proxy || false,
-            tor: fraudData.tor || false,
-            hosting: fraudData.hosting || false,
+            isp: data.connection?.isp || 'Desconocido',
+            asn: data.connection?.asn || 'Desconocido',
+            organization: data.connection?.org || 'Desconocido',
+            timezone: data.timezone?.id || 'Desconocido',
+            proxy: data.proxy || false,
+            tor: data.tor || false,
+            hosting: data.hosting || false,
             riskLevel: riskLevel
         };
     } catch (error) {
