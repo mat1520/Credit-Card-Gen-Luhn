@@ -5,7 +5,7 @@ import path from 'path';
 import fetch from 'node-fetch';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { isValidBin, generateCard } from './utils.js';
+import { isValidBin, generateCard, generateTempMail, checkTempMail } from './utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -82,7 +82,8 @@ const loadUserData = (userId) => {
     }
     return {
         favorites: [],
-        history: []
+        history: [],
+        tempMail: null
     };
 };
 
@@ -435,6 +436,14 @@ Desarrollado con ❤️ por @mat1520`;
             saveUserData(userIdDel, userDataDel);
             await ctx.reply(`✅ BIN ${removedBin.bin} eliminado de favoritos`);
             return true;
+
+        case 'mail':
+            await handleMailCommand(ctx);
+            return true;
+
+        case 'check':
+            await handleCheckCommand(ctx);
+            return true;
     }
     return false;
 };
@@ -781,6 +790,85 @@ registerCommand('placa', async (ctx) => {
         await ctx.reply('❌ Error al consultar la placa. Por favor, verifica que la placa sea correcta.');
     }
 });
+
+// Función para manejar el comando de correo temporal
+const handleMailCommand = async (ctx) => {
+    try {
+        const userId = ctx.from.id;
+        const userData = loadUserData(userId);
+        
+        // Generar nuevo correo temporal
+        const { email, token } = await generateTempMail();
+        
+        // Guardar el token en los datos del usuario
+        userData.tempMail = { email, token };
+        saveUserData(userId, userData);
+        
+        // Enviar mensaje con el correo
+        await ctx.reply(
+            `📧 *Correo Temporal Generado*\n\n` +
+            `📨 *Correo:* \`${email}\`\n\n` +
+            `⚠️ Este correo es temporal y se eliminará automáticamente.\n` +
+            `📝 Usa \`.check\` para verificar si hay nuevos mensajes.`,
+            { parse_mode: 'Markdown' }
+        );
+    } catch (error) {
+        console.error('Error en comando mail:', error);
+        await ctx.reply('❌ Error al generar el correo temporal. Por favor, intenta de nuevo.');
+    }
+};
+
+// Función para verificar mensajes
+const handleCheckCommand = async (ctx) => {
+    try {
+        const userId = ctx.from.id;
+        const userData = loadUserData(userId);
+        
+        if (!userData.tempMail) {
+            await ctx.reply('❌ No tienes un correo temporal activo. Usa \`.mail\` para generar uno.');
+            return;
+        }
+        
+        const messages = await checkTempMail(userData.tempMail.token);
+        
+        if (messages.length === 0) {
+            await ctx.reply('📭 No hay mensajes nuevos en el correo temporal.');
+            return;
+        }
+        
+        // Mostrar los mensajes
+        const messageText = messages.map(msg => {
+            return `📨 *De:* ${msg.from.address}\n` +
+                   `📝 *Asunto:* ${msg.subject}\n` +
+                   `⏰ *Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n` +
+                   `📄 *Contenido:* ${msg.text}\n\n`;
+        }).join('---\n');
+        
+        await ctx.reply(messageText, { parse_mode: 'Markdown' });
+    } catch (error) {
+        console.error('Error en comando check:', error);
+        await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
+    }
+};
+
+// Registrar comandos
+registerCommand('mail', handleMailCommand);
+registerCommand('check', handleCheckCommand);
+
+// Actualizar el mensaje de ayuda
+const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
+    `*Comandos disponibles:*\n` +
+    `• \`/gen\` o \`.gen\` - Generar tarjetas\n` +
+    `• \`/bin\` o \`.bin\` - Consultar BIN\n` +
+    `• \`/mail\` o \`.mail\` - Generar correo temporal\n` +
+    `• \`/check\` o \`.check\` - Verificar mensajes del correo\n` +
+    `• \`/clear\` o \`.clear\` - Limpiar chat\n` +
+    `• \`/help\` o \`.help\` - Mostrar este mensaje\n\n` +
+    `*Ejemplos:*\n` +
+    `• \`.gen 477349002646|05|2027|123\`\n` +
+    `• \`.bin 477349\`\n` +
+    `• \`.mail\`\n` +
+    `• \`.check\``;
 
 // Iniciar el bot
 let isShuttingDown = false;

@@ -71,4 +71,81 @@ export const generateCard = (bin) => {
         year: generateYear(),
         cvv: generateCVV()
     };
+};
+
+// Función para generar correo temporal
+export const generateTempMail = async () => {
+    try {
+        // Obtener dominios disponibles
+        const domainsResponse = await fetch('https://api.mail.tm/domains');
+        const domainsData = await domainsResponse.json();
+        const domain = domainsData['hydra:member'][0].domain;
+
+        // Generar nombre de usuario aleatorio
+        const username = Math.random().toString(36).substring(2, 10);
+        const email = `${username}@${domain}`;
+
+        // Crear cuenta
+        const accountResponse = await fetch('https://api.mail.tm/accounts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                address: email,
+                password: Math.random().toString(36).substring(2, 15)
+            })
+        });
+
+        if (!accountResponse.ok) {
+            throw new Error('Error al crear cuenta de correo');
+        }
+
+        // Obtener token
+        const tokenResponse = await fetch('https://api.mail.tm/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                address: email,
+                password: Math.random().toString(36).substring(2, 15)
+            })
+        });
+
+        if (!tokenResponse.ok) {
+            throw new Error('Error al obtener token');
+        }
+
+        const tokenData = await tokenResponse.json();
+
+        return {
+            email,
+            token: tokenData.token
+        };
+    } catch (error) {
+        console.error('Error al generar correo temporal:', error);
+        throw error;
+    }
+};
+
+// Función para verificar mensajes en el correo temporal
+export const checkTempMail = async (token) => {
+    try {
+        const messagesResponse = await fetch('https://api.mail.tm/messages', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!messagesResponse.ok) {
+            throw new Error('Error al obtener mensajes');
+        }
+
+        const messagesData = await messagesResponse.json();
+        return messagesData['hydra:member'];
+    } catch (error) {
+        console.error('Error al verificar correo temporal:', error);
+        throw error;
+    }
 }; 
