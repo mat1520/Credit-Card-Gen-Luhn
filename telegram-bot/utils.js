@@ -79,32 +79,13 @@ export const generateTempMail = async () => {
         console.log('Iniciando generación de correo temporal...');
 
         // Obtener dominios disponibles
-        const domainsResponse = await fetch('https://api.mail.tm/domains', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-
-        const domainsText = await domainsResponse.text();
-        console.log('Respuesta de dominios:', domainsText);
-
+        const domainsResponse = await fetch('https://api.mail.tm/domains');
         if (!domainsResponse.ok) {
-            console.error('Error al obtener dominios:', domainsText);
-            throw new Error('Error al obtener dominios disponibles');
+            throw new Error('Error al obtener dominios');
         }
 
-        let domainsData;
-        try {
-            domainsData = JSON.parse(domainsText);
-        } catch (parseError) {
-            console.error('Error al parsear respuesta de dominios:', parseError);
-            throw new Error('Error al procesar la respuesta del servidor');
-        }
-
-        if (!domainsData['hydra:member'] || !Array.isArray(domainsData['hydra:member']) || domainsData['hydra:member'].length === 0) {
-            console.error('No se encontraron dominios disponibles:', domainsData);
+        const domainsData = await domainsResponse.json();
+        if (!domainsData['hydra:member'] || domainsData['hydra:member'].length === 0) {
             throw new Error('No hay dominios disponibles');
         }
 
@@ -122,8 +103,7 @@ export const generateTempMail = async () => {
         const accountResponse = await fetch('https://api.mail.tm/accounts', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 address: email,
@@ -131,11 +111,9 @@ export const generateTempMail = async () => {
             })
         });
 
-        const accountText = await accountResponse.text();
-        console.log('Respuesta de creación de cuenta:', accountText);
-
         if (!accountResponse.ok) {
-            console.error('Error al crear cuenta:', accountText);
+            const errorData = await accountResponse.json();
+            console.error('Error al crear cuenta:', errorData);
             throw new Error('Error al crear cuenta de correo');
         }
 
@@ -145,8 +123,7 @@ export const generateTempMail = async () => {
         const tokenResponse = await fetch('https://api.mail.tm/token', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 address: email,
@@ -154,33 +131,19 @@ export const generateTempMail = async () => {
             })
         });
 
-        const tokenText = await tokenResponse.text();
-        console.log('Respuesta de token:', tokenText);
-
         if (!tokenResponse.ok) {
-            console.error('Error al obtener token:', tokenText);
+            const errorData = await tokenResponse.json();
+            console.error('Error al obtener token:', errorData);
             throw new Error('Error al obtener token');
         }
 
-        let tokenData;
-        try {
-            tokenData = JSON.parse(tokenText);
-        } catch (parseError) {
-            console.error('Error al parsear respuesta de token:', parseError);
-            throw new Error('Error al procesar la respuesta del servidor');
-        }
-
-        if (!tokenData.token) {
-            console.error('Token no encontrado en la respuesta:', tokenData);
-            throw new Error('Token no encontrado en la respuesta');
-        }
-
+        const tokenData = await tokenResponse.json();
         console.log('Token obtenido correctamente');
 
         return {
             email,
             token: tokenData.token,
-            password // Guardamos la contraseña para futuras autenticaciones
+            password
         };
     } catch (error) {
         console.error('Error al generar correo temporal:', error);

@@ -801,24 +801,41 @@ const handleMailCommand = async (ctx) => {
         const userId = ctx.from.id;
         const userData = loadUserData(userId);
         
-        // Generar nuevo correo temporal
-        const { email, token, password } = await generateTempMail();
+        // Enviar mensaje de espera
+        const waitMsg = await ctx.reply('⏳ Generando correo temporal...');
         
-        // Guardar el token y la contraseña en los datos del usuario
-        userData.tempMail = { email, token, password };
-        saveUserData(userId, userData);
-        
-        // Enviar mensaje con el correo
-        await ctx.reply(
-            `📧 *Correo Temporal Generado*\n\n` +
-            `📨 *Correo:* \`${email}\`\n` +
-            `🔑 *Contraseña:* \`${password}\`\n\n` +
-            `⚠️ Este correo es temporal y se eliminará automáticamente.\n` +
-            `📝 Usa \`.check\` para verificar si hay nuevos mensajes.`,
-            { parse_mode: 'Markdown' }
-        );
+        try {
+            // Generar nuevo correo temporal
+            const { email, token, password } = await generateTempMail();
+            
+            // Guardar el token y la contraseña en los datos del usuario
+            userData.tempMail = { email, token, password };
+            saveUserData(userId, userData);
+            
+            // Actualizar mensaje de espera con el correo generado
+            await ctx.telegram.editMessageText(
+                ctx.chat.id,
+                waitMsg.message_id,
+                null,
+                `📧 *Correo Temporal Generado*\n\n` +
+                `📨 *Correo:* \`${email}\`\n` +
+                `🔑 *Contraseña:* \`${password}\`\n\n` +
+                `⚠️ Este correo es temporal y se eliminará automáticamente.\n` +
+                `📝 Usa \`.check\` para verificar si hay nuevos mensajes.`,
+                { parse_mode: 'Markdown' }
+            );
+        } catch (error) {
+            console.error('Error en comando mail:', error);
+            // Actualizar mensaje de espera con el error
+            await ctx.telegram.editMessageText(
+                ctx.chat.id,
+                waitMsg.message_id,
+                null,
+                `❌ Error al generar el correo temporal: ${error.message}\nPor favor, intenta de nuevo.`
+            );
+        }
     } catch (error) {
-        console.error('Error en comando mail:', error);
+        console.error('Error general en comando mail:', error);
         await ctx.reply('❌ Error al generar el correo temporal. Por favor, intenta de nuevo.');
     }
 };
