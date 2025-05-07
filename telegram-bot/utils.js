@@ -158,101 +158,59 @@ export const checkTempMail = async (token) => {
 
         // Validar que el token no esté vacío
         if (!token) {
-            console.error('Token vacío');
             throw new Error('Token no válido');
         }
 
         // Primero verificamos que el token sea válido
         const meResponse = await fetch('https://api.mail.tm/me', {
-            method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
         });
 
-        const meText = await meResponse.text();
-        console.log('Respuesta de verificación de token:', meText);
-
         if (!meResponse.ok) {
-            console.error('Error al verificar token:', meText);
             throw new Error('Token inválido o expirado');
         }
 
-        console.log('Token válido, obteniendo mensajes...');
-
-        // Obtenemos los mensajes con parámetros específicos
-        const messagesResponse = await fetch('https://api.mail.tm/messages?page=1&limit=50', {
-            method: 'GET',
+        // Obtenemos los mensajes
+        const messagesResponse = await fetch('https://api.mail.tm/messages?page=1', {
             headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
         });
 
-        const messagesText = await messagesResponse.text();
-        console.log('Respuesta de mensajes:', messagesText);
-
         if (!messagesResponse.ok) {
-            console.error('Error al obtener mensajes:', messagesText);
             throw new Error('Error al obtener mensajes');
         }
 
-        let messagesData;
-        try {
-            messagesData = JSON.parse(messagesText);
-        } catch (parseError) {
-            console.error('Error al parsear respuesta JSON:', parseError);
-            throw new Error('Error al procesar la respuesta del servidor');
-        }
+        const messagesData = await messagesResponse.json();
         
-        if (!messagesData['hydra:member'] || !Array.isArray(messagesData['hydra:member'])) {
-            console.error('Formato de respuesta inválido:', messagesData);
-            throw new Error('Formato de respuesta inválido');
+        if (!messagesData['hydra:member']) {
+            return []; // No hay mensajes
         }
 
-        console.log(`Se encontraron ${messagesData['hydra:member'].length} mensajes`);
-        
         // Si hay mensajes, obtenemos el contenido completo de cada uno
         const messages = await Promise.all(
             messagesData['hydra:member'].map(async (msg) => {
                 try {
-                    console.log(`Obteniendo detalles del mensaje ${msg.id}...`);
                     const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
-                        method: 'GET',
                         headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
+                            'Authorization': `Bearer ${token}`
                         }
                     });
                     
-                    const messageText = await messageResponse.text();
-                    console.log(`Respuesta del mensaje ${msg.id}:`, messageText);
-                    
                     if (!messageResponse.ok) {
-                        console.error(`Error al obtener mensaje ${msg.id}:`, messageText);
                         return msg; // Si falla, retornamos el mensaje básico
                     }
                     
-                    try {
-                        const messageData = JSON.parse(messageText);
-                        console.log(`Mensaje ${msg.id} obtenido correctamente`);
-                        return messageData;
-                    } catch (parseError) {
-                        console.error(`Error al parsear mensaje ${msg.id}:`, parseError);
-                        return msg;
-                    }
+                    return messageResponse.json();
                 } catch (error) {
-                    console.error(`Error al obtener mensaje individual ${msg.id}:`, error);
+                    console.error(`Error al obtener mensaje individual:`, error);
                     return msg;
                 }
             })
         );
 
-        console.log('Procesamiento de mensajes completado');
         return messages;
     } catch (error) {
         console.error('Error al verificar correo temporal:', error);

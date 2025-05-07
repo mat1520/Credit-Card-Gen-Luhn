@@ -875,7 +875,7 @@ const handleCheckCommand = async (ctx) => {
                 `📨 Se encontraron ${messages.length} mensajes en ${userData.tempMail.email}`
             );
             
-            // Mostrar los mensajes con más detalles
+            // Mostrar los mensajes
             for (const msg of messages) {
                 try {
                     let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
@@ -884,10 +884,8 @@ const handleCheckCommand = async (ctx) => {
                     messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
                     messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
                     
-                    // Intentar extraer el contenido del mensaje
                     let content = msg.text || msg.html || 'Sin contenido';
                     if (msg.html) {
-                        // Eliminar tags HTML básicos y decodificar entidades HTML
                         content = content
                             .replace(/<[^>]*>/g, '')
                             .replace(/&nbsp;/g, ' ')
@@ -898,7 +896,6 @@ const handleCheckCommand = async (ctx) => {
                             .replace(/&#39;/g, "'");
                     }
                     
-                    // Limitar el contenido si es muy largo
                     if (content.length > 1000) {
                         content = content.substring(0, 1000) + '...\n(contenido truncado)';
                     }
@@ -915,14 +912,15 @@ const handleCheckCommand = async (ctx) => {
                 }
             }
         } catch (error) {
+            console.error('Error al verificar mensajes:', error);
+            
             if (error.message === 'Token inválido o expirado') {
-                console.log('Token expirado, intentando renovar...');
                 try {
+                    // Intentar renovar el token
                     const tokenResponse = await fetch('https://api.mail.tm/token', {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
                             address: userData.tempMail.email,
@@ -931,22 +929,12 @@ const handleCheckCommand = async (ctx) => {
                     });
 
                     if (!tokenResponse.ok) {
-                        const errorData = await tokenResponse.json();
-                        console.error('Error al renovar token:', errorData);
                         throw new Error('No se pudo renovar el token');
                     }
 
                     const tokenData = await tokenResponse.json();
                     userData.tempMail.token = tokenData.token;
                     saveUserData(userId, userData);
-
-                    // Actualizar mensaje de espera
-                    await ctx.telegram.editMessageText(
-                        ctx.chat.id,
-                        waitMsg.message_id,
-                        null,
-                        '🔄 Token renovado, verificando mensajes...'
-                    );
 
                     // Intentar verificar mensajes nuevamente
                     const messages = await checkTempMail(tokenData.token);
@@ -961,7 +949,7 @@ const handleCheckCommand = async (ctx) => {
                         return;
                     }
 
-                    // Actualizar mensaje de espera
+                    // Mostrar los mensajes
                     await ctx.telegram.editMessageText(
                         ctx.chat.id,
                         waitMsg.message_id,
@@ -969,7 +957,6 @@ const handleCheckCommand = async (ctx) => {
                         `📨 Se encontraron ${messages.length} mensajes en ${userData.tempMail.email}`
                     );
 
-                    // Mostrar los mensajes
                     for (const msg of messages) {
                         try {
                             let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
@@ -1015,11 +1002,16 @@ const handleCheckCommand = async (ctx) => {
                     );
                 }
             } else {
-                throw error;
+                await ctx.telegram.editMessageText(
+                    ctx.chat.id,
+                    waitMsg.message_id,
+                    null,
+                    `❌ Error al verificar mensajes: ${error.message}\nPor favor, intenta de nuevo.`
+                );
             }
         }
     } catch (error) {
-        console.error('Error en comando check:', error);
+        console.error('Error general en comando check:', error);
         await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
     }
 };
