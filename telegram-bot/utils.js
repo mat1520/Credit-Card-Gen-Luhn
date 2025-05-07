@@ -84,16 +84,18 @@ export const generateTempMail = async () => {
         // Generar nombre de usuario aleatorio
         const username = Math.random().toString(36).substring(2, 10);
         const email = `${username}@${domain}`;
+        const password = Math.random().toString(36).substring(2, 15);
 
         // Crear cuenta
         const accountResponse = await fetch('https://api.mail.tm/accounts', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({
                 address: email,
-                password: Math.random().toString(36).substring(2, 15)
+                password: password
             })
         });
 
@@ -105,11 +107,12 @@ export const generateTempMail = async () => {
         const tokenResponse = await fetch('https://api.mail.tm/token', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({
                 address: email,
-                password: Math.random().toString(36).substring(2, 15)
+                password: password
             })
         });
 
@@ -134,7 +137,8 @@ export const checkTempMail = async (token) => {
     try {
         const messagesResponse = await fetch('https://api.mail.tm/messages', {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
             }
         });
 
