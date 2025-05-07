@@ -832,22 +832,38 @@ const handleCheckCommand = async (ctx) => {
         const messages = await checkTempMail(userData.tempMail.token);
         
         if (messages.length === 0) {
-            await ctx.reply('📭 No hay mensajes nuevos en el correo temporal.');
+            await ctx.reply(`📭 No hay mensajes nuevos en el correo: ${userData.tempMail.email}`);
             return;
         }
         
-        // Mostrar los mensajes
-        const messageText = messages.map(msg => {
-            return `📨 *De:* ${msg.from.address}\n` +
-                   `📝 *Asunto:* ${msg.subject}\n` +
-                   `⏰ *Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n` +
-                   `📄 *Contenido:* ${msg.text}\n\n`;
-        }).join('---\n');
-        
-        await ctx.reply(messageText, { parse_mode: 'Markdown' });
+        // Mostrar los mensajes con más detalles
+        for (const msg of messages) {
+            let messageText = `📨 *Nuevo mensaje recibido*\n\n`;
+            messageText += `*De:* ${msg.from.address}\n`;
+            messageText += `*Para:* ${msg.to[0].address}\n`;
+            messageText += `*Asunto:* ${msg.subject || 'Sin asunto'}\n`;
+            messageText += `*Fecha:* ${new Date(msg.createdAt).toLocaleString()}\n\n`;
+            
+            // Intentar extraer el contenido del mensaje
+            let content = msg.text || msg.html || 'Sin contenido';
+            if (msg.html) {
+                // Eliminar tags HTML básicos
+                content = content.replace(/<[^>]*>/g, '');
+            }
+            messageText += `*Contenido:*\n${content}\n`;
+            
+            await ctx.reply(messageText, { 
+                parse_mode: 'Markdown',
+                disable_web_page_preview: true 
+            });
+        }
     } catch (error) {
         console.error('Error en comando check:', error);
-        await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
+        if (error.message === 'Token inválido o expirado') {
+            await ctx.reply('❌ Tu sesión de correo ha expirado. Por favor, genera un nuevo correo con \`.mail\`');
+        } else {
+            await ctx.reply('❌ Error al verificar mensajes. Por favor, intenta de nuevo.');
+        }
     }
 };
 

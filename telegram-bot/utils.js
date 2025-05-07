@@ -135,7 +135,20 @@ export const generateTempMail = async () => {
 // Función para verificar mensajes en el correo temporal
 export const checkTempMail = async (token) => {
     try {
-        const messagesResponse = await fetch('https://api.mail.tm/messages', {
+        // Primero verificamos que el token sea válido
+        const meResponse = await fetch('https://api.mail.tm/me', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!meResponse.ok) {
+            throw new Error('Token inválido o expirado');
+        }
+
+        // Obtenemos los mensajes
+        const messagesResponse = await fetch('https://api.mail.tm/messages?page=1', {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json'
@@ -147,7 +160,26 @@ export const checkTempMail = async (token) => {
         }
 
         const messagesData = await messagesResponse.json();
-        return messagesData['hydra:member'];
+        
+        // Si hay mensajes, obtenemos el contenido completo de cada uno
+        const messages = await Promise.all(
+            messagesData['hydra:member'].map(async (msg) => {
+                const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!messageResponse.ok) {
+                    return msg; // Si falla, retornamos el mensaje básico
+                }
+                
+                return messageResponse.json();
+            })
+        );
+
+        return messages;
     } catch (error) {
         console.error('Error al verificar correo temporal:', error);
         throw error;
