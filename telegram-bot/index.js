@@ -487,17 +487,40 @@ bot.on('text', async (ctx, next) => {
 // URL RAW de la imagen oficial OFFICIALT.png en GitHub
 const HACKER_IMG_URL = 'https://raw.githubusercontent.com/mat1520/Credit-Cart-Gen-Luhn/main/telegram-bot/OFFICIALT.png';
 
+const toolsBlock = `🛠 Herramientas disponibles:
+
+Generación y Consultas:
+• /gen BIN|MM|YYYY|CVV - Genera tarjetas 💳
+• /bin BIN - Consulta BIN 🔍
+• /ip <IP> - Consulta IP y riesgo 🌐
+• /cedula <número> - Consulta SRI por cédula 🪪
+• /placa <número> - Consulta datos de vehículo 🚗
+
+Correo Temporal:
+• /mail - Genera correo temporal 📧
+• /check - Verifica mensajes del correo 📨
+
+Favoritos:
+• /favoritos - Tus BINs favoritos ⭐️
+• /agregarbin BIN mes año cvv - Agrega BIN a favoritos ➕
+• /eliminarbin <índice> - Elimina BIN de favoritos 🗑
+
+Utilidades:
+• /historial - Tu historial 📝
+• /clear - Limpiar chat 🧹
+
+Todos los comandos funcionan con / o .`;
+
 // Comandos del bot
 registerCommand('start', async (ctx) => {
     const warning = '⚡️ <b>¡ADVERTENCIA!</b> Esto no es un simulacro';
     const desc = '<i>Este bot es solo para fines educativos y de pruebas en ciberseguridad. Bienvenido al laboratorio virtual de tarjetas y OSINT. Solo para hackers éticos, pentesters y mentes curiosas. El uso indebido de la información generada puede tener consecuencias legales. ¡Explora bajo tu propio riesgo! 👾</i>';
     const welcome = '<b>CardGen Pro BOT</b>\n';
-    // Enviar la imagen desde la URL RAW de GitHub
     await ctx.replyWithPhoto(HACKER_IMG_URL, {
         caption: `${warning}\n\n${welcome}\n${desc}`,
         parse_mode: 'HTML'
     });
-    // Menú con botones
+    await ctx.reply(toolsBlock);
     await ctx.reply('Selecciona una opción del menú:', {
         reply_markup: {
             keyboard: [
@@ -512,31 +535,7 @@ registerCommand('start', async (ctx) => {
 
 // Handlers para los botones del menú principal
 bot.hears('🛠 Tools', (ctx) => {
-    const toolsText = `🛠 *Herramientas disponibles:*
-
-` +
-        `*Generación y Consultas:*
-` +
-        `• \/gen BIN|MM|YYYY|CVV - Genera tarjetas 💳\n` +
-        `• \/bin BIN - Consulta BIN 🔍\n` +
-        `• \/ip <IP> - Consulta IP y riesgo 🌐\n` +
-        `• \/cedula <número> - Consulta SRI por cédula 🪪\n` +
-        `• \/placa <número> - Consulta datos de vehículo 🚗\n\n` +
-        `*Correo Temporal:*
-` +
-        `• \/mail - Genera correo temporal 📧\n` +
-        `• \/check - Verifica mensajes del correo 📨\n\n` +
-        `*Favoritos:*
-` +
-        `• \/favoritos - Tus BINs favoritos ⭐️\n` +
-        `• \/agregarbin BIN [mes] [año] [cvv] - Agrega BIN a favoritos ➕\n` +
-        `• \/eliminarbin <índice> - Elimina BIN de favoritos 🗑\n\n` +
-        `*Utilidades:*
-` +
-        `• \/historial - Tu historial 📝\n` +
-        `• \/clear - Limpiar chat 🧹\n\n` +
-        `*Todos los comandos funcionan con / o .*`;
-    ctx.reply(toolsText, { parse_mode: 'Markdown' });
+    ctx.reply(toolsBlock);
 });
 bot.hears('👤 Creator', (ctx) => {
     ctx.reply('👤 Creador: @MAT3810\nhttps://t.me/MAT3810');
@@ -549,7 +548,11 @@ bot.hears('🐙 GitHub', (ctx) => {
 });
 
 registerCommand('help', (ctx) => {
-    ctx.reply('Para ver la lista de comandos, usa /start o .start');
+    ctx.reply(toolsBlock);
+});
+
+registerCommand('ayuda', (ctx) => {
+    ctx.reply(toolsBlock);
 });
 
 registerCommand('gen', async (ctx) => {
