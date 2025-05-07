@@ -13,7 +13,8 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 binLookup: resolve(__dirname, 'bin-lookup.html'),
-                sriLookup: resolve(__dirname, 'sri-lookup.html')
+                sriLookup: resolve(__dirname, 'sri-lookup.html'),
+                tempMail: resolve(__dirname, 'temp-mail.html')
             },
             output: {
                 assetFileNames: (assetInfo) => {
