@@ -14,7 +14,8 @@ export default defineConfig({
                 main: resolve(__dirname, 'index.html'),
                 binLookup: resolve(__dirname, 'bin-lookup.html'),
                 sriLookup: resolve(__dirname, 'sri-lookup.html'),
-                tempMail: resolve(__dirname, 'temp-mail.html')
+                tempMail: resolve(__dirname, 'temp-mail.html'),
+                ipCheck: resolve(__dirname, 'ip-check.html')
             },
             output: {
                 assetFileNames: (assetInfo) => {

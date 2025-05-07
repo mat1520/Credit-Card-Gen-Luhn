@@ -11,6 +11,7 @@
     { "src": "/bin-lookup", "dest": "/bin-lookup.html" },
     { "src": "/sri-lookup", "dest": "/sri-lookup.html" },
     { "src": "/temp-mail", "dest": "/temp-mail.html" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/ip-check", "dest": "/ip-check.html" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 } 

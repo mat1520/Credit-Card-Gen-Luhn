@@ -444,6 +444,10 @@ Desarrollado con ❤️ por @mat1520`;
         case 'check':
             await handleCheckCommand(ctx);
             return true;
+
+        case 'ip':
+            await handleIPCommand(ctx);
+            return true;
     }
     return false;
 };
@@ -1020,6 +1024,82 @@ const handleCheckCommand = async (ctx) => {
 registerCommand('mail', handleMailCommand);
 registerCommand('check', handleCheckCommand);
 
+// Función para manejar el comando de verificación de IP
+const handleIPCommand = async (ctx) => {
+    try {
+        const ip = getCommandArgs(ctx);
+        if (!ip) {
+            await ctx.reply('❌ Uso: /ip o .ip <dirección IP>\nEjemplo: /ip 8.8.8.8');
+            return;
+        }
+
+        // Validar formato de IP
+        const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+        const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+        if (!ipv4Regex.test(ip) && !ipv6Regex.test(ip)) {
+            await ctx.reply('❌ Formato de IP inválido. Debe ser una dirección IPv4 o IPv6 válida.');
+            return;
+        }
+
+        // Enviar mensaje de espera
+        const waitMsg = await ctx.reply('⏳ Verificando IP...');
+
+        try {
+            const ipInfo = await checkIP(ip);
+
+            // Crear mensaje con la información
+            let message = `🔍 *Información de IP: ${ip}*\n\n`;
+            message += `*Información Básica:*\n`;
+            message += `• País: ${ipInfo.country}\n`;
+            message += `• Ciudad: ${ipInfo.city}\n`;
+            message += `• ISP: ${ipInfo.isp}\n\n`;
+            message += `*Verificación de Seguridad:*\n`;
+            message += `• Proxy/VPN: ${ipInfo.proxy ? '✅ Sí' : '❌ No'}\n`;
+            message += `• Tor: ${ipInfo.tor ? '✅ Sí' : '❌ No'}\n`;
+            message += `• Hosting: ${ipInfo.hosting ? '✅ Sí' : '❌ No'}\n`;
+            message += `• Nivel de Riesgo: ${ipInfo.riskLevel}\n\n`;
+            message += `*Información Adicional:*\n`;
+            message += `• ASN: ${ipInfo.asn}\n`;
+            message += `• Organización: ${ipInfo.organization}\n`;
+            message += `• Zona Horaria: ${ipInfo.timezone}`;
+
+            // Guardar en historial
+            const userId = ctx.from.id;
+            const userData = loadUserData(userId);
+            userData.history.unshift({
+                type: 'ip_check',
+                ip: ip,
+                info: ipInfo,
+                timestamp: new Date().toISOString()
+            });
+            saveUserData(userId, userData);
+
+            // Actualizar mensaje de espera con los resultados
+            await ctx.telegram.editMessageText(
+                ctx.chat.id,
+                waitMsg.message_id,
+                null,
+                message,
+                { parse_mode: 'Markdown' }
+            );
+        } catch (error) {
+            console.error('Error al verificar IP:', error);
+            await ctx.telegram.editMessageText(
+                ctx.chat.id,
+                waitMsg.message_id,
+                null,
+                `❌ Error al verificar IP: ${error.message}`
+            );
+        }
+    } catch (error) {
+        console.error('Error general en comando IP:', error);
+        await ctx.reply('❌ Error al procesar el comando. Por favor, intenta de nuevo.');
+    }
+};
+
+// Registrar comando IP
+registerCommand('ip', handleIPCommand);
+
 // Actualizar el mensaje de ayuda
 const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `*Comandos disponibles:*\n` +
@@ -1030,6 +1110,7 @@ const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `• \`/placa\` o \`.placa\` - Consulta información Vehicular\n` +
     `• \`/mail\` o \`.mail\` - Generar correo temporal\n` +
     `• \`/check\` o \`.check\` - Verificar mensajes del correo\n` +
+    `• \`/ip\` o \`.ip\` - Verificar IP y riesgo de fraude\n` +
     `• \`/favoritos\` o \`.favoritos\` - Ver BINs favoritos\n` +
     `• \`/agregarbin\` o \`.agregarbin\` - Guardar BIN en favoritos\n` +
     `• \`/eliminarbin\` o \`.eliminarbin\` - Eliminar BIN de favoritos\n` +
@@ -1043,7 +1124,8 @@ const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `• \`.cedula 17xxxxxxxx\`\n` +
     `• \`.placa PDF9627\`\n` +
     `• \`.mail\`\n` +
-    `• \`.check\``;
+    `• \`.check\`\n` +
+    `• \`.ip 8.8.8.8\``;
 
 // Iniciar el bot
 let isShuttingDown = false;
