@@ -1,318 +1,116 @@
-# 🚀 CardGen Pro
+# CardGen Pro (2025 Edition)
 
-A powerful and elegant card generation tool with advanced BIN lookup capabilities and Luhn validation.
-
-## ✨ Features
-
-### 🎨 Modern UI & Animations
-- **Smooth Transitions**: All UI elements feature fluid animations and transitions
-- **Dynamic Background**: Interactive gradient spheres that respond to user interaction
-- **Glass Effect**: Modern glassmorphism design with subtle blur effects
-- **Dark Theme**: Optimized for low-light environments with perfect contrast ratios
-
-### 💳 Card Generation
-- **Luhn Algorithm**: Advanced implementation of the Luhn algorithm for valid card numbers
-- **Custom BIN Support**: Generate cards with specific BIN prefixes
-- **Multiple Formats**: Export in PIPE, CSV, and JSON formats
-- **Date Customization**: Flexible expiration date selection with random options
-- **CVV Generation**: Secure CVV generation with optional custom values
-
-### 🔍 BIN Lookup
-- **Real-time Validation**: Instant BIN information retrieval
-- **Detailed Information**: 
-  - Bank details
-  - Card brand
-  - Card type
-  - Country of origin
-  - Scheme information
-- **Search History**: Track and manage recent BIN lookups
-- **Quick Access**: One-click reuse of previous searches
-
-## 🚀 New Features (2025)
-
-### SRI Lookup by ID (Cédula)
-- **SRI Lookup**: Now available exclusively via our [Telegram Bot](https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx) due to API restrictions. Secure, fast, and always up-to-date.
-- **Direct Access**: Use the new animated Telegram button for instant access.
-
-### Enhanced UI & Animations
-- **Animated Telegram Button**: Modern, gradient, and interactive button for Telegram access.
-- **Glassmorphism**: Improved glass effect and background gradients for a more immersive experience.
-- **Responsive Centered Layout**: Main actions and info are always centered and accessible.
-
-### Algorithms & Core Functions
-- **Luhn Algorithm**: For card validation and generation (see code below).
-- **BIN Lookup**: Real-time API integration for card info.
-- **SRI Lookup**: Securely redirects to Telegram for ID-based queries.
-
-### Diagrams & Workflow
-
-#### Card Generation Flow
-```mermaid
-graph TD;
-    A[Input BIN] --> B[Generate Number];
-    B --> C[Validate Luhn];
-    C --> D[Format Output];
-```
-
-#### BIN Lookup Flow
-```mermaid
-graph TD;
-    A[Input BIN] --> B[API Request];
-    B --> C[Parse Response];
-    C --> D[Display Information];
-```
-
-#### SRI Lookup Flow
-```mermaid
-graph TD;
-    A[Input ID] --> B[Redirect to Telegram Bot];
-    B --> C[Bot Processes Query];
-    C --> D[Show SRI Info];
-```
-
-### Example: Animated Telegram Button (HTML)
-```html
-<a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" target="_blank" rel="noopener noreferrer" class="telegram-boton-mejorado">
-    <i class="fab fa-telegram"></i>
-    <span>Go to Telegram Bot</span>
-</a>
-```
-
-### Example: Animated Telegram Button (CSS)
-```css
-.telegram-boton-mejorado {
-    font-size: 1.15rem;
-    padding: 16px 40px;
-    background: linear-gradient(90deg, #7c3aed 60%, #4f46e5 100%);
-    color: #fff;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    box-shadow: 0 4px 18px rgba(124,58,237,0.18);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border: none;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    margin-top: 10px;
-}
-.telegram-boton-mejorado i {
-    font-size: 1.5rem;
-}
-.telegram-boton-mejorado:hover, .telegram-boton-mejorado:focus {
-    background: linear-gradient(90deg, #a78bfa 60%, #6366f1 100%);
-    color: #fff;
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.25);
-    text-decoration: none;
-}
-```
-
-## 🛠️ Technical Implementation
-
-### Core Algorithms
-
-```javascript
-// Luhn Algorithm Implementation
-function generateLuhnNumber(prefix) {
-    let number = prefix;
-    let sum = 0;
-    let isEven = false;
-    
-    for (let i = number.length - 1; i >= 0; i--) {
-        let digit = parseInt(number[i]);
-        if (isEven) {
-            digit *= 2;
-            if (digit > 9) digit -= 9;
-        }
-        sum += digit;
-        isEven = !isEven;
-    }
-    
-    const checkDigit = (10 - (sum % 10)) % 10;
-    return number + checkDigit;
-}
-```
-
-### Key Functions
-
-```javascript
-// Card Generation
-function generateCard(options) {
-    const {
-        bin,
-        month,
-        year,
-        format = 'PIPE',
-        cvv = null
-    } = options;
-    
-    const cardNumber = generateLuhnNumber(bin);
-    const expiration = `${month}/${year}`;
-    const generatedCvv = cvv || generateRandomCVV();
-    
-    return formatCard({
-        number: cardNumber,
-        expiration,
-        cvv: generatedCvv
-    }, format);
-}
-
-// BIN Lookup
-async function lookupBIN(bin) {
-    const response = await fetch(`https://api.apilayer.com/bincheck/${bin}`, {
-        headers: {
-            'apikey': 'YOUR_API_KEY'
-        }
-    });
-    
-    return await response.json();
-}
-```
-
-## 📦 Data Structures
-
-### Card Object
-```javascript
-interface Card {
-    number: string;
-    expiration: string;
-    cvv: string;
-    bin: string;
-    brand: string;
-    type: string;
-    bank: string;
-    country: string;
-}
-```
-
-### BIN Information
-```javascript
-interface BINInfo {
-    bin: string;
-    brand: string;
-    type: string;
-    bank: {
-        name: string;
-        url: string;
-        phone: string;
-    };
-    country: {
-        name: string;
-        code: string;
-        currency: string;
-    };
-    scheme: string;
-}
-```
-
-## 🔄 Workflow
-
-1. **Card Generation**
-   ```
-   Input BIN → Generate Number → Validate Luhn → Format Output
-   ```
-
-2. **BIN Lookup**
-   ```
-   Input BIN → API Request → Parse Response → Display Information
-   ```
-
-## 🎯 Usage
-
-### Card Generation
-```javascript
-const card = generateCard({
-    bin: '411111',
-    month: '12',
-    year: '2025',
-    format: 'JSON'
-});
-```
-
-### BIN Lookup
-```javascript
-const binInfo = await lookupBIN('411111');
-console.log(binInfo);
-```
-
-## 📊 Performance Metrics
-
-- **Card Generation**: < 10ms per card
-- **BIN Lookup**: < 500ms average response time
-- **Memory Usage**: < 50MB
-- **Storage**: < 1MB for history
-
-## 🔒 Security Features
-
-- **Client-side Processing**: All sensitive operations performed locally
-- **No Data Storage**: Card numbers never stored
-- **API Key Protection**: Secure API key handling
-- **Input Validation**: Strict input sanitization
-
-## 🎨 UI Components
-
-### Card Generator
-- Dynamic form with real-time validation
-- Custom select inputs with animations
-- Responsive layout with grid system
-- Error handling with animated notifications
-
-### BIN Lookup
-- Search panel with instant feedback
-- Results display with smooth transitions
-- History management with local storage
-- Empty state handling
-
-## 🌐 API Integration
-
-### Endpoints
-- `GET /bincheck/{bin}`: BIN information lookup
-- Rate limit: 100 requests/minute
-- Response format: JSON
-
-## 📱 Responsive Design
-
-- Mobile-first approach
-- Fluid typography
-- Adaptive layouts
-- Touch-friendly interfaces
-
-## 🛠️ Development
-
-### Setup
-```bash
-npm install
-npm run dev
-```
-
-### Build
-```bash
-npm run build
-```
-
-### Test
-```bash
-npm run test
-```
-
-## 📝 License
-
-MIT License - See LICENSE file for details
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📞 Support
-
-For support, please open an issue or contact us through Telegram.
+**Created by [mat1520](https://github.com/mat1520)**
 
 ---
 
-Made with ❤️ by CardGen Pro Team 
+## Overview
+
+CardGen Pro is a modern, multi-page web application and Telegram bot for advanced card generation, BIN lookup, OSINT tools, and temporary email—all with a beautiful, animated UI and robust backend logic. Built for educational, pentesting, and cybersecurity research purposes.
+
+- **Frontend:** Multipage, responsive, glassmorphism, animated backgrounds, and modern UX.
+- **Backend:** Node.js, Express, and Telegram bot integration.
+- **Telegram Bot:** Full-featured, with command history, favorites, temp mail, IP check, and more.
+- **Year:** 2025
+
+---
+
+## Features
+
+- **Card Generator:** Generate valid card numbers with Luhn algorithm, custom BIN, date, and CVV.
+- **BIN Lookup:** Get detailed info about any BIN (bank, country, brand, type, level).
+- **SRI Lookup:** Ecuadorian SRI lookup by ID (via Telegram bot).
+- **Vehicle Plate Lookup:** Ecuadorian vehicle info by plate (via Telegram bot).
+- **Temporary Email:** Generate and check temp mailboxes (web & Telegram).
+- **IP Address Fraud Check:** Check IP info, proxy/VPN/hosting/Tor status, and risk level (web & Telegram).
+- **Favorites & History:** Save favorite BINs, view recent queries, and manage your data.
+- **Modern UI:** Glassmorphism, responsive design, animated gradients, and smooth transitions.
+- **Multi-language Ready:** (Spanish/English structure, easily extendable)
+
+---
+
+## Telegram Bot Commands
+
+| Command         | Description                                 | Example                        |
+|----------------|---------------------------------------------|---------------------------------|
+| /start, .start | Show welcome and main menu                   | /start                         |
+| /help, .help   | Show help and all commands                   | /help                          |
+| /gen, .gen     | Generate cards (BIN|MM|YYYY|CVV)             | /gen 477349002646|05|2027|123  |
+| /bin, .bin     | BIN lookup (detailed info)                   | /bin 431940                    |
+| /ip, .ip       | IP info & fraud risk check                   | /ip 8.8.8.8                    |
+| /cedula, .cedula | SRI lookup by ID (Ecuador)                 | /cedula 17xxxxxxxx             |
+| /placa, .placa | Vehicle info by plate (Ecuador)              | /placa PDF9627                 |
+| /mail, .mail   | Generate temporary email                     | /mail                          |
+| /check, .check | Check temp mail messages                     | /check                         |
+| /favoritos, .favoritos | List favorite BINs                   | /favoritos                     |
+| /agregarbin, .agregarbin | Add BIN to favorites               | /agregarbin 431940             |
+| /eliminarbin, .eliminarbin | Remove BIN from favorites         | /eliminarbin 1                 |
+| /historial, .historial | View recent history                  | /historial                     |
+| /clear, .clear | Clean the chat                              | /clear                         |
+| /limpiar, .limpiar | Clean the chat (alt)                     | /limpiar                       |
+| /ayuda, .ayuda | Show help                                   | /ayuda                         |
+
+---
+
+## Web App Pages
+
+- `/index.html` — Card Generator (main)
+- `/bin-lookup.html` — BIN Lookup
+- `/sri-lookup.html` — SRI Lookup (info)
+- `/temp-mail.html` — Temporary Email
+- `/ip-check.html` — IP Address Fraud Check
+
+All pages feature:
+- Animated backgrounds (CSS gradients, glassmorphism)
+- Responsive layouts
+- Consistent navigation (active page hidden in nav)
+- Modern, accessible forms and feedback
+
+---
+
+## Animations & Visuals
+
+- **Animated Gradient Spheres:** Dynamic background spheres for a cyber/modern look.
+- **Glassmorphism Panels:** All main containers use glassmorphism for a futuristic, clean UI.
+- **Button & Input Animations:** Smooth hover, focus, and click transitions.
+- **Modal & Notification Animations:** Fade-in/out for modals and toast notifications.
+
+---
+
+## Architecture Diagram (ASCII)
+
+```
++-------------------+         +-------------------+
+|    Web Frontend   | <-----> |   Telegram Bot    |
+| (Vite, HTML, CSS) |         | (Node.js, Telegraf)|
++-------------------+         +-------------------+
+         |                             |
+         | REST/API calls              |
+         v                             v
++---------------------------------------------+
+|                External APIs                |
+|  (BIN lookup, ipwho.is, mail.tm, SRI, etc.) |
++---------------------------------------------+
+```
+
+---
+
+## How to Use
+
+1. **Web:** Deploy or run locally with Vite (`npm run dev`). Navigate to any page.
+2. **Telegram:** Start the bot, use `/start` or any command. All commands work with `/` or `.` prefix.
+3. **Favorites & History:** Managed per user (localStorage for web, JSON per user for bot).
+
+---
+
+## Credits
+
+- **Project Lead & Developer:** [mat1520](https://github.com/mat1520)
+- **Year:** 2025
+- **License:** MIT
+
+---
+
+## Disclaimer
+
+> This project is for educational and cybersecurity research purposes only. Use responsibly. The author is not responsible for misuse. 
