@@ -100,6 +100,8 @@ export const generateTempMail = async () => {
         });
 
         if (!accountResponse.ok) {
+            const errorData = await accountResponse.json();
+            console.error('Error al crear cuenta:', errorData);
             throw new Error('Error al crear cuenta de correo');
         }
 
@@ -117,14 +119,18 @@ export const generateTempMail = async () => {
         });
 
         if (!tokenResponse.ok) {
+            const errorData = await tokenResponse.json();
+            console.error('Error al obtener token:', errorData);
             throw new Error('Error al obtener token');
         }
 
         const tokenData = await tokenResponse.json();
+        console.log('Token obtenido:', tokenData);
 
         return {
             email,
-            token: tokenData.token
+            token: tokenData.token,
+            password // Guardamos la contraseña para futuras autenticaciones
         };
     } catch (error) {
         console.error('Error al generar correo temporal:', error);
@@ -135,6 +141,8 @@ export const generateTempMail = async () => {
 // Función para verificar mensajes en el correo temporal
 export const checkTempMail = async (token) => {
     try {
+        console.log('Verificando mensajes con token:', token);
+
         // Primero verificamos que el token sea válido
         const meResponse = await fetch('https://api.mail.tm/me', {
             headers: {
@@ -144,6 +152,7 @@ export const checkTempMail = async (token) => {
         });
 
         if (!meResponse.ok) {
+            console.error('Error al verificar token:', await meResponse.text());
             throw new Error('Token inválido o expirado');
         }
 
@@ -156,26 +165,34 @@ export const checkTempMail = async (token) => {
         });
 
         if (!messagesResponse.ok) {
+            console.error('Error al obtener mensajes:', await messagesResponse.text());
             throw new Error('Error al obtener mensajes');
         }
 
         const messagesData = await messagesResponse.json();
+        console.log('Mensajes obtenidos:', messagesData);
         
         // Si hay mensajes, obtenemos el contenido completo de cada uno
         const messages = await Promise.all(
             messagesData['hydra:member'].map(async (msg) => {
-                const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/json'
+                try {
+                    const messageResponse = await fetch(`https://api.mail.tm/messages/${msg.id}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (!messageResponse.ok) {
+                        console.error('Error al obtener mensaje:', await messageResponse.text());
+                        return msg; // Si falla, retornamos el mensaje básico
                     }
-                });
-                
-                if (!messageResponse.ok) {
-                    return msg; // Si falla, retornamos el mensaje básico
+                    
+                    return messageResponse.json();
+                } catch (error) {
+                    console.error('Error al obtener mensaje individual:', error);
+                    return msg;
                 }
-                
-                return messageResponse.json();
             })
         );
 
