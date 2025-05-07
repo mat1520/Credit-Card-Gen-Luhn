@@ -306,32 +306,57 @@ const handleDotCommand = async (ctx) => {
         case 'start':
         case 'ayuda':
         case 'help':
-            const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
-                `*Comandos disponibles:*\n` +
-                `• \`/start\` o \`.start\` - Mostrar ayuda y comandos disponibles\n` +
-                `• \`/gen\` o \`.gen\` - Generar tarjetas\n` +
-                `• \`/bin\` o \`.bin\` - Consultar información de BIN\n` +
-                `• \`/cedula\` o \`.cedula\` - Consulta información SRI por cédula\n` +
-                `• \`/placa\` o \`.placa\` - Consulta información Vehicular\n` +
-                `• \`/mail\` o \`.mail\` - Generar correo temporal\n` +
-                `• \`/check\` o \`.check\` - Verificar mensajes del correo\n` +
-                `• \`/ip\` o \`.ip\` - Verificar IP y riesgo de fraude\n` +
-                `• \`/favoritos\` o \`.favoritos\` - Ver BINs favoritos\n` +
-                `• \`/agregarbin\` o \`.agregarbin\` - Guardar BIN en favoritos\n` +
-                `• \`/eliminarbin\` o \`.eliminarbin\` - Eliminar BIN de favoritos\n` +
-                `• \`/historial\` o \`.historial\` - Ver historial de consultas\n` +
-                `• \`/clear\` o \`.clear\` - Limpiar el chat\n` +
-                `• \`/limpiar\` o \`.limpiar\` - Limpiar el chat\n` +
-                `• \`/ayuda\` o \`.ayuda\` - Mostrar ayuda\n\n` +
-                `*Ejemplos:*\n` +
-                `• \`.gen 477349002646|05|2027|123\`\n` +
-                `• \`.bin 477349\`\n` +
-                `• \`.cedula 17xxxxxxxx\`\n` +
-                `• \`.placa PDF9627\`\n` +
-                `• \`.mail\`\n` +
-                `• \`.check\`\n` +
-                `• \`.ip 8.8.8.8\``;
-            await ctx.reply(helpMessage);
+            const helpText = `👋 ¡Hola! Bienvenido a CARD GEN PRO
+
+Todos los comandos funcionan con / o . (por ejemplo, /gen o .gen)
+
+🔧 Generación de Tarjetas
+gen BIN|MM|YYYY|CVV  
+► Genera 10 tarjetas automáticamente  
+Ejemplo: gen 477349002646|05|2027|123
+
+🔍 Consultas Inteligentes
+bin BIN  
+► Información detallada de un BIN  
+Ejemplo: bin 431940
+
+ip <dirección IP>  
+► Consulta información y riesgo de una IP  
+Ejemplo: ip 8.8.8.8
+
+cedula <número de cédula>  
+► Consulta datos SRI por cédula  
+Ejemplo: cedula 17xxxxxxxx
+
+placa <número de placa>
+► Consulta datos de vehículo por placa
+Ejemplo: placa PDF9627
+
+⭐️ Favoritos
+favoritos  
+► Lista tus BINs guardados
+
+agregarbin BIN [mes] [año] [cvv]  
+► Guarda un BIN para usarlo luego
+
+eliminarbin <índice>  
+► Elimina un BIN de tu lista
+
+📋 Utilidades
+historial  
+► Revisa tus consultas anteriores
+
+clear  
+► Limpia el chat
+
+ayuda  
+► Muestra esta guía de comandos
+
+🌐 Prueba también la versión web  
+https://credit-cart-gen-luhn.vercel.app/index.html
+
+Desarrollado con ❤️ por @mat1520`;
+            await ctx.reply(helpText);
             return true;
 
         case 'favoritos':
@@ -426,10 +451,6 @@ const handleDotCommand = async (ctx) => {
 
         case 'ip':
             await handleIPCommand(ctx);
-            return true;
-
-        case 'broadcast':
-            await handleBroadcastCommand(ctx);
             return true;
     }
     return false;
@@ -1090,43 +1111,6 @@ const handleIPCommand = async (ctx) => {
 // Registrar comando IP
 registerCommand('ip', handleIPCommand);
 
-// ID del admin (reemplaza con tu user ID real de Telegram)
-const ADMIN_ID = 6332406416; // <-- ID de @MAT3810
-
-// Comando de broadcast solo para admin
-registerCommand('broadcast', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) {
-        await ctx.reply('⛔️ Solo el admin puede usar este comando.');
-        return;
-    }
-    await ctx.reply('🚀 Enviando mensaje de actualización a todos los usuarios...');
-    const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
-    const userIds = files.map(f => f.replace('.json', ''));
-    const message = `🚀 *CardGen Pro 2025 Update!*
-
-- Modern multipage web & Telegram bot
-- New: IP Address Fraud Check
-- Improved UI, glassmorphism, animations
-- Full command list in /help
-- Developed by [mat1520](https://github.com/mat1520)
-
-Try all new features now!`;
-    const imagePath = path.join(__dirname, 'OFFICIALT.png');
-    let sent = 0, failed = 0;
-    for (const userId of userIds) {
-        try {
-            await ctx.telegram.sendPhoto(userId, { source: imagePath }, {
-                caption: message,
-                parse_mode: 'Markdown'
-            });
-            sent++;
-        } catch (e) {
-            failed++;
-        }
-    }
-    await ctx.reply(`✅ Mensaje enviado a ${sent} usuarios. Fallidos: ${failed}`);
-});
-
 // Actualizar el mensaje de ayuda
 const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `*Comandos disponibles:*\n` +
@@ -1153,3 +1137,52 @@ const helpMessage = `🤖 *CardGen Pro Bot*\n\n` +
     `• \`.mail\`\n` +
     `• \`.check\`\n` +
     `• \`.ip 8.8.8.8\``;
+
+// Iniciar el bot
+let isShuttingDown = false;
+
+const startBot = async () => {
+    try {
+        await bot.launch();
+        console.log('Bot iniciado');
+        
+        // Signal ready to PM2
+        if (process.send) {
+            process.send('ready');
+        }
+    } catch (err) {
+        console.error('Error al iniciar el bot:', err);
+        process.exit(1);
+    }
+};
+
+// Error handling for the bot
+bot.catch((err, ctx) => {
+    console.error('Error en el manejo del comando:', err);
+    if (ctx && !isShuttingDown) {
+        ctx.reply('❌ Ocurrió un error al procesar el comando. Por favor, intenta nuevamente.');
+    }
+});
+
+// Graceful shutdown
+const shutdown = async (signal) => {
+    if (isShuttingDown) return;
+    isShuttingDown = true;
+    
+    console.log(`Recibida señal ${signal}. Iniciando apagado gracioso...`);
+    
+    try {
+        await bot.stop(signal);
+        console.log('Bot detenido correctamente');
+    } catch (err) {
+        console.error('Error al detener el bot:', err);
+    }
+    
+    process.exit(0);
+};
+
+process.once('SIGINT', () => shutdown('SIGINT'));
+process.once('SIGTERM', () => shutdown('SIGTERM'));
+
+// Start the bot
+startBot();
