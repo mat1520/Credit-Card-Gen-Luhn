@@ -165,12 +165,136 @@
             box-shadow: 0 2px 8px #0002;
         }
         @media (max-width: 900px) {
-            .temp-mail-container { max-width: 99vw; }
-            .temp-mail-message-body-panel { padding: 1rem 0.5rem; }
+            .temp-mail-container { 
+                max-width: 99vw; 
+                margin: 5rem auto 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .temp-mail-message-body-panel { 
+                padding: 1.5rem 1rem; 
+                max-width: 95vw;
+            }
         }
+        
+        @media (max-width: 768px) {
+            .temp-mail-container { 
+                margin: 4rem auto 1rem;
+                padding: 1.5rem 1rem;
+            }
+            
+            .temp-mail-email-row {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .temp-mail-email {
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+                text-align: center;
+            }
+            
+            .copy-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .temp-mail-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .temp-mail-messages {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .temp-mail-message {
+                padding: 1rem;
+                min-height: 80px;
+            }
+            
+            .temp-mail-message-subject {
+                font-size: 1rem;
+            }
+            
+            .temp-mail-message-from {
+                font-size: 0.875rem;
+            }
+        }
+        
         @media (max-width: 600px) {
-            .temp-mail-container { padding: 1.2rem 0.5rem; }
-            .temp-mail-message { padding: 10px 8px; }
+            .temp-mail-container { 
+                padding: 1rem 0.75rem; 
+                margin: 3.5rem auto 1rem;
+            }
+            
+            .temp-mail-email {
+                font-size: 0.875rem;
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .copy-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8125rem;
+            }
+            
+            .temp-mail-btn {
+                padding: 0.875rem 1.25rem;
+                font-size: 0.875rem;
+            }
+            
+            .temp-mail-message { 
+                padding: 0.75rem; 
+                min-height: 70px;
+            }
+            
+            .temp-mail-message-subject {
+                font-size: 0.875rem;
+            }
+            
+            .temp-mail-message-from {
+                font-size: 0.8125rem;
+            }
+            
+            .temp-mail-message-body-panel {
+                padding: 1rem 0.75rem;
+                margin: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .temp-mail-container {
+                margin: 3rem auto 1rem;
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .temp-mail-email {
+                font-size: 0.8125rem;
+                padding: 0.5rem;
+            }
+            
+            .copy-btn {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .temp-mail-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.8125rem;
+            }
+            
+            .temp-mail-message {
+                padding: 0.5rem;
+                min-height: 60px;
+            }
+            
+            .temp-mail-message-subject {
+                font-size: 0.8125rem;
+            }
+            
+            .temp-mail-message-from {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -192,7 +316,7 @@
                     <i class="fas fa-id-card" aria-hidden="true"></i>
                     <span>Consulta SRI</span>
                 </a>
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
+                <a href="https://t.me/Credit_Cart_Gen_Bot" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
                     <i class="fab fa-telegram" aria-hidden="true"></i>
                     <span class="sr-only">Telegram</span>
                 </a>
@@ -236,7 +360,7 @@
                 </div>
             </div>
             <div class="footer-right">
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="footer-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/Credit_Cart_Gen_Bot" class="footer-link" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-telegram" aria-hidden="true"></i>
                     <span>Telegram</span>
                 </a>

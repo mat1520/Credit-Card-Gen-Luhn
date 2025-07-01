@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuración
-const BOT_TOKEN = '7916820433:AAF3MB2Aw_sZWif1N4AxLZwRzEGolcRoVzg';
+const BOT_TOKEN = '8199482062:AAF7DnOfmplSFng1_5aMjeYl4-MtCjcbv1Y';
 const bot = new Telegraf(BOT_TOKEN);
 
 // Rate limiting and command debouncing

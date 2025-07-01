@@ -10,6 +10,266 @@
     <link rel="stylesheet" href="./src/styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para mejorar la responsividad del header en index.html */
+        
+        /* Header responsive mejorado */
+        @media (max-width: 1024px) {
+            .header-content {
+                padding: 0.5rem 1.5rem;
+            }
+            
+            .header-right {
+                gap: 0.5rem;
+            }
+            
+            .nav-button {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+            
+            .nav-button span {
+                display: none;
+            }
+            
+            .nav-button i {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0.5rem 1rem;
+            }
+            
+            .header-right {
+                gap: 0.25rem;
+            }
+            
+            .nav-button {
+                padding: 0.5rem;
+                min-width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-button span {
+                display: none;
+            }
+            
+            .nav-button i {
+                font-size: 0.875rem;
+            }
+            
+            .telegram-link,
+            .github-link {
+                padding: 0.5rem;
+                min-width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .telegram-link i,
+            .github-link i {
+                font-size: 0.875rem;
+            }
+            
+            .favorite-header-button {
+                padding: 0.5rem;
+                min-width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .header-content {
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .logo img {
+                height: 32px;
+                width: 32px;
+            }
+            
+            .header-right {
+                gap: 0.125rem;
+            }
+            
+            .nav-button {
+                padding: 0.375rem;
+                min-width: 36px;
+                height: 36px;
+            }
+            
+            .nav-button i {
+                font-size: 0.8125rem;
+            }
+            
+            .telegram-link,
+            .github-link {
+                padding: 0.375rem;
+                min-width: 36px;
+                height: 36px;
+            }
+            
+            .telegram-link i,
+            .github-link i {
+                font-size: 0.8125rem;
+            }
+            
+            .favorite-header-button {
+                padding: 0.375rem;
+                min-width: 36px;
+                height: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 0.5rem 0.5rem;
+            }
+            
+            .logo {
+                font-size: 1.125rem;
+            }
+            
+            .logo img {
+                height: 28px;
+                width: 28px;
+            }
+            
+            .header-right {
+                gap: 0.125rem;
+            }
+            
+            .nav-button {
+                padding: 0.25rem;
+                min-width: 32px;
+                height: 32px;
+            }
+            
+            .nav-button i {
+                font-size: 0.75rem;
+            }
+            
+            .telegram-link,
+            .github-link {
+                padding: 0.25rem;
+                min-width: 32px;
+                height: 32px;
+            }
+            
+            .telegram-link i,
+            .github-link i {
+                font-size: 0.75rem;
+            }
+            
+            .favorite-header-button {
+                padding: 0.25rem;
+                min-width: 32px;
+                height: 32px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .header-content {
+                padding: 0.5rem 0.25rem;
+            }
+            
+            .logo {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                height: 24px;
+                width: 24px;
+            }
+            
+            .header-right {
+                gap: 0.125rem;
+            }
+            
+            .nav-button {
+                padding: 0.25rem;
+                min-width: 28px;
+                height: 28px;
+            }
+            
+            .nav-button i {
+                font-size: 0.6875rem;
+            }
+            
+            .telegram-link,
+            .github-link {
+                padding: 0.25rem;
+                min-width: 28px;
+                height: 28px;
+            }
+            
+            .telegram-link i,
+            .github-link i {
+                font-size: 0.6875rem;
+            }
+            
+            .favorite-header-button {
+                padding: 0.25rem;
+                min-width: 28px;
+                height: 28px;
+            }
+        }
+        
+        /* Mejoras para el logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            height: 100%;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo span {
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        /* Mejoras para los botones de navegación */
+        .nav-button {
+            transition: all 0.3s ease;
+            border-radius: var(--radius-md);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-1px);
+        }
+        
+        .telegram-link,
+        .github-link {
+            transition: all 0.3s ease;
+            border-radius: var(--radius-md);
+        }
+        
+        .telegram-link:hover,
+        .github-link:hover {
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 <body class="dark-theme">
     <div class="background-animation">
@@ -46,7 +306,7 @@
                 <button id="open-favorites" class="nav-button favorite-header-button" title="Ver favoritos">
                     <i class="fas fa-star"></i>
                 </button>
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
+                <a href="https://t.me/Credit_Cart_Gen_Bot" class="telegram-link" target="_blank" rel="noopener noreferrer" title="Telegram Bot">
                     <i class="fab fa-telegram" aria-hidden="true"></i>
                     <span class="sr-only">Telegram</span>
                 </a>
@@ -207,7 +467,7 @@
             </div>
 
             <div class="footer-right">
-                <a href="https://t.me/CardGenPro_BOT?start=_tgr_y1X3A7NlZDAx" class="footer-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/Credit_Cart_Gen_Bot" class="footer-link" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-telegram" aria-hidden="true"></i>
                     <span>Telegram</span>
                 </a>
