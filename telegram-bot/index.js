@@ -11,7 +11,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuración
-const BOT_TOKEN = '8199482062:AAE-odWminDhOpI-2HyAVWtH53s6PJFNCto';
+const BOT_TOKEN = process.env.BOT_TOKEN || '8199482062:AAE-odWminDhOpI-2HyAVWtH53s6PJFNCto';
+
+if (!BOT_TOKEN) {
+    console.error('Error: BOT_TOKEN must be set in environment variables');
+    process.exit(1);
+}
+
 const bot = new Telegraf(BOT_TOKEN);
 
 // Rate limiting and command debouncing

@@ -45,7 +45,7 @@ CardGen Pro BOT is a virtual lab for card generation, BIN analysis, and OSINT to
    ```
 3. Create a `.env` file with your Telegram bot token:
    ```
-   BOT_TOKEN=your_telegram_bot_token
+   BOT_TOKEN=8199482062:AAE-odWminDhOpI-2HyAVWtH53s6PJFNCto
    ```
 4. Start the bot:
    ```bash
