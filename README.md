@@ -83,7 +83,7 @@ CardGen Pro emplea una arquitectura de doble interfaz donde tanto el frontend we
 
 <p align="center">
   <img src="src/assets/WELCOME_Bot.png" alt="Bot Welcome" width="300" />
-  <img src="src/assets/Pagina_Web_Index .png" alt="Web Screenshot" width="400" />
+  <img src="src/assets/Pagina_Web_Index .png" alt="Web Screenshot" width="700" />
 </p>
 
 ---
