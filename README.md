@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../src/assets/logo.svg" alt="CardGen Pro Logo" width="120" />
+  <img src="src/assets/logo.svg" alt="CardGen Pro Logo" width="120" />
   <h1 style="font-size:2.5rem; color:#7c3aed; margin-bottom:0; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">CardGen Pro BOT</h1>
   <p style="font-size:1.2rem; color:#444; margin-top:0;">
     <b>🚀 Generador de tarjetas, BIN lookup y OSINT para Web y Telegram</b>
@@ -81,10 +81,10 @@ CardGen Pro emplea una arquitectura de doble interfaz donde tanto el frontend we
 
 ## 🖼️ Capturas de pantalla
 
-<div align="center">
-  <img src="../src/assets/WELCOME_Bot.png" alt="Bot Welcome" width="340" style="margin: 0 24px; border-radius: 12px; box-shadow:0 4px 24px #0002;">
-  <img src="../src/assets/Pagina_Web_Index .png" alt="Web Screenshot" width="720" style="border-radius: 12px; margin: 0 16px; box-shadow:0 4px 24px #0002;">
-</div>
+<p align="center">
+  <img src="src/assets/WELCOME_Bot.png" alt="Bot Welcome" width="300" />
+  <img src="src/assets/Pagina_Web_Index .png" alt="Web Screenshot" width="400" />
+</p>
 
 ---
 
