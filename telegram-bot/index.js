@@ -11,14 +11,33 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuración
-const BOT_TOKEN = process.env.BOT_TOKEN || '8199482062:AAE-odWminDhOpI-2HyAVWtH53s6PJFNCto';
+// Use BOT_TOKEN from environment only. Do NOT hardcode tokens in source.
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const DRY_RUN = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true';
 
-if (!BOT_TOKEN) {
-    console.error('Error: BOT_TOKEN must be set in environment variables');
+if (!BOT_TOKEN && !DRY_RUN) {
+    console.error('Error: BOT_TOKEN must be set in environment variables (or enable DRY_RUN for local testing)');
     process.exit(1);
 }
 
-const bot = new Telegraf(BOT_TOKEN);
+// If DRY_RUN is enabled we create a minimal bot-like object that logs calls
+let bot;
+if (DRY_RUN) {
+    console.log('Starting in DRY_RUN mode: bot will not connect to Telegram API');
+    // Minimal stub that supports used methods in this file
+    bot = {
+        use: () => {},
+        command: () => {},
+        hears: () => {},
+        on: () => {},
+        launch: async () => { console.log('DRY_RUN: bot.launch() called'); },
+        stop: async () => { console.log('DRY_RUN: bot.stop() called'); },
+        catch: () => {}
+    };
+} else {
+    const { Telegraf } = await import('telegraf');
+    bot = new Telegraf(BOT_TOKEN);
+}
 
 // Rate limiting and command debouncing
 const userStates = new Map();

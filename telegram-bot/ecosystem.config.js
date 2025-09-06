@@ -4,7 +4,9 @@ module.exports = {
     script: "index.js",
     watch: false,
     env: {
-      NODE_ENV: "production",
+  NODE_ENV: "production",
+  // Example: set BOT_TOKEN in your process manager or use a .env file
+  // BOT_TOKEN: 'your_token_here'
     },
     error_file: "logs/err.log",
     out_file: "logs/out.log",
