@@ -740,17 +740,82 @@ registerCommand('cedula', async (ctx) => {
         return ctx.reply('❌ Uso: /cedula <número de cédula>\nEjemplo: /cedula 17xxxxxxxx');
     }
     try {
-        const url = `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
-        const response = await fetch(url);
-        const data = await response.json();
+        // Mejor manejo: timeout, retries, y mensajes según status
+        const buildUrl = () => `https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/${cedula}/?tipoPersona=N&_=${Date.now()}`;
+
+        const fetchWithTimeout = async (resource, options = {}) => {
+            const { timeout = 8000 } = options;
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            try {
+                const resp = await fetch(resource, { ...options, signal: controller.signal });
+                clearTimeout(id);
+                return resp;
+            } catch (err) {
+                clearTimeout(id);
+                throw err;
+            }
+        };
+
+        // Intentar hasta 2 veces en caso de fallo transitorio
+        let resp; let data;
+        for (let attempt = 1; attempt <= 2; attempt++) {
+            try {
+                resp = await fetchWithTimeout(buildUrl(), { timeout: 8000, headers: { 'User-Agent': 'Mozilla/5.0' } });
+                // Si recibimos 429 o 5xx, retry una vez más con backoff
+                if (resp.status === 429) {
+                    if (attempt === 1) await new Promise(r => setTimeout(r, 1200));
+                    else break;
+                }
+                if (resp.status >= 500 && resp.status < 600) {
+                    if (attempt === 1) await new Promise(r => setTimeout(r, 800));
+                    else break;
+                }
+                break;
+            } catch (err) {
+                if (attempt === 2) throw err;
+                await new Promise(r => setTimeout(r, 700));
+            }
+        }
+
+        if (!resp) throw new Error('No response from SRI');
+
+        // Manejar códigos HTTP comunes
+        if (resp.status === 404) {
+            return ctx.reply(`❌ No se encontró información para la cédula ${cedula}.`);
+        }
+        if (resp.status === 429) {
+            return ctx.reply('⚠️ Servicio temporalmente sobrecargado. Intenta de nuevo en unos segundos.');
+        }
+        if (resp.status >= 400) {
+            console.error('SRI responded with status', resp.status);
+            return ctx.reply('❌ Error al consultar la cédula. Intenta más tarde.');
+        }
+
+        // Parsear JSON de forma segura
+        try {
+            data = await resp.json();
+        } catch (err) {
+            console.error('Error parsing SRI response JSON:', err);
+            return ctx.reply('❌ Respuesta inesperada del servicio SRI. Intenta más tarde.');
+        }
+
         if (data && data.contribuyente) {
             const info = data.contribuyente;
             let msg = `🪪 Información SRI para la cédula: <code>${cedula}</code>\n\n`;
-            msg += `• <b>Nombre Comercial:</b> ${info.nombreComercial || 'No disponible'}\n`;
+            msg += `• <b>Nombre Comercial:</b> ${info.nombreComercial || info.denominacion || 'No disponible'}\n`;
             msg += `• <b>Clase:</b> ${info.clase || 'No disponible'}\n`;
             msg += `• <b>Tipo de Identificación:</b> ${info.tipoIdentificacion || 'No disponible'}\n`;
+            if (info.fechaInformacion) {
+                try {
+                    const date = new Date(Number(info.fechaInformacion));
+                    if (!isNaN(date)) msg += `• <b>Fecha de Información:</b> ${date.toLocaleString()}\n`;
+                } catch (e) { /* ignore */ }
+            }
             if (data.deuda) {
                 msg += `\n💸 <b>Deuda:</b> ${data.deuda.estado || 'No disponible'} - ${data.deuda.monto || 'No disponible'}`;
+            } else {
+                msg += `\n💸 <b>Deuda:</b> Sin registro de deuda`;
             }
             await ctx.replyWithHTML(msg);
         } else {
@@ -758,7 +823,12 @@ registerCommand('cedula', async (ctx) => {
         }
     } catch (error) {
         console.error('Error en comando /cedula:', error);
-        await ctx.reply('❌ Error al consultar la cédula. Intenta más tarde.');
+        // Mensaje más informativo para el usuario final
+        if (error.name === 'AbortError') {
+            await ctx.reply('⚠️ Tiempo de espera agotado al contactar al servicio SRI. Intenta de nuevo.');
+        } else {
+            await ctx.reply('❌ Error al consultar la cédula. Intenta más tarde.');
+        }
     }
 });
 
