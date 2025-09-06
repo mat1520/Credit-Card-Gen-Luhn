@@ -1,3 +1,4 @@
+// redeploy trigger - comment update
 import 'dotenv/config';
 import { Telegraf } from 'telegraf';
 import fs from 'fs';
