@@ -5,7 +5,8 @@
     "main": "telegram-bot/index.js",
     "type": "module",
     "scripts": {
-        "start": "node telegram-bot/index.js",
+    "start": "node telegram-bot/index.js",
+    "postinstall": "sh ./scripts/postinstall-debug.sh || true",
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview"
