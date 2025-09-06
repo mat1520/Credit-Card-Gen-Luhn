@@ -5,7 +5,7 @@
     <b>🚀 Generador de tarjetas, BIN lookup y OSINT para Web y Telegram</b>
   </p>
   <p>
-    <a href="https://t.me/Credit_Cart_Gen_Bot">
+  <a href="https://t.me/CardGen_Pro_BOT">
       <img src="https://img.shields.io/badge/TELEGRAM-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
     </a>
     <a href="https://github.com/mat1520/Credit-Cart-Gen-Luhn">
@@ -151,7 +151,7 @@ npm install
 ---
 
 <div align="center" style="margin-top: 2rem;">
-  <a href="https://t.me/Credit_Cart_Gen_Bot">
+  <a href="https://t.me/CardGen_Pro_BOT">
     <img src="https://img.shields.io/badge/TELEGRAM-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
   </a>
   <a href="https://github.com/mat1520/Credit-Cart-Gen-Luhn">
@@ -169,7 +169,7 @@ npm install
 
 <p align="center" style="font-size:1.1rem;">
   👨‍💻 Creado por <b><a href="https://t.me/MAT3810">@MAT3810</a></b> |
-  🤖 <a href="https://t.me/Credit_Cart_Gen_Bot">Canal del bot</a> |
+  🤖 <a href="https://t.me/CardGen_Pro_BOT">Canal del bot</a> |
   📂 <a href="https://github.com/mat1520/Credit-Cart-Gen-Luhn">GitHub</a> |
   🌐 <a href="https://credit-cart-gen-luhn.vercel.app">Web</a>
 </p>
