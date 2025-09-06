@@ -626,7 +626,7 @@ registerCommand('gen', async (ctx) => {
         const header = `\n𝘽𝙞𝙣 -» ${bin}xxxx|${fixedMonth || 'xx'}|${fixedYear ? fixedYear.slice(-2) : 'xx'}|${fixedCVV || 'rnd'}\n─━─━─━─━─━─━─━─━─━─━─━─━─`;
         const tarjetas = cards.map(card => `${card.number}|${card.month}|${card.year}|${card.cvv}`).join('\n');
         const cardBlock = tarjetas;
-        const binInfoFormatted = `\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙄𝙣𝙛𝙤 -» ${brand} - ${type} - ${level}\n• 𝘽𝙖𝙣𝙠 -» ${bank}\n• 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} -» @CardGenPro_BOT`;
+                const binInfoFormatted = `\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙄𝙣𝙛𝙤 -» ${brand} - ${type} - ${level}\n• 𝘽𝙖𝙣𝙠 -» ${bank}\n• 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» ${country} ${flag}\n─━─━─━─━─━─━─━─━─━─━─━─━─\n• 𝙂𝙚𝙣 𝙗𝙮 -» ${userName} -» @CardGen_Pro_BOT`;
         const response = `${header}\n${cardBlock}\n${binInfoFormatted}`;
         const userId = ctx.from.id;
         const userData = loadUserData(userId);
